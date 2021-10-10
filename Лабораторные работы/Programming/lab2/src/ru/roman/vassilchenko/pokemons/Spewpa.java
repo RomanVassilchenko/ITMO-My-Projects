@@ -1,5 +1,5 @@
-package pokemons;
-import attacks.*;
+package ru.roman.vassilchenko.pokemons;
+import ru.roman.vassilchenko.attacks.*;
 import ru.ifmo.se.pokemon.*;
 
 public class Spewpa extends Pokemon {

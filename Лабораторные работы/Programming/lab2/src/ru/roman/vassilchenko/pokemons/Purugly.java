@@ -1,6 +1,6 @@
-package pokemons;
-import attacks.*;
+package ru.roman.vassilchenko.pokemons;
 import ru.ifmo.se.pokemon.*;
+import ru.roman.vassilchenko.attacks.*;
 
 public class Purugly extends Pokemon {
     public Purugly(String name, int level){

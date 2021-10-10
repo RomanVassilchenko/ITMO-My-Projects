@@ -1,4 +1,4 @@
-package attacks;
+package ru.roman.vassilchenko.attacks;
 import ru.ifmo.se.pokemon.*;
 
 public class RockSlide extends PhysicalMove {

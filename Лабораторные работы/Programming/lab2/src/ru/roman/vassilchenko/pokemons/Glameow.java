@@ -1,6 +1,6 @@
-package pokemons;
-import attacks.*;
+package ru.roman.vassilchenko.pokemons;
 import ru.ifmo.se.pokemon.*;
+import ru.roman.vassilchenko.attacks.*;
 
 public class Glameow extends Pokemon {
     public Glameow(String name, int level){
