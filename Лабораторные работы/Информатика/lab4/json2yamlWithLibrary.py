@@ -1,7 +1,6 @@
 import yaml
 import json
 
-
 def json2yamlWithLibraryRun():
     with open('StartJson.json') as json_file:
         data = json.load(json_file)

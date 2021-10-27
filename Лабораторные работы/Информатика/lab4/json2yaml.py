@@ -40,3 +40,5 @@ def json2yamlRun():
         getContent(data["table"], "")
         with open("PythonJson2Yaml.yaml", 'w') as the_file:
             the_file.writelines(result)
+
+json2yamlRun()

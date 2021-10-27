@@ -1,0 +1,574 @@
+{
+    "table": [
+        {
+            "_attributes": {
+                "id": "1day",
+                "class": [
+                    "rasp_tabl"
+                ],
+                "border": "0",
+                "cellpadding": "0",
+                "cellspacing": "0"
+            },
+            "tbody": [
+                {
+                    "tr": [
+                        {
+                            "th": [
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "day"
+                                        ]
+                                    },
+                                    "script": [
+                                        {
+                                            "_value": "$("#1day_btn").show();"
+                                        }
+                                    ],
+                                    "span": [
+                                        {
+                                            "_value": "Пн"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "td": [
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "time"
+                                        ]
+                                    },
+                                    "span": [
+                                        {
+                                            "_value": "08:20-09:50"
+                                        }
+                                    ],
+                                    "dt": [
+                                        {
+                                            "_attributes": {
+                                                "style": "font-size:14px;"
+                                            },
+                                            "_value": "четная неделя"
+                                        },
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "rasp_corp_mobile"
+                                                ]
+                                            },
+                                            "i": [
+                                                {
+                                                    "_attributes": {
+                                                        "class": [
+                                                            "fa",
+                                                            "fa-map-marker"
+                                                        ]
+                                                    }
+                                                }
+                                            ],
+                                            "span": [
+                                                {
+                                                    "_value": "Кронверкский пр., д.49, лит.А"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "dd": [
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "rasp_aud_mobile"
+                                                ]
+                                            },
+                                            "_value": "305 ауд."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "room"
+                                        ]
+                                    },
+                                    "dl": [
+                                        {
+                                            "dd": [
+                                                {
+                                                    "_value": "305 ауд."
+                                                }
+                                            ],
+                                            "dt": [
+                                                {
+                                                    "i": [
+                                                        {
+                                                            "_attributes": {
+                                                                "class": [
+                                                                    "fa",
+                                                                    "fa-map-marker"
+                                                                ]
+                                                            }
+                                                        }
+                                                    ],
+                                                    "span": [
+                                                        {
+                                                            "_value": "Кронверкский пр., д.49, лит.А"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "lesson"
+                                        ]
+                                    },
+                                    "dl": [
+                                        {
+                                            "dd": [
+                                                {
+                                                    "_value": "Основы профессиональной деятельности(Лаб)"
+                                                }
+                                            ],
+                                            "_value": "четная неделя",
+                                            "dt": [
+                                                {
+                                                    "b": [
+                                                        {
+                                                            "_value": "Блохина Елена Николаевна"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "td": [
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "lesson-format"
+                                                ]
+                                            },
+                                            "_value": "Очно - дистанционный"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "th": [
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "day"
+                                        ]
+                                    }
+                                }
+                            ],
+                            "td": [
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "time"
+                                        ]
+                                    },
+                                    "span": [
+                                        {
+                                            "_value": "08:20-09:50"
+                                        }
+                                    ],
+                                    "div": [
+                                        {
+                                            "_value": "3, 5, 7, 9, 11, 13, 15, 17"
+                                        }
+                                    ],
+                                    "dd": [
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "rasp_aud_mobile"
+                                                ]
+                                            },
+                                            "_value": "305 ауд."
+                                        }
+                                    ],
+                                    "dt": [
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "rasp_corp_mobile"
+                                                ]
+                                            },
+                                            "i": [
+                                                {
+                                                    "_attributes": {
+                                                        "class": [
+                                                            "fa",
+                                                            "fa-map-marker"
+                                                        ]
+                                                    }
+                                                }
+                                            ],
+                                            "span": [
+                                                {
+                                                    "_value": "Кронверкский пр., д.49, лит.А"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "room"
+                                        ]
+                                    },
+                                    "dl": [
+                                        {
+                                            "dd": [
+                                                {
+                                                    "_value": "305 ауд."
+                                                }
+                                            ],
+                                            "dt": [
+                                                {
+                                                    "i": [
+                                                        {
+                                                            "_attributes": {
+                                                                "class": [
+                                                                    "fa",
+                                                                    "fa-map-marker"
+                                                                ]
+                                                            }
+                                                        }
+                                                    ],
+                                                    "span": [
+                                                        {
+                                                            "_value": "Кронверкский пр., д.49, лит.А"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "lesson"
+                                        ]
+                                    },
+                                    "dl": [
+                                        {
+                                            "dd": [
+                                                {
+                                                    "_value": "Программирование(Лаб)"
+                                                }
+                                            ],
+                                            "_value": "нечетная неделя",
+                                            "dt": [
+                                                {
+                                                    "b": [
+                                                        {
+                                                            "_value": "Шешуков Дмитрий Михайлович"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "td": [
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "lesson-format"
+                                                ]
+                                            },
+                                            "_value": "Очно - дистанционный"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "th": [
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "day"
+                                        ]
+                                    }
+                                }
+                            ],
+                            "td": [
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "time"
+                                        ]
+                                    },
+                                    "span": [
+                                        {
+                                            "_value": "10:00-11:30"
+                                        }
+                                    ],
+                                    "div": [
+                                        {
+                                            "_value": "3, 5, 7, 9, 11, 13, 15, 17"
+                                        }
+                                    ],
+                                    "dd": [
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "rasp_aud_mobile"
+                                                ]
+                                            },
+                                            "_value": "305 ауд."
+                                        }
+                                    ],
+                                    "dt": [
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "rasp_corp_mobile"
+                                                ]
+                                            },
+                                            "i": [
+                                                {
+                                                    "_attributes": {
+                                                        "class": [
+                                                            "fa",
+                                                            "fa-map-marker"
+                                                        ]
+                                                    }
+                                                }
+                                            ],
+                                            "span": [
+                                                {
+                                                    "_value": "Кронверкский пр., д.49, лит.А"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "room"
+                                        ]
+                                    },
+                                    "dl": [
+                                        {
+                                            "dd": [
+                                                {
+                                                    "_value": "305 ауд."
+                                                }
+                                            ],
+                                            "dt": [
+                                                {
+                                                    "i": [
+                                                        {
+                                                            "_attributes": {
+                                                                "class": [
+                                                                    "fa",
+                                                                    "fa-map-marker"
+                                                                ]
+                                                            }
+                                                        }
+                                                    ],
+                                                    "span": [
+                                                        {
+                                                            "_value": "Кронверкский пр., д.49, лит.А"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "lesson"
+                                        ]
+                                    },
+                                    "dl": [
+                                        {
+                                            "dd": [
+                                                {
+                                                    "_value": "Программирование(Лаб)"
+                                                }
+                                            ],
+                                            "_value": "нечетная неделя",
+                                            "dt": [
+                                                {
+                                                    "b": [
+                                                        {
+                                                            "_value": "Шешуков Дмитрий Михайлович"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "td": [
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "lesson-format"
+                                                ]
+                                            },
+                                            "_value": "Очно - дистанционный"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "th": [
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "day"
+                                        ]
+                                    }
+                                }
+                            ],
+                            "td": [
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "time"
+                                        ]
+                                    },
+                                    "span": [
+                                        {
+                                            "_value": "10:00-11:30"
+                                        }
+                                    ],
+                                    "dt": [
+                                        {
+                                            "_attributes": {
+                                                "style": "font-size:14px;"
+                                            },
+                                            "_value": "четная неделя"
+                                        },
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "rasp_corp_mobile"
+                                                ]
+                                            },
+                                            "i": [
+                                                {
+                                                    "_attributes": {
+                                                        "class": [
+                                                            "fa",
+                                                            "fa-map-marker"
+                                                        ]
+                                                    }
+                                                }
+                                            ],
+                                            "span": [
+                                                {
+                                                    "_value": "Кронверкский пр., д.49, лит.А"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "dd": [
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "rasp_aud_mobile"
+                                                ]
+                                            },
+                                            "_value": "305 ауд."
+                                        }
+                                    ]
+                                },
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "room"
+                                        ]
+                                    },
+                                    "dl": [
+                                        {
+                                            "dd": [
+                                                {
+                                                    "_value": "305 ауд."
+                                                }
+                                            ],
+                                            "dt": [
+                                                {
+                                                    "i": [
+                                                        {
+                                                            "_attributes": {
+                                                                "class": [
+                                                                    "fa",
+                                                                    "fa-map-marker"
+                                                                ]
+                                                            }
+                                                        }
+                                                    ],
+                                                    "span": [
+                                                        {
+                                                            "_value": "Кронверкский пр., д.49, лит.А"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "_attributes": {
+                                        "class": [
+                                            "lesson"
+                                        ]
+                                    },
+                                    "dl": [
+                                        {
+                                            "dd": [
+                                                {
+                                                    "_value": "Основы профессиональной деятельности(Лаб)"
+                                                }
+                                            ],
+                                            "_value": "четная неделя",
+                                            "dt": [
+                                                {
+                                                    "b": [
+                                                        {
+                                                            "_value": "Блохина Елена Николаевна"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "td": [
+                                        {
+                                            "_attributes": {
+                                                "class": [
+                                                    "lesson-format"
+                                                ]
+                                            },
+                                            "_value": "Очно - дистанционный"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {}
+                    ]
+                }
+            ]
+        }
+    ]
+}
