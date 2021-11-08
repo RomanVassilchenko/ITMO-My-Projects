@@ -1,0 +1,19 @@
+^\w{0,8}\s{1,}\w{1,}\s{1,}\w{1,}\s\w{1,}\s{1,}[0-9]*[.]?[0-9]+\s{1,}[0-9]*[.]?[0-9]+\s{1,}[1-9]\s{1,}[1-9][02468]
+^\w{0,8}\s.*[02468]$
+
+
+northwest       NW      Joel Craig      3.0     .98     3       4
+western         WE      Sharon Kelly    5.3     .97     5       23
+southwest       SW      Chris Foster    2.7     .8      2       18
+southern        SO      May Chin        5.1     .95     4       15
+southeast       SE      Derek Johnson   4.0     .7      4       17
+eastern         EA      Susan Beal      4.4     .84     5       20
+northeast       NE      TJ Nichols      5.1     .94     3       13
+north           NO      Val Shultz      4.5     .89     5       9
+central         CT      Sheri Watson    5.7     .94     5       13
+southern        SO      Patricia Chin   5.1     .95     4       15
+southeast       SE      Derek Margot    4.0     .7      4       17
+eastern         EA      Susan Beal      4.4     .84     5       14
+
+<[^>]+>
+<wtqwewrt!#%#Nn>
