@@ -1,1 +1,0 @@
-rossilman@Romans-MacBook-Pro untitled104 % jar xf Pokemon.jar && jar -cvmf ../../../MANIFEST.mf lab2.jar ru/roman/vassilchenko/*.class ru/roman/vassilchenko/*/*.class ru/ifmo/se/pokemon/*.class
