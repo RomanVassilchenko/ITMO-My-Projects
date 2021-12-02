@@ -37,15 +37,15 @@ public class Scooperfield extends Essence implements Touchable, Goable, Climbabl
 
     @Override
     public void touch(String byObject, String toObject) {
-        if(byObject.equals("")) byObject = stick.toString();
+        if(byObject.isEmpty()) byObject = stick.toString();
         System.out.println(getName() + " ощупывая " + toObject + " при помощи " + byObject);
     }
 
     @Override
     public void go(String toObject, boolean isGoing) throws WalkOnMissingSpaceException {
-        if(!toObject.equals("")){System.out.println(getName() + (isGoing ? " отправился " : " добрался до ") + toObject);}
+        if(!toObject.isEmpty()){System.out.println(getName() + (isGoing ? " отправился " : " добрался до ") + toObject);}
         else {
-            throw new WalkOnMissingSpaceException(getName() + " не может идти по пустоте! Проверьте, куда он идет");
+            throw new WalkOnMissingSpaceException(getName(), " не может идти по пустоте! Проверьте, куда он идет");
         }
     }
 

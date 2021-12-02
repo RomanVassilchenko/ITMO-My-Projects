@@ -1,18 +1,12 @@
 public class Main {
     public static void main(String[] args) {
         Scooperfield scooperfield = new Scooperfield();
-        Fog fog, fogBug;
+        Fog fog;
         try{
             fog = new Fog("туман");
         } catch (NameError e){
             System.out.println(e.getMessage());
             fog = new Fog("Туман");
-        }
-
-        try{
-            fogBug = new Fog("");
-        } catch (NameError e){
-            System.out.println(e.getMessage());
         }
 
         Grass grass = new Grass("Рыхлая земля");

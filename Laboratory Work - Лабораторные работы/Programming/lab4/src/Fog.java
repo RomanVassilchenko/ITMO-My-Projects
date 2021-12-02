@@ -2,8 +2,8 @@ import java.util.Objects;
 
 public class Fog extends Essence implements Dissipatable {
     public Fog(String name) throws NameError {
-        super((Objects.equals(name, "")) ? "Туман" : name);
-        if(name != null && !name.equals(""))
+        super((name.isEmpty()) ? "Туман" : name);
+        if(!name.isEmpty())
         {
         System.out.println("На улице туман");}
         else{
