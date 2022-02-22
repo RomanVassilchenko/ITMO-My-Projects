@@ -7,5 +7,5 @@ public interface ICommand {
     String getDescription();
     boolean isComplete();
     String getName();
-    void execute(String... arguments);
+    void execute(String argument);
 }

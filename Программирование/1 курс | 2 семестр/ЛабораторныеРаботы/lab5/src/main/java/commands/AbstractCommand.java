@@ -1,7 +1,7 @@
 package commands;
 
 /**
- * Abstract Command class contains Object methods, name and description.
+ * This class is an abstract class that implements the ICommand interface
  */
 public abstract class AbstractCommand implements ICommand{
 
@@ -13,16 +13,22 @@ public abstract class AbstractCommand implements ICommand{
         this.description = description;
     }
 
+
     /**
-     * @return Name and usage way of the command.
+     * It returns the name of the person.
+     * 
+     * @return The name of the person.
      */
     public String getName() {
         return name;
     }
 
-    /**
-     * @return Description of the command.
-     */
+
+/**
+ * It returns the description of the question.
+ * 
+ * @return The description of the question.
+ */
     public String getDescription() {
         return description;
     }

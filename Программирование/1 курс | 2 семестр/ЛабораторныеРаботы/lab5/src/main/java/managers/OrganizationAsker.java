@@ -11,6 +11,9 @@ import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Asks user the organization's information and returns it as an object
+ */
 public class OrganizationAsker {
     CollectionManager collectionManager;
     Scanner userScanner;
@@ -221,7 +224,7 @@ public class OrganizationAsker {
         while (true) {
             try {
                 Console.printLn("Categories: " + OrganizationType.nameList());
-                Console.print("Enter the organization type");
+                Console.print("Enter the organization type: ");
                 String s = userScanner.nextLine().trim();
                 organizationType = OrganizationType.valueOf(s.toUpperCase());
                 break;

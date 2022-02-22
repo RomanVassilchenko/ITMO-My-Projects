@@ -3,7 +3,6 @@ package commands;
 import collections.Organization;
 import managers.CollectionManager;
 import managers.Console;
-import managers.OrganizationAsker;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,20 +16,26 @@ public class PrintAscendingCommand extends AbstractCommand {
 
 
     public PrintAscendingCommand(CollectionManager collectionManager) {
-        super("PrintAscending", "Print elements of collection in ascending order");
+        super("print_ascending", "display the elements of the collection in ascending order");
         this.collectionManager = collectionManager;
     }
 
+    /**
+     * Returns true if the current state of the command is complete, false otherwise
+     * 
+     * @return The method is returning a boolean value.
+     */
     @Override
     public boolean isComplete() {
         return isComplete;
     }
 
     /**
-     * Executes the command.
+     * Prints out the list of organizations in the collection in alphabetical order
      */
     @Override
-    public void execute(String... arguments) {
+    public void execute(String argument) {
+        isComplete = false;
         ArrayList<Organization> copyOfCollection = new ArrayList<>(collectionManager.getCollection());
         Collections.sort(copyOfCollection);
         for(Organization organization : copyOfCollection){

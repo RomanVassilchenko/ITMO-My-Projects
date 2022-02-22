@@ -1,19 +1,23 @@
 package collections;
-
 import java.time.LocalDateTime;
 
 /**
- * Organization is storing in collection
+ * An organization is a business entity that has a name, coordinates, creation date, annual turnover,
+ * employees count, type and postal address
  */
 public class Organization implements Comparable<Organization> {
-    private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    private String name; //Поле не может быть null, Строка не может быть пустой
-    private Coordinates coordinates; //Поле не может быть null
-    private LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private float annualTurnover; //Значение поля должно быть больше 0
-    private Long employeesCount; //Поле м   ожет быть null, Значение поля должно быть больше 0
-    private OrganizationType type; //Поле может быть null
-    private Address postalAddress; //Поле может быть null
+    private int id;
+    private String name;
+    private Coordinates coordinates;
+    private LocalDateTime creationDate;
+    private float annualTurnover;
+    private Long employeesCount;
+    private OrganizationType type;
+    private Address postalAddress;
+
+    public Organization(){
+
+    }
 
     public Organization(int id, String name, Coordinates coordinates, LocalDateTime creationDate, float annualTurnover, Long employeesCount, OrganizationType type, Address postalAddress) {
         this.id = id;
@@ -26,132 +30,186 @@ public class Organization implements Comparable<Organization> {
         this.postalAddress = postalAddress;
     }
 
+    
     /**
-     * get Organization's id
-     * @return get id of current organization
+     * Get the id of the current object
+     * 
+     * @return The id of the question.
      */
     public int getId() {
         return id;
     }
 
     /**
-     * get Organization's name
-     * @return get name of current organization
+     * It sets the id of the object to the value passed in.
+     * 
+     * @param id The id of the user.
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * It returns the name of the person.
+     * 
+     * @return The name of the person.
      */
     public String getName() {
         return name;
     }
 
+    
     /**
-     * @param name set new name to current organization
+     * It sets the name of the object to the value of the parameter.
+     * 
+     * @param name The name of the parameter.
      */
     public void setName(String name) {
         this.name = name;
     }
 
+    
     /**
-     * get Organization's coordinates
-     * @return get coordinates of current organization
+     * Returns the coordinates of the point
+     * 
+     * @return The coordinates of the point.
      */
+
     public Coordinates getCoordinates() {
         return coordinates;
     }
 
+    
     /**
-     * @param coordinates set new coordinates to current organization
+     * It sets the coordinates of the object.
+     * 
+     * @param coordinates The coordinates of the location.
      */
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
     }
 
+    
     /**
-     * get Organization's creation time
-     * @return get creation date of current organization
+     * Get the creation date of the object
+     * 
+     * @return The creation date of the question.
      */
+
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
+    
     /**
-     * @param creationDate set new creation date to current organization
+     * It sets the creationDate to the value passed in.
+     * 
+     * @param creationDate The date and time when the user was created.
      */
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
+    
     /**
-     * get Organization's annual turnover
-     * @return get annual turnover of current organization
+     * The getAnnualTurnover function returns the annual turnover of the company
+     * 
+     * @return The annual turnover of the company.
      */
+
     public float getAnnualTurnover() {
         return annualTurnover;
     }
 
+    
     /**
-     * @param annualTurnover set new annual turnover to current organization
+     * It sets the annual turnover of the company.
+     * 
+     * @param annualTurnover The annual turnover of the company.
      */
     public void setAnnualTurnover(float annualTurnover) {
         this.annualTurnover = annualTurnover;
     }
 
+    
     /**
-     * get Organization's employees count
-     * @return get employees count of current organization
+     * Get the number of employees in the company
+     * 
+     * @return The number of employees in the company.
      */
+
     public Long getEmployeesCount() {
         return employeesCount;
     }
 
+    
     /**
-     * @param employeesCount set new employees count to the current organization
+     * It sets the employeesCount variable to the value passed in.
+     * 
+     * @param employeesCount The number of employees in the company.
      */
     public void setEmployeesCount(Long employeesCount) {
         this.employeesCount = employeesCount;
     }
 
+    
     /**
-     * get Organization's type
-     * @return get type of the current organization
+     * Returns the type of the organization
+     * 
+     * @return The type of the organization.
      */
+
     public OrganizationType getType() {
         return type;
     }
 
+    
     /**
-     * @param type set new type to the current organization
+     * It sets the type of the organization.
+     * 
+     * @param type The type of organization.
+     */
+    /**
+     * The getPostalAddress() function returns the postal address of the person
+     * 
+     * @return The postal address of the person.
      */
     public void setType(OrganizationType type) {
         this.type = type;
     }
 
-    /**
-     * get Organization's postal address
-     * @return get postal address of current organization
-     */
+
     public Address getPostalAddress() {
         return postalAddress;
     }
 
+    
     /**
-     * @param postalAddress get new postal address to the current organization
+     * It sets the postalAddress field of the class to the value of the parameter.
+     * 
+     * @param postalAddress The address of the person.
      */
     public void setPostalAddress(Address postalAddress) {
         this.postalAddress = postalAddress;
     }
 
+    
     /**
-     * compare current and another organization
-     * @param o the organization which we want to compare with the current one
-     * @return the division of IDs (current and the one we want to compare)
+     * This method is used to compare two objects
+     * 
+     * @param o The object to compare to.
+     * @return The id of the organization.
      */
     @Override
     public int compareTo(Organization o) {
         return this.getId() - o.getId();
     }
 
+    
     /**
-     * get beautiful output of organization's data
-     * @return return beautiful output of organization's data
+     * Prints the organization's information
+     * 
+     * @return The toString() method returns a string representation of the object.
      */
     @Override
     public String toString() {

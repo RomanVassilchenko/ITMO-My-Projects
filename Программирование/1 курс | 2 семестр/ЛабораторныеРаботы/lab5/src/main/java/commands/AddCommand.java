@@ -1,11 +1,10 @@
 package commands;
 
 import collections.Organization;
+import exceptions.WrongAmountOfElementsException;
 import managers.CollectionManager;
 import managers.Console;
 import managers.OrganizationAsker;
-
-import java.util.Scanner;
 
 /**
  * Command 'add'. Add an element to the collection.
@@ -17,22 +16,30 @@ public class AddCommand extends AbstractCommand{
     private final OrganizationAsker organizationAsker;
 
     public AddCommand(CollectionManager collectionManager, OrganizationAsker organizationAsker) {
-        super("Add", "Add element to collection");
+        super("add {element}", "add a new element to the collection");
         this.collectionManager = collectionManager;
         this.organizationAsker = organizationAsker;
     }
 
+    /**
+     * Returns true if the current state of the command is complete, false otherwise
+     * 
+     * @return The method is returning a boolean value.
+     */
     @Override
     public boolean isComplete() {
         return isComplete;
     }
 
+
     /**
-     * Executes the command.
+     * Add an organization to the collection
      */
     @Override
-    public void execute(String... arguments) {
+    public void execute(String argument) {
+        isComplete = false;
         try{
+            if(!argument.isEmpty()) throw new WrongAmountOfElementsException();
             collectionManager.addToCollection(new Organization(
                     organizationAsker.setId(),
                     organizationAsker.askName(),
@@ -45,8 +52,8 @@ public class AddCommand extends AbstractCommand{
             ));
             Console.printLn("Organization was created successfully");
             isComplete = true;
-        } catch (Exception e){
-            Console.printError(e.toString());
+        } catch (WrongAmountOfElementsException e){
+            Console.printError("Usage of (" + argument + ") in " + getName());
         }
     }
 }
