@@ -3,6 +3,7 @@ package managers;
 import collections.Organization;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Stack;
 
@@ -13,11 +14,22 @@ public class CollectionManager {
     @XStreamImplicit
     private Stack<Organization> organizationCollection;
 
+    private LocalDateTime creationDate;
+
     public CollectionManager() {
         organizationCollection = new Stack<>();
+        creationDate = LocalDateTime.now();
     }
 
-/**
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    /**
  * This function returns the collection of organizations
  * 
  * @return The Stack of Organization objects.
@@ -86,6 +98,20 @@ public class CollectionManager {
         return null;
     }
 
+    public void replaceById(int id,Organization newValue){
+        for(Organization organization: organizationCollection){
+            if(organization.getId() == id){
+                organization.setName(newValue.getName());
+                organization.setAnnualTurnover(newValue.getAnnualTurnover());
+                organization.setCoordinates(newValue.getCoordinates());
+                organization.setCreationDate(newValue.getCreationDate());
+                organization.setEmployeesCount(newValue.getEmployeesCount());
+                organization.setPostalAddress(newValue.getPostalAddress());
+                organization.setType(newValue.getType());
+            }
+        }
+    }
+
     /**
      * Given an organization, return the organization if it exists in the collection, otherwise return
      * null
@@ -129,6 +155,10 @@ public class CollectionManager {
         }
     }
 
+    public void removeAtInCollection(int id){
+        organizationCollection.remove(id);
+    }
+
     /**
      * Clear the collection of all the organizations
      */
@@ -155,4 +185,12 @@ public class CollectionManager {
         }
         return id;
     }
+
+    public String infoAboutCollection(){
+        return "Type - " + organizationCollection.getClass() + "\n" +
+                "Creation date - " + getCreationDate() + "\n" +
+                "Amount of elements - " + organizationCollection.size();
+    }
+
+
 }

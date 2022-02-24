@@ -163,16 +163,10 @@ public class Organization implements Comparable<Organization> {
         return type;
     }
 
-    
-    /**
-     * It sets the type of the organization.
-     * 
-     * @param type The type of organization.
-     */
+
     /**
      * The getPostalAddress() function returns the postal address of the person
-     * 
-     * @return The postal address of the person.
+     *
      */
     public void setType(OrganizationType type) {
         this.type = type;
@@ -213,8 +207,10 @@ public class Organization implements Comparable<Organization> {
      */
     @Override
     public String toString() {
-        String result = String.format("Id: %d\nName: %s\nCoordinates: {x: %d, y: %f}\nCreation Time: %s\nAnnual turnover: %f\nEmployees count: %d\nOrganization Type: %s\nAddress: {Street: %s, ZipCode: %s}\n",
-                getId(), getName(), getCoordinates().getX(), getCoordinates().getY(), getCreationDate(), getAnnualTurnover(), getEmployeesCount(), getType(), getPostalAddress().getStreet(), getPostalAddress().getZipCode());
+        String result = String.format("Id: %d\nName: %s\nCoordinates: {x: %d, y: %f}\nCreation Time: %s\nAnnual turnover: %f\nEmployees count: %d\nOrganization Type: %s\n",
+                getId(), getName(), getCoordinates().getX(), getCoordinates().getY(), getCreationDate(), getAnnualTurnover(), getEmployeesCount(), getType());
+        if(getPostalAddress() == null) result += "Address: null";
+        else result += String.format("Address: {Street: %s, ZipCode: %s}", getPostalAddress().getStreet(), getPostalAddress().getZipCode());
         return result;
     }
 }

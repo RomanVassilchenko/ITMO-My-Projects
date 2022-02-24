@@ -41,6 +41,7 @@ public class PrintAscendingCommand extends AbstractCommand {
         for(Organization organization : copyOfCollection){
             Console.printLn(organization.toString());
         }
+        isComplete = true;
     }
 }
 

@@ -1,5 +1,8 @@
 package commands;
 
+import exceptions.WrongAmountOfElementsException;
+import managers.Console;
+
 public class ExitCommand extends AbstractCommand {
     private boolean isComplete;
     public ExitCommand() {
@@ -14,5 +17,13 @@ public class ExitCommand extends AbstractCommand {
     @Override
     public void execute(String argument) {
         isComplete = false;
+        try {
+            if (!argument.isEmpty()) throw new WrongAmountOfElementsException();
+        } catch (WrongAmountOfElementsException exception) {
+            Console.printLn("Использование: '" + getName() + "'");
+        }
+        isComplete = true;
+        Console.printLn("Exit");
+        System.exit(0);
     }
 }

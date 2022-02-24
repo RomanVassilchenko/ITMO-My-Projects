@@ -4,30 +4,19 @@ import collections.Address;
 import collections.Coordinates;
 import collections.Organization;
 import collections.OrganizationType;
-import com.sun.org.apache.xpath.internal.operations.Or;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.XStreamException;
 import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.NullPermission;
 import com.thoughtworks.xstream.security.PrimitiveTypePermission;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.PropertyException;
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.*;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
  * Operates the file for saving/loading collection.
  */
 public class FileManager {
-//    private Gson gson = new Gson();
-    private String filename;
-    private XStream xstream;
+    private final String filename;
+    private final XStream xstream;
 
     public FileManager(String filename) {
         this.filename = filename;
@@ -103,7 +92,7 @@ public class FileManager {
                 System.exit(0);
             }
         } else Console.printError("Filename is wrong or corrupted!");
-        return new Stack<Organization>();
+        return new Stack<>();
     }
 
     @Override

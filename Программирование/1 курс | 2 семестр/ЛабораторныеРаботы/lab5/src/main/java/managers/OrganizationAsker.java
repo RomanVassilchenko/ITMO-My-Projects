@@ -5,6 +5,7 @@ import collections.Coordinates;
 import collections.OrganizationType;
 import exceptions.MustBeNotEmptyException;
 import exceptions.NotInDeclaredLimitsException;
+import run.App;
 
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
@@ -44,6 +45,7 @@ public class OrganizationAsker {
         String name;
         while (true) {
             Console.print("Enter name:");
+            Console.print(App.PS2);
             try {
                 name = userScanner.nextLine().trim();
                 if (name.equals("")) throw new MustBeNotEmptyException();
@@ -74,6 +76,7 @@ public class OrganizationAsker {
         while (true) {
             try {
                 Console.print("Enter Coordinate X:");
+                Console.print(App.PS2);
                 String s = userScanner.nextLine().trim();
                 x = Integer.parseInt(s);
                 break;
@@ -103,7 +106,9 @@ public class OrganizationAsker {
         while (true) {
             try {
                 Console.print("Enter Coordinate Y:");
+                Console.print(App.PS2);
                 String s = userScanner.nextLine().trim();
+                if (s.equals("")) throw new MustBeNotEmptyException();
                 y = Float.parseFloat(s);
                 break;
             } catch (NoSuchElementException e) {
@@ -113,6 +118,8 @@ public class OrganizationAsker {
             } catch (NullPointerException | IllegalStateException exception) {
                 Console.printError("Unexpected error!");
                 System.exit(0);
+            } catch (MustBeNotEmptyException e) {
+                Console.printError("The Y axis can't be empty");
             }
         }
         return y;
@@ -141,8 +148,7 @@ public class OrganizationAsker {
     public LocalDateTime askCreationDate() {
         while (true) {
             try {
-                LocalDateTime time = LocalDateTime.now();
-                return time;
+                return LocalDateTime.now();
             } catch (DateTimeException e) {
                 Console.printError("Problem with local data");
             }
@@ -163,8 +169,10 @@ public class OrganizationAsker {
         while (true) {
             try {
                 Console.print("Enter Annual Turnover:");
+                Console.print(App.PS2);
                 String s = userScanner.nextLine().trim();
                 turnOver = Float.parseFloat(s);
+                if(turnOver <= 0) throw  new NotInDeclaredLimitsException();
                 break;
             } catch (NoSuchElementException e) {
                 Console.printError("The annual turnover can't be loaded or recognized");
@@ -173,6 +181,8 @@ public class OrganizationAsker {
             } catch (NullPointerException | IllegalStateException exception) {
                 Console.printError("Unexpected error!");
                 System.exit(0);
+            } catch (NotInDeclaredLimitsException e) {
+                Console.printError("Annual turnover should be positive and more than 0");
             }
 
         }
@@ -193,6 +203,7 @@ public class OrganizationAsker {
         while (true) {
             try {
                 Console.print("Enter the amount of employees:");
+                Console.print(App.PS2);
                 String s = userScanner.nextLine().trim();
                 employeesCount = Long.parseLong(s);
                 if (employeesCount <= 0) throw new NotInDeclaredLimitsException();
@@ -225,7 +236,9 @@ public class OrganizationAsker {
             try {
                 Console.printLn("Categories: " + OrganizationType.nameList());
                 Console.print("Enter the organization type: ");
+                Console.print(App.PS2);
                 String s = userScanner.nextLine().trim();
+                if(s.equals("")) return null;
                 organizationType = OrganizationType.valueOf(s.toUpperCase());
                 break;
             } catch (NoSuchElementException exception) {
@@ -252,6 +265,7 @@ public class OrganizationAsker {
         while (true) {
             try {
                 Console.print("Enter street:");
+                Console.print(App.PS2);
                 street = userScanner.nextLine().trim();
                 break;
             } catch (NoSuchElementException exception) {
@@ -276,13 +290,17 @@ public class OrganizationAsker {
         while (true) {
             try {
                 Console.print("Enter zipCode:");
+                Console.print(App.PS2);
                 zipCode = userScanner.nextLine().trim();
+                if(zipCode.length() > 22) throw new NotInDeclaredLimitsException();
                 break;
             } catch (NoSuchElementException exception) {
                 Console.printError("zipcode can't be recognized");
             } catch (IllegalStateException exception) {
                 Console.printError("Unexpected error!");
                 System.exit(0);
+            } catch (NotInDeclaredLimitsException e) {
+                Console.printError("zipcode length can't be more than 22");
             }
 
         }
@@ -297,6 +315,7 @@ public class OrganizationAsker {
     public Address askAddress() {
         String street = askStreet();
         String zipCode = askZipCode();
+        if(street.equals("") && zipCode.equals("")) return null;
         return new Address(street, zipCode);
     }
 

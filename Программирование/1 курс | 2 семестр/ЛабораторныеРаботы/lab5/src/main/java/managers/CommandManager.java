@@ -13,25 +13,25 @@ import java.util.List;
 public class CommandManager {
     private final int COMMAND_HISTORY_SIZE = 8;
 
-    private String[] commandHistory = new String[COMMAND_HISTORY_SIZE];
-    private List<ICommand> commands = new ArrayList<>();
-    private ICommand addCommand;
-    private ICommand addIfMaxCommand;
-    private ICommand clearCommand;
-    private ICommand executeScriptCommand;
-    private ICommand exitCommand;
-    private ICommand historyCommand;
-    private ICommand infoCommand;
-    private ICommand printAscendingCommand;
-    private ICommand printDescendingCommand;
-    private ICommand printFieldDescendingTypeCommand;
-    private ICommand removeAtCommand;
-    private ICommand removeByIdCommand;
-    private ICommand saveCommand;
-    private ICommand showCommand;
-    private ICommand shuffleCommand;
-    private ICommand updateCommand;
-    private ICommand helpCommand;
+    private final String[] commandHistory = new String[COMMAND_HISTORY_SIZE];
+    private final List<ICommand> commands;
+    private final ICommand addCommand;
+    private final ICommand addIfMaxCommand;
+    private final ICommand clearCommand;
+    private final ICommand executeScriptCommand;
+    private final ICommand exitCommand;
+    private final ICommand historyCommand;
+    private final ICommand infoCommand;
+    private final ICommand printAscendingCommand;
+    private final ICommand printDescendingCommand;
+    private final ICommand printFieldDescendingTypeCommand;
+    private final ICommand removeAtCommand;
+    private final ICommand removeByIdCommand;
+    private final ICommand saveCommand;
+    private final ICommand showCommand;
+    private final ICommand shuffleCommand;
+    private final ICommand updateCommand;
+    private final ICommand helpCommand;
 
     public CommandManager(ICommand addCommand, ICommand addIfMaxCommand, ICommand clearCommand, ICommand executeScriptCommand, ICommand exitCommand, ICommand historyCommand, ICommand infoCommand, ICommand printAscendingCommand, ICommand printDescendingCommand, ICommand printFieldDescendingTypeCommand, ICommand removeAtCommand, ICommand removeByIdCommand, ICommand saveCommand, ICommand showCommand, ICommand shuffleCommand, ICommand updateCommand, ICommand helpCommand) {
         this.addCommand = addCommand;
@@ -51,6 +51,11 @@ public class CommandManager {
         this.shuffleCommand = shuffleCommand;
         this.updateCommand = updateCommand;
         this.helpCommand = helpCommand;
+
+        commands = new ArrayList<>(Arrays.asList(addCommand, addIfMaxCommand, clearCommand, executeScriptCommand,
+                exitCommand, historyCommand, infoCommand, printAscendingCommand, printDescendingCommand,
+                printFieldDescendingTypeCommand, removeAtCommand, removeByIdCommand, saveCommand, showCommand,
+                shuffleCommand, updateCommand, helpCommand));
     }
 
     /**
@@ -75,9 +80,7 @@ public class CommandManager {
 
         for (ICommand command : commands) {
             if (command.getName().split(" ")[0].equals(commandToStore)) {
-                for (int i = COMMAND_HISTORY_SIZE-1; i>0; i--) {
-                    commandHistory[i] = commandHistory[i-1];
-                }
+                System.arraycopy(commandHistory, 0, commandHistory, 1, COMMAND_HISTORY_SIZE - 1);
                 commandHistory[0] = commandToStore;
             }
         }
@@ -259,8 +262,8 @@ public class CommandManager {
                 if (commandHistory.length == 0) throw new HistoryIsEmptyException();
 
                 Console.printLn("Last used commands:");
-                for (int i=0; i<commandHistory.length; i++) {
-                    if (commandHistory[i] != null) Console.printLn(" " + commandHistory[i]);
+                for (String s : commandHistory) {
+                    if (s != null) Console.printLn(" " + s);
                 }
                 return true;
             } catch (HistoryIsEmptyException exception) {
@@ -269,6 +272,7 @@ public class CommandManager {
         }
         return false;
     }
+
 
     @Override
     public String toString() {

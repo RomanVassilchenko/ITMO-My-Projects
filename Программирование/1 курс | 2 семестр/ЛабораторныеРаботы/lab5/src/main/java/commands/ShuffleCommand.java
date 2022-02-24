@@ -24,6 +24,8 @@ public class ShuffleCommand extends AbstractCommand {
         try{
             if(!argument.isEmpty()) throw new WrongAmountOfElementsException();
             collectionManager.shuffleCollection();
+            Console.printLn("Collection was shuffled");
+            isComplete = true;
 
         } catch (WrongAmountOfElementsException e){
             Console.printError("Usage of (" + argument + ") in " + getName());

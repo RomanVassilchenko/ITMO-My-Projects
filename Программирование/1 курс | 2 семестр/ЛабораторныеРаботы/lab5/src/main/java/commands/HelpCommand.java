@@ -1,5 +1,8 @@
 package commands;
 
+import exceptions.WrongAmountOfElementsException;
+import managers.Console;
+
 public class HelpCommand extends AbstractCommand {
     private boolean isComplete;
 
@@ -15,5 +18,10 @@ public class HelpCommand extends AbstractCommand {
     @Override
     public void execute(String argument) {
         isComplete = false;
+        try {
+            if (!argument.isEmpty()) throw new WrongAmountOfElementsException();
+        } catch (WrongAmountOfElementsException exception) {
+            Console.printLn("Usage: '" + getName() + "'");
+        }
     }
 }

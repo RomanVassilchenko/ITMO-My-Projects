@@ -36,11 +36,12 @@ public class PrintDescendingCommand extends AbstractCommand {
     @Override
     public void execute(String argument) {
         isComplete = false;
-        ArrayList<Organization> copyOfCollection = new ArrayList<Organization>(collectionManager.getCollection());
-        Collections.sort(copyOfCollection, Collections.reverseOrder());
+        ArrayList<Organization> copyOfCollection = new ArrayList<>(collectionManager.getCollection());
+        copyOfCollection.sort(Collections.reverseOrder());
         for(Organization organization : copyOfCollection){
             Console.printLn(organization.toString() + "=====");
         }
+        isComplete = true;
     }
 }
 
