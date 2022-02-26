@@ -7,7 +7,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        String filename = "/Users/rossilman/Desktop/db.xml";
+        String filename = "db.xml";
         try (Scanner userScanner = new Scanner(System.in)) {
 
             CollectionManager collectionManager = new CollectionManager();
