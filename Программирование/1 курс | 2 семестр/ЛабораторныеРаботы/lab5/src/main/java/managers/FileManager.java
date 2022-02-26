@@ -11,12 +11,17 @@ import com.thoughtworks.xstream.security.PrimitiveTypePermission;
 import java.io.*;
 import java.util.*;
 
+
 /**
- * Operates the file for saving/loading collection.
+ * The FileManager class is a class that manages the files that are created by the program.
  */
 public class FileManager {
-    private final String filename;
+    private String filename;
     private final XStream xstream;
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
     public FileManager(String filename) {
         this.filename = filename;
@@ -38,15 +43,17 @@ public class FileManager {
         xstream.ignoreUnknownElements();
     }
 
+    
     /**
-     * Writes collection to a file.
-     * @param collection Collection to write.
+     * Write a collection of objects to a file
+     * 
+     * @param collection the collection to be written to the file
      */
-    public void writeCollection(Collection<?> collection) {
+    public void writeCollection(Stack<Organization> collection) {
         if (!filename.equals("")) {
-            try (FileWriter collectionFileWriter = new FileWriter(new File(filename))) {
+            try (FileWriter collectionFileWriter = new FileWriter(filename)) {
 
-                String xml = xstream.toXML(new ArrayList(collection));
+                String xml = xstream.toXML(new ArrayList<>(collection));
                 collectionFileWriter.write(xml);
 
                 Console.printLn("Collection was successfully added to the file!");
@@ -56,9 +63,11 @@ public class FileManager {
         } else Console.printError("Filename is wrong or corrupted!");
     }
 
+    
     /**
-     * Reads collection from a file.
-     * @return Read collection.
+     * Reads a collection from a file and returns it as a stack
+     * 
+     * @return A stack collection of Organization
      */
     public Stack<Organization> readCollection() {
         if (!filename.equals("")) {
@@ -95,6 +104,11 @@ public class FileManager {
         return new Stack<>();
     }
 
+    /**
+     * This function returns a string that describes the class
+     * 
+     * @return The string "FileManager (class for working with files)"
+     */
     @Override
     public String toString() {
         return "FileManager (class for working with files)";

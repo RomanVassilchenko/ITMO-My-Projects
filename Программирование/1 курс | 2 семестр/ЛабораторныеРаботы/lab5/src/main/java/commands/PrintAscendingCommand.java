@@ -1,18 +1,19 @@
 package commands;
 
 import collections.Organization;
+import exceptions.WrongAmountOfElementsException;
 import managers.CollectionManager;
 import managers.Console;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 /**
- * Command 'print_ascending'. Print elements of collection in ascending order.
+ * Prints the list of organizations in the collection in alphabetical order
  */
 public class PrintAscendingCommand extends AbstractCommand {
     private final CollectionManager collectionManager;
-    private boolean isComplete;
 
 
     public PrintAscendingCommand(CollectionManager collectionManager) {
@@ -20,28 +21,27 @@ public class PrintAscendingCommand extends AbstractCommand {
         this.collectionManager = collectionManager;
     }
 
+    
     /**
-     * Returns true if the current state of the command is complete, false otherwise
+     * Prints the list of organizations in the collection in alphabetical order
      * 
-     * @return The method is returning a boolean value.
+     * @param argument The argument passed to the command.
+     * @return the response of right execution.
      */
     @Override
-    public boolean isComplete() {
-        return isComplete;
-    }
-
-    /**
-     * Prints out the list of organizations in the collection in alphabetical order
-     */
-    @Override
-    public void execute(String argument) {
-        isComplete = false;
+    public boolean execute(String argument) {
+        try {
+            if (!argument.isEmpty()) throw new WrongAmountOfElementsException();
         ArrayList<Organization> copyOfCollection = new ArrayList<>(collectionManager.getCollection());
         Collections.sort(copyOfCollection);
         for(Organization organization : copyOfCollection){
             Console.printLn(organization.toString());
         }
-        isComplete = true;
+        return true;
+        } catch (WrongAmountOfElementsException e){
+            Console.printError("No arguments in " + getName());
+        }
+        return false;
     }
 }
 

@@ -1,18 +1,19 @@
 package commands;
 
 import collections.Organization;
+import exceptions.WrongAmountOfElementsException;
 import managers.CollectionManager;
 import managers.Console;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 /**
- * Prints the elements of the collection in descending order
+ * The PrintDescendingCommand class is a command that prints the list of organizations in reverse order
  */
 public class PrintDescendingCommand extends AbstractCommand {
     private final CollectionManager collectionManager;
-    private boolean isComplete;
 
 
     public PrintDescendingCommand(CollectionManager collectionManager) {
@@ -20,28 +21,28 @@ public class PrintDescendingCommand extends AbstractCommand {
         this.collectionManager = collectionManager;
     }
 
-    /**
-     * Returns true if the current state of the command is complete
-     * 
-     * @return The method is returning a boolean value.
-     */
-    @Override
-    public boolean isComplete() {
-        return isComplete;
-    }
 
+    
     /**
-     * It sorts the collection in descending order.
+     * Prints the list of organizations in reverse order
+     * 
+     * @param argument The argument passed to the command.
+     * @return the response of right execution.
      */
     @Override
-    public void execute(String argument) {
-        isComplete = false;
+    public boolean execute(String argument) {
+        try {
+            if (!argument.isEmpty()) throw new WrongAmountOfElementsException();
         ArrayList<Organization> copyOfCollection = new ArrayList<>(collectionManager.getCollection());
         copyOfCollection.sort(Collections.reverseOrder());
         for(Organization organization : copyOfCollection){
             Console.printLn(organization.toString() + "=====");
         }
-        isComplete = true;
+        return true;
+        } catch (WrongAmountOfElementsException e){
+            Console.printError("No arguments in " + getName());
+        }
+        return false;
     }
 }
 

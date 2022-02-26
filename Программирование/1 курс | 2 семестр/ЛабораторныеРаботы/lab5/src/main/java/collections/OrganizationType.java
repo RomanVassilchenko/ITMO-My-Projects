@@ -1,7 +1,7 @@
 package collections;
 
 /**
- * Enumeration of organization type
+ * Enumeration with organization types.
  */
 public enum OrganizationType {
     COMMERCIAL,
@@ -9,9 +9,11 @@ public enum OrganizationType {
     PRIVATE_LIMITED_COMPANY,
     OPEN_JOINT_STOCK_COMPANY;
 
+    
     /**
-     * Generates a beautiful list of enum string values.
-     * @return String with all enum values divided by comma.
+     * This function returns a comma separated list of the names of all the values in the enum
+     * 
+     * @return The types of the organization.
      */
     public static String nameList() {
         StringBuilder nameList = new StringBuilder();

@@ -1,9 +1,9 @@
 package collections;
 import java.time.LocalDateTime;
 
+
 /**
- * An organization is a business entity that has a name, coordinates, creation date, annual turnover,
- * employees count, type and postal address
+ * The Organization class represents an organization
  */
 public class Organization implements Comparable<Organization> {
     private int id;
@@ -31,163 +31,97 @@ public class Organization implements Comparable<Organization> {
     }
 
     
+    
     /**
-     * Get the id of the current object
+     * Returns the id of the object
      * 
-     * @return The id of the question.
+     * @return The id of the organization.
      */
     public int getId() {
         return id;
     }
 
+    
     /**
      * It sets the id of the object to the value passed in.
      * 
-     * @param id The id of the user.
+     * @param id The id of the organization.
      */
     public void setId(int id) {
         this.id = id;
     }
 
-    /**
-     * It returns the name of the person.
-     * 
-     * @return The name of the person.
-     */
+    
+/**
+ * Returns the name of the organization
+ * 
+ * @return The name of the organization.
+ */
     public String getName() {
         return name;
     }
 
-    
-    /**
-     * It sets the name of the object to the value of the parameter.
-     * 
-     * @param name The name of the parameter.
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    
     /**
      * Returns the coordinates of the point
      * 
      * @return The coordinates of the point.
      */
-
     public Coordinates getCoordinates() {
         return coordinates;
     }
 
-    
-    /**
-     * It sets the coordinates of the object.
-     * 
-     * @param coordinates The coordinates of the location.
-     */
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
 
-    
     /**
      * Get the creation date of the object
      * 
-     * @return The creation date of the question.
+     * @return The creation date of the organization.
      */
-
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    
-    /**
-     * It sets the creationDate to the value passed in.
-     * 
-     * @param creationDate The date and time when the user was created.
-     */
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
 
-    
-    /**
-     * The getAnnualTurnover function returns the annual turnover of the company
-     * 
-     * @return The annual turnover of the company.
-     */
-
+/**
+ * Returns the annual turnover of the organization
+ * 
+ * @return The annual turnover of the organization.
+ */
     public float getAnnualTurnover() {
         return annualTurnover;
     }
 
-    
-    /**
-     * It sets the annual turnover of the company.
-     * 
-     * @param annualTurnover The annual turnover of the company.
-     */
-    public void setAnnualTurnover(float annualTurnover) {
-        this.annualTurnover = annualTurnover;
-    }
 
-    
     /**
      * Get the number of employees in the company
      * 
-     * @return The number of employees in the company.
+     * @return The number of employees in the organization.
      */
-
     public Long getEmployeesCount() {
         return employeesCount;
     }
 
-    
-    /**
-     * It sets the employeesCount variable to the value passed in.
-     * 
-     * @param employeesCount The number of employees in the company.
-     */
-    public void setEmployeesCount(Long employeesCount) {
-        this.employeesCount = employeesCount;
-    }
 
-    
     /**
      * Returns the type of the organization
      * 
      * @return The type of the organization.
      */
-
     public OrganizationType getType() {
         return type;
     }
 
 
     /**
-     * The getPostalAddress() function returns the postal address of the person
-     *
+     * The getPostalAddress() function returns the postal address of the organization
+     * 
+     * @return The postal address of the organization.
      */
-    public void setType(OrganizationType type) {
-        this.type = type;
-    }
-
-
     public Address getPostalAddress() {
         return postalAddress;
     }
 
-    
-    /**
-     * It sets the postalAddress field of the class to the value of the parameter.
-     * 
-     * @param postalAddress The address of the person.
-     */
-    public void setPostalAddress(Address postalAddress) {
-        this.postalAddress = postalAddress;
-    }
 
-    
     /**
      * This method is used to compare two objects
      * 
@@ -200,10 +134,11 @@ public class Organization implements Comparable<Organization> {
     }
 
     
+    
     /**
      * Prints the organization's information
      * 
-     * @return The toString() method returns a string representation of the object.
+     * @return The toString() method returns a string representation of the Organization object.
      */
     @Override
     public String toString() {

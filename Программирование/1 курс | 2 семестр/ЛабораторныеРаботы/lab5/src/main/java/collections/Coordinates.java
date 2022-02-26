@@ -1,20 +1,13 @@
 package collections;
 
 
+
 /**
- * Coordinates is a class that represents a point in a two-dimensional space
+ * This class represents a point in a two dimensional space
  */
 public class Coordinates {
-    private int x;
-    private Float y;
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(Float y) {
-        this.y = y;
-    }
+    private final int x;
+    private final Float y;
 
     public Coordinates(int x, Float y) {
         this.x = x;
@@ -22,20 +15,22 @@ public class Coordinates {
     }
 
 
+    
     /**
      * Get the x coordinate of the point
      * 
-     * @return The x value of the object.
+     * @return The value of the instance variable x.
      */
     public int getX() {
         return x;
     }
 
 
+    
     /**
      * Returns the y-coordinate of the point
      * 
-     * @return The y-coordinate of the point.
+     * @return The y value of the point.
      */
     public Float getY() {
         return y;

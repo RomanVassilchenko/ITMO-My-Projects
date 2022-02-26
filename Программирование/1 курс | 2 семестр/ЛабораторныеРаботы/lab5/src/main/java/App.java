@@ -1,14 +1,9 @@
-package run;
-
 import commands.*;
 import managers.*;
 
 import java.util.Scanner;
 
 public class App {
-
-    public static final String PS1 = "$ ";
-    public static final String PS2 = "> ";
 
     public static void main(String[] args) {
 
@@ -20,15 +15,15 @@ public class App {
             FileManager fileManager = new FileManager(filename);
             CommandManager commandManager = new CommandManager(
                     new AddCommand(collectionManager, organizationAsker),
-                    new AddIfMaxCommand(), // TODO Not completed
+                    new AddIfMaxCommand(collectionManager, organizationAsker),
                     new ClearCommand(collectionManager),
-                    new ExecuteScriptCommand(), // TODO Not completed
+                    new ExecuteScriptCommand(),
                     new ExitCommand(),
-                    new HistoryCommand(), // TODO Not completed
+                    new HistoryCommand(),
                     new InfoCommand(collectionManager),
                     new PrintAscendingCommand(collectionManager),
                     new PrintDescendingCommand(collectionManager),
-                    new PrintFieldDescendingTypeCommand(), // TODO Not completed
+                    new PrintFieldDescendingTypeCommand(collectionManager),
                     new RemoveAtCommand(collectionManager),
                     new RemoveByIdCommand(collectionManager),
                     new SaveCommand(fileManager, collectionManager),
@@ -38,7 +33,25 @@ public class App {
                     new HelpCommand()
 
             );
-            Console console = new Console(collectionManager, commandManager, userScanner, organizationAsker, fileManager);
+
+            while(true){
+                Console.print("Write a filename or path. Write \"skip\" if you want to skip autoload. Default filename: db.xml\n" + Console.PS2);
+                String s = userScanner.nextLine();
+                if(s.equals("")) {
+                    Console.printLn("Using file " + filename);
+                    collectionManager.setCollection(fileManager.readCollection());
+                    break;
+                }
+                if(s.equals("skip")) break;
+
+                fileManager.setFilename(s);
+                if(fileManager.readCollection().size() != 0){
+                    filename = s;
+                    Console.printLn("Using file " + filename);
+                    collectionManager.setCollection(fileManager.readCollection());
+                }
+            }
+            Console console = new Console(commandManager, userScanner, organizationAsker);
             console.interactiveMode();
         }
     }

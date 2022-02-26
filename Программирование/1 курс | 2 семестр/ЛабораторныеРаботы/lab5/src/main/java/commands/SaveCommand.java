@@ -1,10 +1,14 @@
 package commands;
 
+import exceptions.WrongAmountOfElementsException;
 import managers.CollectionManager;
+import managers.Console;
 import managers.FileManager;
 
+/**
+ * Write the collection to the file
+ */
 public class SaveCommand extends AbstractCommand {
-    private boolean isComplete;
     private final FileManager fileManager;
     private final CollectionManager collectionManager;
 
@@ -14,15 +18,21 @@ public class SaveCommand extends AbstractCommand {
         this.collectionManager = collectionManager;
     }
 
+    /**
+     * Write the collection to the file
+     * 
+     * @param argument The argument passed to the command.
+     * @return the response of right execution.
+     */
     @Override
-    public boolean isComplete() {
-        return isComplete;
-    }
-
-    @Override
-    public void execute(String argument) {
-        isComplete = false;
-        fileManager.writeCollection(collectionManager.getCollection());
-        isComplete = true;
+    public boolean execute(String argument) {
+        try {
+            if (!argument.isEmpty()) throw new WrongAmountOfElementsException();
+            fileManager.writeCollection(collectionManager.getCollection());
+            return true;
+        } catch (WrongAmountOfElementsException e){
+            Console.printError("No arguments in " + getName());
+        }
+        return false;
     }
 }

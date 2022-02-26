@@ -3,32 +3,35 @@ package commands;
 import exceptions.WrongAmountOfElementsException;
 import managers.CollectionManager;
 import managers.Console;
+/**
+ * The ShuffleCommand class is a command that shuffles the elements of the collection randomly
+ */
 
 public class ShuffleCommand extends AbstractCommand {
     private final CollectionManager collectionManager;
-    private boolean isComplete;
 
     public ShuffleCommand(CollectionManager collectionManager) {
         super("shuffle", "shuffle the elements of the collection randomly");
         this.collectionManager = collectionManager;
     }
 
+    /**
+     * Shuffle the collection
+     * 
+     * @param argument The argument passed to the command.
+     * @return the response of right execution.
+     */
     @Override
-    public boolean isComplete() {
-        return isComplete;
-    }
-
-    @Override
-    public void execute(String argument) {
-        isComplete = false;
+    public boolean execute(String argument) {
         try{
             if(!argument.isEmpty()) throw new WrongAmountOfElementsException();
             collectionManager.shuffleCollection();
             Console.printLn("Collection was shuffled");
-            isComplete = true;
+            return true;
 
         } catch (WrongAmountOfElementsException e){
             Console.printError("Usage of (" + argument + ") in " + getName());
         }
+        return false;
     }
 }

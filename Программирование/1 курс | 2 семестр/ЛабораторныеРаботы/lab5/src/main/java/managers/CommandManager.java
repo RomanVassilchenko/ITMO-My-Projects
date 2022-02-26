@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 /**
- * Operates the commands.
+ * The CommandManager class is a singleton class that manages all the commands in the CLI
  */
 public class CommandManager {
     private final int COMMAND_HISTORY_SIZE = 8;
@@ -58,52 +59,45 @@ public class CommandManager {
                 shuffleCommand, updateCommand, helpCommand));
     }
 
+    
     /**
-     * @return The command history.
-     */
-    public String[] getCommandHistory() {
-        return commandHistory;
-    }
-
-    /**
-     * @return List of manager's commands.
-     */
-    public List<ICommand> getCommands() {
-        return commands;
-    }
-
-    /**
-     * Adds command to command history.
-     * @param commandToStore Command to add.
+     * Add the command to the command history
+     * 
+     * @param commandToStore The command that the user typed.
      */
     public void addToHistory(String commandToStore) {
 
         for (ICommand command : commands) {
             if (command.getName().split(" ")[0].equals(commandToStore)) {
-                System.arraycopy(commandHistory, 0, commandHistory, 1, COMMAND_HISTORY_SIZE - 1);
+                for (int i = COMMAND_HISTORY_SIZE-1; i>0; i--) {
+                    commandHistory[i] = commandHistory[i-1];
+                }
                 commandHistory[0] = commandToStore;
             }
         }
     }
 
+    
     /**
-     * Prints that command is not found.
-     * @param command Comand, which is not found.
-     * @return Command exit status.
+     * If the command is not found, print a message to the user
+     * 
+     * @param command The command that was not found.
+     * @return Nothing.
      */
     public boolean noSuchCommand(String command) {
         Console.printLn("Command '" + command + "' was not found. Try to write 'help' for more info.");
         return false;
     }
 
+    
     /**
-     * Prints info about the all commands.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * Prints a list of all commands and their descriptions
+     * 
+     * @param argument The argument passed to the help command.
+     * @return The boolean value of the help command.
      */
     public boolean help(String argument) {
-        helpCommand.execute(argument);
-        if (!helpCommand.isComplete()) {
+        if (!helpCommand.execute(argument)) {
             for (ICommand command : commands) {
                 Console.printLn(command.getName() + " - " + command.getDescription());
             }
@@ -111,153 +105,177 @@ public class CommandManager {
         } else return false;
     }
 
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * This function is called when the user types "info" in the command line
+     * 
+     * @param argument The argument to the command.
+     * @return the response of right execution.
      */
     public boolean info(String argument) {
-        infoCommand.execute(argument);
-        return infoCommand.isComplete();
+        return infoCommand.execute(argument);
     }
 
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * This function is called when the user types "show" in the command line
+     * 
+     * @param argument The argument to the command.
+     * @return the response of right execution.
      */
     public boolean show(String argument) {
-        showCommand.execute(argument);
-        return showCommand.isComplete();
+        return showCommand.execute(argument);
     }
 
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * This function is called when the user types "add" in the command line
+     * 
+     * @param argument The argument to be added to the list.
+     * @return the response of right execution.
      */
     public boolean add(String argument) {
-        addCommand.execute(argument);
-        return addCommand.isComplete();
+        return addCommand.execute(argument);
     }
 
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * The update method takes a String argument and returns a boolean value
+     * 
+     * @param argument The argument to the command.
+     * @return the response of right execution
      */
     public boolean update(String argument) {
-        updateCommand.execute(argument);
-        return updateCommand.isComplete();
+        return updateCommand.execute(argument);
     }
 
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * Remove an organization from the collection by its id
+     * 
+     * @param argument The argument to pass to the command.
+     * @return the response of right execution.
      */
     public boolean removeById(String argument) {
-        removeByIdCommand.execute(argument);
-        return removeAtCommand.isComplete();
+        return removeByIdCommand.execute(argument);
     }
 
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * Clear the current collection
+     * 
+     * @param argument The argument to the command.
+     * @return the response of right execution.
      */
     public boolean clear(String argument) {
-        clearCommand.execute(argument);
-        return clearCommand.isComplete();
+        return clearCommand.execute(argument);
     }
 
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * The save function takes a string argument and returns a boolean value
+     * 
+     * @param argument The argument to the command.
+     * @return the response of right execution.
      */
     public boolean save(String argument) {
-        saveCommand.execute(argument);
-        return saveCommand.isComplete();
+        return saveCommand.execute(argument);
     }
 
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * The exit function is a method that takes a String argument. 
+     * 
+     * @param argument The argument passed to the command.
+     * @return the response of right execution.
      */
     public boolean exit(String argument) {
-        exitCommand.execute(argument);
-        return exitCommand.isComplete();
+        return exitCommand.execute(argument);
     }
 
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * Execute a script
+     * 
+     * @param argument The argument to pass to the script.
+     * @return the response of right execution.
      */
     public boolean executeScript(String argument) {
-        executeScriptCommand.execute(argument);
-        return executeScriptCommand.isComplete();
+        return executeScriptCommand.execute(argument);
     }
 
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * If the element is greater than the current maximum, then add it to the list
+     * 
+     * @param argument The argument to be added to the list.
+     * @return the response of right execution.
      */
     public boolean addIfMax(String argument) {
-        addIfMaxCommand.execute(argument);
-        return addIfMaxCommand.isComplete();
+        return addIfMaxCommand.execute(argument);
     }
 
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * This function takes a string argument and returns a boolean value
+     * 
+     * @param argument The argument to the shuffle command.
+     * @return the response of right execution.
      */
     public boolean shuffle(String argument) {
-        shuffleCommand.execute(argument);
-        return shuffleCommand.isComplete();
+        return shuffleCommand.execute(argument);
     }
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * Prints the numbers in the ascending order
+     * 
+     * @param argument The argument to the command.
+     * @return the response of right execution.
      */
     public boolean printAscending(String argument) {
-        printAscendingCommand.execute(argument);
-        return printAscendingCommand.isComplete();
+        return printAscendingCommand.execute(argument);
     }
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * Prints the list of items in descending order
+     * 
+     * @param argument The argument to the command.
+     * @return the response of right execution.
      */
     public boolean printDescending(String argument) {
-        printDescendingCommand.execute(argument);
-        return printDescendingCommand.isComplete();
+        return printDescendingCommand.execute(argument);
     }
+    
     /**
-     * Executes needed command.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * Prints the field type in descending order
+     * 
+     * @param argument The argument to the command.
+     * @return the response of right execution.
      */
     public boolean printFieldDescendingType(String argument) {
-        printFieldDescendingTypeCommand.execute(argument);
-        return printFieldDescendingTypeCommand.isComplete();
+        return printFieldDescendingTypeCommand.execute(argument);
+    }
+
+    /**
+     * Remove the element at the specified index
+     * 
+     * @param argument The argument passed to the command.
+     * @return the response of right execution.
+     */
+    public boolean removeAt(String argument){
+        return removeAtCommand.execute(argument);
     }
 
 
-
+    
     /**
-     * Prints the history of used commands.
-     * @param argument Its argument.
-     * @return Command exit status.
+     * If the history command is executed, it prints the last used commands
+     * 
+     * @param argument The argument passed to the command.
+     * @return the response of right execution.
      */
     public boolean history(String argument) {
-        historyCommand.execute(argument);
-        if (historyCommand.isComplete()) {
+        if (!historyCommand.execute(argument)) {
             try {
                 if (commandHistory.length == 0) throw new HistoryIsEmptyException();
 
@@ -274,6 +292,11 @@ public class CommandManager {
     }
 
 
+    /**
+     * This function is used to print out the string representation of the command manager
+     * 
+     * @return The string "CommandManager (helper class for working with commands)"
+     */
     @Override
     public String toString() {
         return "CommandManager (helper class for working with commands)";

@@ -1,18 +1,19 @@
 package commands;
 
 import collections.Organization;
+import exceptions.IncorrectInputInScriptException;
 import exceptions.WrongAmountOfElementsException;
 import managers.CollectionManager;
 import managers.Console;
 import managers.OrganizationAsker;
 
+
 /**
- * Command 'add'. Add an element to the collection.
+ * The class is responsible for adding an organization to the collection
  */
 public class AddCommand extends AbstractCommand{
 
     private final CollectionManager collectionManager;
-    private boolean isComplete;
     private final OrganizationAsker organizationAsker;
 
     public AddCommand(CollectionManager collectionManager, OrganizationAsker organizationAsker) {
@@ -21,23 +22,16 @@ public class AddCommand extends AbstractCommand{
         this.organizationAsker = organizationAsker;
     }
 
+
+    
     /**
-     * Returns true if the current state of the command is complete, false otherwise
+     * The function adds an organization to the collection
      * 
-     * @return The method is returning a boolean value.
+     * @param argument The argument that the user entered.
+     * @return the response of right execution.
      */
     @Override
-    public boolean isComplete() {
-        return isComplete;
-    }
-
-
-    /**
-     * Add an organization to the collection
-     */
-    @Override
-    public void execute(String argument) {
-        isComplete = false;
+    public boolean execute(String argument) {
         try{
             if(!argument.isEmpty()) throw new WrongAmountOfElementsException();
             collectionManager.addToCollection(new Organization(
@@ -51,9 +45,11 @@ public class AddCommand extends AbstractCommand{
                     organizationAsker.askAddress()
             ));
             Console.printLn("Organization was created successfully");
-            isComplete = true;
+            return true;
         } catch (WrongAmountOfElementsException e){
             Console.printError("Usage of (" + argument + ") in " + getName());
+        } catch (IncorrectInputInScriptException ignored) {
         }
+        return false;
     }
 }

@@ -1,12 +1,13 @@
 package collections;
 
 
+
 /**
- * The Address class is a class that represents an address
+ * An address is a street and a zip code
  */
 public class Address {
-    private String street;
-    private String zipCode;
+    private final String street;
+    private final String zipCode;
 
     public Address(String street, String zipCode){
         this.street = street;
@@ -14,25 +15,15 @@ public class Address {
     }
 
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
     /**
      * It returns the street name of the address.
      * 
      * @return The street variable.
      */
-
     public String getStreet() {
         return street;
     }
 
-    
     /**
      * The getZipCode function returns the value of the zipCode variable
      * 
