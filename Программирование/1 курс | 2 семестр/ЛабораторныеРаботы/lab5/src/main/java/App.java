@@ -1,6 +1,9 @@
 import commands.*;
+import exceptions.IncorrectInputInScriptException;
+import exceptions.MustBeNotEmptyException;
 import managers.*;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class App {
@@ -35,6 +38,7 @@ public class App {
             );
 
             while(true){
+                try{
                 Console.print("Write a filename or path. Write \"skip\" if you want to skip autoload. Default filename: db.xml\n" + Console.PS2);
                 String s = userScanner.nextLine();
                 if(s.equals("")) {
@@ -49,6 +53,16 @@ public class App {
                     filename = s;
                     Console.printLn("Using file " + filename);
                     collectionManager.setCollection(fileManager.readCollection());
+                }
+                } catch (NoSuchElementException e) {
+                    Console.printError("The filename can't be loaded or recognized");
+                    if(!userScanner.hasNext()) {
+                        Console.printError("Ctrl-D Caused exit!");
+                        System.exit(0);
+                    }
+                } catch (IllegalStateException e) {
+                    Console.printError("Unexpected error!");
+                    System.exit(0);
                 }
             }
             Console console = new Console(commandManager, userScanner, organizationAsker);
