@@ -92,9 +92,8 @@ public class FileManager {
                 }
                 List<Organization> list = (List<Organization>) xstream.fromXML(xml.toString());
                 Validator validator = new Validator(list);
-                list = validator.validate();
                 Stack<Organization> organizationStack = new Stack<>();
-                organizationStack.addAll(list);
+                organizationStack.addAll(validator.validate());
                 Console.printLn("Collection was read successfully!");
                 return organizationStack;
             } catch (StreamException exception){

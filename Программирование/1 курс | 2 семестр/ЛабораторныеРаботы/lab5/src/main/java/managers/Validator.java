@@ -16,18 +16,18 @@ public class Validator {
     public List<Organization> validate(){
         for(Iterator<Organization> iterator = organization.iterator(); iterator.hasNext(); ){
             Organization org = iterator.next();
-            if(org.getId() <= 0) {iterator.remove(); continue;}
-            if(org.getName() == null || org.getName().equals("")) {iterator.remove(); continue;}
-            if(org.getCoordinates() == null) {iterator.remove(); continue;}
-            if(org.getCreationDate() == null) {iterator.remove(); continue;}
-            if(org.getAnnualTurnover() <= 0) {iterator.remove(); continue;}
-            if(org.getEmployeesCount() <= 0) {iterator.remove(); continue;}
+            if(org.getId() <= 0) iterator.remove();
+            if(org.getName() == null || org.getName().equals("")) iterator.remove();
+            if(org.getCoordinates() == null) iterator.remove();
+            if(org.getCreationDate() == null) iterator.remove();
+            if(org.getAnnualTurnover() <= 0) iterator.remove();
+            if(org.getEmployeesCount() <= 0) iterator.remove();
 
             if(org.getPostalAddress() != null){
-                if(org.getCoordinates().getY() == null) {iterator.remove(); continue;}
+                if(org.getCoordinates().getY() == null) iterator.remove();
             }
             if(org.getPostalAddress() != null){
-                if(org.getPostalAddress().getZipCode().length() > 22) {iterator.remove(); continue;}
+                if(org.getPostalAddress().getZipCode().length() > 22) iterator.remove();
             }
 
         }

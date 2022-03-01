@@ -1,13 +1,13 @@
 <list>
   <organization>
     <id>1</id>
-    <name>R</name>
+    <name>T</name>
     <coordinates>
       <x>2</x>
       <y>2.0</y>
     </coordinates>
     <creationDate>2022-03-01T12:58:03.014</creationDate>
-    <annualTurnover>-2.0</annualTurnover>
-    <employeesCount>-2</employeesCount>
+    <annualTurnover>2.0</annualTurnover>
+    <employeesCount>2</employeesCount>
   </organization>
 </list>
