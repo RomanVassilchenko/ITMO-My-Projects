@@ -92,6 +92,10 @@ public class OrganizationAsker {
             } catch (NoSuchElementException e) {
                 Console.printError("The name can't be loaded or recognized");
                 if (scriptMode) throw new IncorrectInputInScriptException();
+                if(!userScanner.hasNext()) {
+                    Console.printError("Ctrl-D Caused exit!");
+                    System.exit(0);
+                }
             } catch (IllegalStateException e) {
                 Console.printError("Unexpected error!");
                 System.exit(0);
@@ -120,6 +124,10 @@ public class OrganizationAsker {
             } catch (NoSuchElementException e) {
                 Console.printError("The X axis can't be loaded or recognized");
                 if (scriptMode) throw new IncorrectInputInScriptException();
+                if(!userScanner.hasNext()) {
+                    Console.printError("Ctrl-D Caused exit!");
+                    System.exit(0);
+                }
             } catch (NumberFormatException e) {
                 Console.printError("The X axis have to be an Integer value");
                 if (scriptMode) throw new IncorrectInputInScriptException();
@@ -152,6 +160,10 @@ public class OrganizationAsker {
             } catch (NoSuchElementException e) {
                 Console.printError("The Y axis can't be loaded or recognized");
                 if (scriptMode) throw new IncorrectInputInScriptException();
+                if(!userScanner.hasNext()) {
+                    Console.printError("Ctrl-D Caused exit!");
+                    System.exit(0);
+                }
             } catch (NumberFormatException e) {
                 Console.printError("The Y axis have to be an Float value");
                 if (scriptMode) throw new IncorrectInputInScriptException();
@@ -219,6 +231,10 @@ public class OrganizationAsker {
             } catch (NoSuchElementException e) {
                 Console.printError("The annual turnover can't be loaded or recognized");
                 if (scriptMode) throw new IncorrectInputInScriptException();
+                if(!userScanner.hasNext()) {
+                    Console.printError("Ctrl-D Caused exit!");
+                    System.exit(0);
+                }
             } catch (NumberFormatException e) {
                 Console.printError("The annual turnover have to be an Float value");
                 if (scriptMode) throw new IncorrectInputInScriptException();
@@ -255,6 +271,10 @@ public class OrganizationAsker {
             } catch (NoSuchElementException exception) {
                 Console.printError("The amount of employees can't be recognized");
                 if (scriptMode) throw new IncorrectInputInScriptException();
+                if(!userScanner.hasNext()) {
+                    Console.printError("Ctrl-D Caused exit!");
+                    System.exit(0);
+                }
             } catch (NotInDeclaredLimitsException exception) {
                 Console.printError("The amount of employees should be positive and more than 0");
                 if (scriptMode) throw new IncorrectInputInScriptException();
@@ -290,6 +310,10 @@ public class OrganizationAsker {
             } catch (NoSuchElementException exception) {
                 Console.printError("Type can't be recognized");
                 if (scriptMode) throw new IncorrectInputInScriptException();
+                if(!userScanner.hasNext()) {
+                    Console.printError("Ctrl-D Caused exit!");
+                    System.exit(0);
+                }
             } catch (IllegalArgumentException exception) {
                 Console.printError("There is no similar type in category");
                 if (scriptMode) throw new IncorrectInputInScriptException();
@@ -320,6 +344,10 @@ public class OrganizationAsker {
             } catch (NoSuchElementException exception) {
                 Console.printError("Street can't be recognized");
                 if (scriptMode) throw new IncorrectInputInScriptException();
+                if(!userScanner.hasNext()) {
+                    Console.printError("Ctrl-D Caused exit!");
+                    System.exit(0);
+                }
             } catch (IllegalStateException exception) {
                 Console.printError("Unexpected error!");
                 System.exit(0);
@@ -348,6 +376,10 @@ public class OrganizationAsker {
             } catch (NoSuchElementException exception) {
                 Console.printError("zipcode can't be recognized");
                 if (scriptMode) throw new IncorrectInputInScriptException();
+                if(!userScanner.hasNext()) {
+                    Console.printError("Ctrl-D Caused exit!");
+                    System.exit(0);
+                }
             } catch (IllegalStateException exception) {
                 Console.printError("Unexpected error!");
                 System.exit(0);
