@@ -5,6 +5,7 @@ import collections.Coordinates;
 import collections.Organization;
 import collections.OrganizationType;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.StreamException;
 import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.NullPermission;
 import com.thoughtworks.xstream.security.PrimitiveTypePermission;
@@ -94,7 +95,10 @@ public class FileManager {
                 organizationStack.addAll(list);
                 Console.printLn("Collection was read successfully!");
                 return organizationStack;
-            } catch (FileNotFoundException exception) {
+            } catch (StreamException exception){
+                Console.printError("EOF or Stream Exception!");
+            }
+            catch (FileNotFoundException exception) {
                 Console.printError("File was not found!");
             } catch (NoSuchElementException exception) {
                 Console.printError("File is empty!");

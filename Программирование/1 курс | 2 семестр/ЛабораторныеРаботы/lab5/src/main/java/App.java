@@ -37,32 +37,18 @@ public class App {
 
             );
 
-            while(true){
-                try{
-                Console.print("Write a filename or path. Write \"skip\" if you want to skip autoload. Default filename: db.xml\n" + Console.PS2);
-                String s = userScanner.nextLine();
-                if(s.equals("")) {
-                    Console.printLn("Using file " + filename);
-                    collectionManager.setCollection(fileManager.readCollection());
-                    break;
-                }
-                if(s.equals("skip")) break;
-
-                fileManager.setFilename(s);
+            if(args.length == 0){
+                Console.printLn("Using default filename: " + filename);
+                collectionManager.setCollection(fileManager.readCollection());
+            } else if(args.length > 1){
+                Console.printError("More arguments than expected! (" + args.length  +", 1 expected)");
+                commandManager.exit("");
+            } else {
+                fileManager.setFilename(args[0]);
                 if(fileManager.readCollection().size() != 0){
-                    filename = s;
+                    filename = args[0];
                     Console.printLn("Using file " + filename);
                     collectionManager.setCollection(fileManager.readCollection());
-                }
-                } catch (NoSuchElementException e) {
-                    Console.printError("The filename can't be loaded or recognized");
-                    if(!userScanner.hasNext()) {
-                        Console.printError("Ctrl-D Caused exit!");
-                        System.exit(0);
-                    }
-                } catch (IllegalStateException e) {
-                    Console.printError("Unexpected error!");
-                    System.exit(0);
                 }
             }
             Console console = new Console(commandManager, userScanner, organizationAsker);
