@@ -1,0 +1,39 @@
+plugins {
+}
+
+subprojects {
+  apply plugin: 'java'
+  repositories {
+    mavenCentral()
+  }
+}
+
+project(':server') {
+  apply plugin: 'application'
+  mainClassName = 'server.App'
+  dependencies {
+    implementation project(':common')
+    implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.15'
+  }
+  jar {
+    manifest {
+        attributes 'Main-Class': 'server.App'
+    }
+  }
+}
+
+project(':client') {
+  apply plugin: 'application'
+  mainClassName = 'client.App'
+  dependencies {
+    implementation project(':common')
+  }
+  run {
+    standardInput = System.in
+  }
+  jar {
+    manifest {
+        attributes 'Main-Class': 'client.App'
+    }
+  }
+}
