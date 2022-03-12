@@ -23,7 +23,7 @@ public class Validator {
             if(org.getAnnualTurnover() <= 0) iterator.remove();
             if(org.getEmployeesCount() <= 0) iterator.remove();
 
-            if(org.getPostalAddress() != null){
+            if(org.getCoordinates() != null){
                 if(org.getCoordinates().getY() == null) iterator.remove();
             }
             if(org.getPostalAddress() != null){
