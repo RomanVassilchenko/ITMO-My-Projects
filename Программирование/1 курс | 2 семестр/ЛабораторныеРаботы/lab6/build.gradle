@@ -1,8 +1,10 @@
 plugins {
+  id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
 subprojects {
   apply plugin: 'java'
+  apply plugin: 'com.github.johnrengelman.shadow'
   repositories {
     mavenCentral()
   }

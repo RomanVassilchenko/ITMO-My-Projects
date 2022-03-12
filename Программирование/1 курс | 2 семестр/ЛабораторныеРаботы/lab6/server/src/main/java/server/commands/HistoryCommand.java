@@ -23,6 +23,6 @@ public class HistoryCommand extends AbstractCommand{
         } catch (WrongAmountOfElementsException exception) {
             ResponseOutputer.appendLn("Usage: '" + getName() + " " + getUsage() + "'");
         }
-        return false;
+        return true;
     }
 }

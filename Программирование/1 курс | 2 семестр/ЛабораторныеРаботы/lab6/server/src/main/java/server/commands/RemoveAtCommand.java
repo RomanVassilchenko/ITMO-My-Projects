@@ -12,7 +12,7 @@ public class RemoveAtCommand extends AbstractCommand {
     private final CollectionManager collectionManager;
 
     public RemoveAtCommand(CollectionManager collectionManager) {
-        super("remove_at" ,"<index>", "remove the element at the given position in the collection (index)");
+        super("remove_at" ,"<Position>", "remove the element at the given position in the collection (index)");
         this.collectionManager = collectionManager;
     }
 

@@ -375,4 +375,36 @@ public class OrganizationAsker {
         return new Address(street, zipCode);
     }
 
+    /**
+     * Asks a user a question.
+     *
+     * @param question A question.
+     * @return Answer (true/false).
+     * @throws IncorrectInputInScriptException If script is running and something goes wrong.
+     */
+    public boolean askQuestion(String question) throws IncorrectInputInScriptException{
+        String finalQuestion = question + " (+/-):";
+        String answer;
+        while (true) {
+            try{
+                Outputer.printLn(finalQuestion);
+                Outputer.print(App.PS2);
+                answer = userScanner.nextLine().trim();
+                if(scriptMode) Outputer.printLn(answer);
+                if (!answer.equals("+") && !answer.equals("-")) throw new NotInDeclaredLimitsException();
+                break;
+            } catch (NoSuchElementException exception) {
+                Outputer.printError("The response was not recognized!");
+                if (scriptMode) throw new IncorrectInputInScriptException();
+            } catch (NotInDeclaredLimitsException exception) {
+                Outputer.printError("The answer must be represented by the signs '+' or '-'!");
+                if (scriptMode) throw new IncorrectInputInScriptException();
+            } catch (IllegalStateException exception) {
+                Outputer.printError("Unexpected error!");
+                System.exit(0);
+            }
+        }
+        return answer.equals("+");
+    }
+
 }

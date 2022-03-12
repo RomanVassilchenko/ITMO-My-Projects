@@ -1,6 +1,5 @@
 package server.utility;
 
-
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.StreamException;
 import com.thoughtworks.xstream.security.NoTypePermission;

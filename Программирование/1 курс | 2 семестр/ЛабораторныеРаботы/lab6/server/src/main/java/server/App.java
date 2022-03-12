@@ -13,7 +13,8 @@ public class App {
 
     public static final int PORT = 1821;
     public static final int CONNECTION_TIMEOUT = 60 * 1000;
-    public static Logger logger = LogManager.getLogManager().getLogger("ServerLogger");
+    public static final Logger logger = Logger.getLogger(
+            Server.class.getName());
 
 
     public static void main(String[] args) {
