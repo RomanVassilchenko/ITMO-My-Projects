@@ -5,8 +5,6 @@ import server.utility.CollectionFileManager;
 import server.utility.CollectionManager;
 import server.utility.CommandManager;
 import server.utility.RequestHandler;
-
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public class App {

@@ -2,7 +2,6 @@ package server.utility;
 
 
 import common.exceptions.HistoryIsEmptyException;
-import common.utility.Outputer;
 import server.commands.ICommand;
 
 import java.util.ArrayList;
@@ -187,6 +186,7 @@ public class CommandManager {
      * @return Command exit status.
      */
     public boolean exit(String stringArgument, Object objectArgument) {
+        save(stringArgument, objectArgument);
         return exitCommand.execute(stringArgument, objectArgument);
     }
 
@@ -299,6 +299,7 @@ public class CommandManager {
      * @return Command exit status.
      */
     public boolean serverExit(String stringArgument, Object objectArgument) {
+        save(stringArgument, objectArgument);
         return serverExitCommand.execute(stringArgument, objectArgument);
     }
 }

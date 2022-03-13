@@ -8,6 +8,7 @@ import common.exceptions.IncorrectInputInScriptException;
 import common.exceptions.MustBeNotEmptyException;
 import common.exceptions.NotInDeclaredLimitsException;
 import common.utility.Outputer;
+
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -59,7 +60,6 @@ public class OrganizationAsker {
      * Ask the user for a name and return it
      * 
      * @return The name of the user.
-     * @throws IncorrectInputInScriptException
      */
     public String askName() throws IncorrectInputInScriptException {
         String name;
@@ -94,7 +94,6 @@ public class OrganizationAsker {
      * Ask for the X coordinate of the point
      * 
      * @return The X axis value.
-     * @throws IncorrectInputInScriptException
      */
     private int askX() throws IncorrectInputInScriptException {
         int x;
@@ -129,7 +128,6 @@ public class OrganizationAsker {
      * The function askY() asks the user to enter the Y coordinate of the point
      * 
      * @return The Y axis value.
-     * @throws IncorrectInputInScriptException
      */
     private Float askY() throws IncorrectInputInScriptException {
         float y;
@@ -168,7 +166,6 @@ public class OrganizationAsker {
      * AskCoordinates()
      * 
      * @return A Coordinates object.
-     * @throws IncorrectInputInScriptException
      */
     public Coordinates askCoordinates() throws IncorrectInputInScriptException {
         int x;
@@ -183,7 +180,6 @@ public class OrganizationAsker {
      * Ask the user to enter the annual turnover of the company
      * 
      * @return The annual turnover is being returned.
-     * @throws IncorrectInputInScriptException
      */
     public float askAnnualTurnover() throws IncorrectInputInScriptException {
         float turnOver;
@@ -223,7 +219,6 @@ public class OrganizationAsker {
      * Ask the user to enter the amount of employees
      * 
      * @return The amount of employees.
-     * @throws IncorrectInputInScriptException
      */
     public Long askEmployeesCount() throws IncorrectInputInScriptException {
         long employeesCount;
@@ -261,7 +256,6 @@ public class OrganizationAsker {
      * The function asks the user to enter the type of the organization
      * 
      * @return OrganizationType
-     * @throws IncorrectInputInScriptException
      */
     public OrganizationType askOrganizationType() throws IncorrectInputInScriptException {
         OrganizationType organizationType;
@@ -298,7 +292,6 @@ public class OrganizationAsker {
      * Ask for a street name and return it
      * 
      * @return The method returns a string.
-     * @throws IncorrectInputInScriptException
      */
     private String askStreet() throws IncorrectInputInScriptException {
         String street;
@@ -329,7 +322,6 @@ public class OrganizationAsker {
      * Ask user for zip code and validate it
      * 
      * @return The method askZipCode() returns a String.
-     * @throws IncorrectInputInScriptException
      */
     private String askZipCode() throws IncorrectInputInScriptException {
         String zipCode;
@@ -366,7 +358,6 @@ public class OrganizationAsker {
      * something
      * 
      * @return Address.
-     * @throws IncorrectInputInScriptException
      */
     public Address askAddress() throws IncorrectInputInScriptException {
         String street = askStreet();

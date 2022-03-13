@@ -1,7 +1,7 @@
 package common.exceptions;
 
 /**
- * Is throwed when command can't be used.
+ * Is thrown when command can't be used.
  */
 public class CommandUsageException extends Exception {
     public CommandUsageException() {

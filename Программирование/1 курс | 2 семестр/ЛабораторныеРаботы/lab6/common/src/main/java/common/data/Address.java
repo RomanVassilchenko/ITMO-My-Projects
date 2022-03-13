@@ -1,11 +1,12 @@
 package common.data;
 
 
+import java.io.Serializable;
 
 /**
  * An address is a street and a zip code
  */
-public class Address {
+public class Address implements Serializable {
     private final String street;
     private final String zipCode;
 

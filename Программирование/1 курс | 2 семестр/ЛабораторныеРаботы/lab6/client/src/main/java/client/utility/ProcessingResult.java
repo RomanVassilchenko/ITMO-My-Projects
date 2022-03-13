@@ -1,7 +1,7 @@
 package client.utility;
 
 /**
- * Enum of all processing codes.
+ * Enum of all processing results.
  */
 public enum ProcessingResult {
     OK,

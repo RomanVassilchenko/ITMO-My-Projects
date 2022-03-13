@@ -8,7 +8,7 @@ import common.interaction.ResponseResult;
  * Handles requests.
  */
 public class RequestHandler {
-    private CommandManager commandManager;
+    private final CommandManager commandManager;
 
     public RequestHandler(CommandManager commandManager) {
         this.commandManager = commandManager;

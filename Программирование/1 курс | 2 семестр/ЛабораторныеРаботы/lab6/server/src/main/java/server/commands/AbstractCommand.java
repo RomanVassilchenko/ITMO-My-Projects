@@ -4,9 +4,9 @@ package server.commands;
  * Abstract Command class contains Object methods, name and description.
  */
 public abstract class AbstractCommand implements ICommand {
-    private String name;
-    private String usage;
-    private String description;
+    private final String name;
+    private final String usage;
+    private final String description;
 
     public AbstractCommand(String name, String usage, String description) {
         this.name = name;

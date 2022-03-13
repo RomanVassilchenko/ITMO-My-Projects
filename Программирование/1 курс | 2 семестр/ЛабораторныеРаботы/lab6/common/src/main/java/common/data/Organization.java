@@ -1,11 +1,12 @@
 package common.data;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
 /**
  * The Organization class represents an organization
  */
-public class Organization implements Comparable<Organization> {
+public class Organization implements Comparable<Organization>, Serializable {
     private int id;
     private String name;
     private Coordinates coordinates;

@@ -6,8 +6,8 @@ import java.io.Serializable;
  * Class for get response value.
  */
 public class Response implements Serializable {
-    private ResponseResult responseResult;
-    private String responseBody;
+    private final ResponseResult responseResult;
+    private final String responseBody;
 
     public Response(ResponseResult responseResult, String responseBody) {
         this.responseResult = responseResult;

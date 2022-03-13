@@ -18,10 +18,10 @@ import java.net.SocketTimeoutException;
  * Runs the server.
  */
 public class Server {
-    private int port;
-    private int soTimeout;
+    private final int port;
+    private final int soTimeout;
     private ServerSocket serverSocket;
-    private RequestHandler requestHandler;
+    private final RequestHandler requestHandler;
 
     public Server(int port, int soTimeout, RequestHandler requestHandler) {
         this.port = port;

@@ -3,9 +3,9 @@ package common.interaction;
 import java.io.Serializable;
 
 public class Request implements Serializable {
-    private String commandName;
-    private String commandStringArgument;
-    private Serializable commandObjectArgument;
+    private final String commandName;
+    private final String commandStringArgument;
+    private final Serializable commandObjectArgument;
 
     public Request(String commandName, String commandStringArgument, Serializable commandObjectArgument) {
         this.commandName = commandName;

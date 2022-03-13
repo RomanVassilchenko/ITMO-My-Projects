@@ -4,7 +4,7 @@ package server.utility;
  * A class for generating responses to a client.
  */
 public class ResponseOutputer {
-    private static StringBuilder stringBuilder = new StringBuilder();
+    private static final StringBuilder stringBuilder = new StringBuilder();
 
     /**
      * Append object to out to the end of string.
@@ -53,7 +53,7 @@ public class ResponseOutputer {
     /**
      * Takes a constructed string.
      *
-     * @return Сonstructed string.
+     * @return Constructed string.
      */
     public static String getString() {
         return stringBuilder.toString();
@@ -62,7 +62,7 @@ public class ResponseOutputer {
     /**
      * Takes a constructed string and clears the buffer.
      *
-     * @return Сonstructed string.
+     * @return Constructed string.
      */
     public static String getAndClear() {
         String toReturn = stringBuilder.toString();
@@ -71,7 +71,7 @@ public class ResponseOutputer {
     }
 
     /**
-     * Сlears the buffer.
+     * clear the buffer.
      */
     public static void clear() {
         stringBuilder.delete(0, stringBuilder.length());

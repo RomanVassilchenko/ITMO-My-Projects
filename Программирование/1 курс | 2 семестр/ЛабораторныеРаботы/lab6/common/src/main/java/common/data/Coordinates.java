@@ -1,11 +1,12 @@
 package common.data;
 
 
+import java.io.Serializable;
 
 /**
- * This class represents a point in a two dimensional space
+ * This class represents a point in a two-dimensional space
  */
-public class Coordinates {
+public class Coordinates implements Serializable {
     private final int x;
     private final Float y;
 

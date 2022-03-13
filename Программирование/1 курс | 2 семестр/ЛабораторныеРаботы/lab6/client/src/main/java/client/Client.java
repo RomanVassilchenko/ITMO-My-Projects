@@ -15,12 +15,12 @@ import java.nio.channels.SocketChannel;
  * Runs the client.
  */
 public class Client {
-    private String host;
-    private int port;
-    private int reconnectionTimeout;
+    private final String host;
+    private final int port;
+    private final int reconnectionTimeout;
     private int reconnectionAttempts;
-    private int maxReconnectionAttempts;
-    private UserHandler userHandler;
+    private final int maxReconnectionAttempts;
+    private final UserHandler userHandler;
     private SocketChannel socketChannel;
     private ObjectOutputStream serverWriter;
     private ObjectInputStream serverReader;
@@ -107,6 +107,8 @@ public class Client {
                 Outputer.print(serverResponse.getResponseBody());
             } catch (InvalidClassException | NotSerializableException exception) {
                 Outputer.printError("An error occurred while sending data to the server!");
+                Outputer.printError(exception);
+                Outputer.printError(serverReader);
             } catch (ClassNotFoundException exception) {
                 Outputer.printError("An error occurred while reading the received data!");
             } catch (IOException exception) {

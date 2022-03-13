@@ -18,7 +18,7 @@ public class ClearCommand extends AbstractCommand{
     
     /**
      * Clear the collection
-     * @return the response of right execution..
+     * @return the response of right execution.
      */
     @Override
     public boolean execute(String stringArgument, Object objectArgument) {

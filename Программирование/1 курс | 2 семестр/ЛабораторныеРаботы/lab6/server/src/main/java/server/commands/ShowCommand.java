@@ -4,7 +4,6 @@ import common.exceptions.WrongAmountOfElementsException;
 import server.utility.CollectionManager;
 import server.utility.ResponseOutputer;
 
-import java.util.ArrayList;
 /**
  * The `ShowCommand` class is a command that prints all the elements of the collection in string
  * representation

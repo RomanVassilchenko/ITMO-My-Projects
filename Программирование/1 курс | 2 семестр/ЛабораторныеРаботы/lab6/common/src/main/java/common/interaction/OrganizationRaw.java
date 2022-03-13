@@ -5,19 +5,18 @@ import common.data.Coordinates;
 import common.data.OrganizationType;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
  * Class for get Organization value.
  */
 public class OrganizationRaw implements Serializable {
-    private String name;
-    private Coordinates coordinates;
-    private float annualTurnover;
-    private Long employeesCount;
-    private OrganizationType type;
-    private Address postalAddress;
+    private final String name;
+    private final Coordinates coordinates;
+    private final float annualTurnover;
+    private final Long employeesCount;
+    private final OrganizationType type;
+    private final Address postalAddress;
 
     public OrganizationRaw(String name, Coordinates coordinates, float annualTurnover, Long employeesCount, OrganizationType type, Address postalAddress) {
         this.name = name;

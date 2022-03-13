@@ -20,6 +20,15 @@ public class App {
     private static String host;
     private static int port;
 
+    /**
+     * It takes a String array of two elements,
+     * and if the array has exactly two elements, it parses the second element as an integer,
+     * and if the integer is in the range [0, 65535], it sets the host and port variables to the
+     * corresponding values
+     *
+     * @param hostAndPortArgs the array of arguments passed to the main method.
+     * @return Nothing.
+     */
     private static boolean initializeConnectionAddress(String[] hostAndPortArgs) {
         try {
             if (hostAndPortArgs.length != 2) throw new WrongAmountOfElementsException();

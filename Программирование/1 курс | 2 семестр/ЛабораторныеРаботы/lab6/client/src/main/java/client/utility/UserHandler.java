@@ -19,11 +19,10 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class UserHandler {
-    private final int maxRewriteAttempts = 1;
 
     private Scanner userScanner;
-    private Stack<File> scriptStack = new Stack<>();
-    private Stack<Scanner> scannerStack = new Stack<>();
+    private final Stack<File> scriptStack = new Stack<>();
+    private final Stack<Scanner> scannerStack = new Stack<>();
 
     public UserHandler(Scanner userScanner) {
         this.userScanner = userScanner;
@@ -68,6 +67,7 @@ public class UserHandler {
                     Outputer.printError("An error occurred while entering the command!");
                     userCommand = new String[]{"", ""};
                     rewriteAttempts++;
+                    int maxRewriteAttempts = 3;
                     if (rewriteAttempts >= maxRewriteAttempts) {
                         Outputer.printError("Exceeded the number of input attempts!");
                         System.exit(0);

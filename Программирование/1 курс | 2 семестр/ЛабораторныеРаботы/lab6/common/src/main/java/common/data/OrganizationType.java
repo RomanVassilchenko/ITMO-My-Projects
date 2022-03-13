@@ -1,9 +1,11 @@
 package common.data;
 
+import java.io.Serializable;
+
 /**
  * Enumeration with organization types.
  */
-public enum OrganizationType {
+public enum OrganizationType implements Serializable {
     COMMERCIAL,
     GOVERNMENT,
     PRIVATE_LIMITED_COMPANY,

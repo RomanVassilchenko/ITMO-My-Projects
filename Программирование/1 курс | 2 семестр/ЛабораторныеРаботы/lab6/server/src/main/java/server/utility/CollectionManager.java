@@ -1,6 +1,5 @@
 package server.utility;
 
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import common.data.Organization;
 import common.data.OrganizationType;
 
@@ -19,7 +18,7 @@ public class CollectionManager {
     private Stack<Organization> organizationCollection;
     private LocalDateTime lastInitTime;
     private LocalDateTime lastSaveTime;
-    private CollectionFileManager collectionFileManager;
+    private final CollectionFileManager collectionFileManager;
 
     public CollectionManager(CollectionFileManager collectionFileManager) {
         this.lastInitTime = null;
@@ -94,7 +93,7 @@ public class CollectionManager {
 
     /**
      * @param id ID of the organization.
-     * @return A organization by his ID or null if marine isn't found.
+     * @return An organization by his ID or null if marine isn't found.
      */
     public Organization getById(int id) {
         return organizationCollection.stream().filter(marine -> marine.getId()==id).findFirst().orElse(null);
