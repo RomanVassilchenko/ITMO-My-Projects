@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, CommandAlreadyExistsException, ClassNotFoundException {
 
-        CommandManager manager = CommandManager.getInstance(System.getenv("LOGIN"), System.getenv("PASSWORD"));
+        CommandManager manager = CommandManager.getInstance(System.getenv("SQL_LOGIN"), System.getenv("SQL_PASSWORD"));
         manager = initCommands(manager);
 
         CommandManager.updateCollection();

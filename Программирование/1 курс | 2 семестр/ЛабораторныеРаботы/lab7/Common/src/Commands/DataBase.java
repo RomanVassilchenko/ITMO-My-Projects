@@ -14,7 +14,7 @@ public class DataBase {
     public DataBase(String login, String password) throws ClassNotFoundException {
         Class.forName("org.postgresql.Driver");
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/lab7", login, password); //TODO CHANGE TO HELIOS
+            connection = DriverManager.getConnection("jdbc:postgresql://pg:5432/studs", login, password);
             statement = connection.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();

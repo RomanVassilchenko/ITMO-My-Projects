@@ -3,7 +3,7 @@ package Commands;
 import Data.Organizations;
 import Data.User;
 
-import java.io.Serializable; //TODO ADD (ADD IF MAX) COMMAND
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 

@@ -19,15 +19,12 @@ public class SenderTask implements Runnable {
     private Answer answer;
     private InetAddress address;
     private int port;
-    private FileHandler fileHandler;
 
     public SenderTask(DatagramSocket socket, Answer answer, InetAddress address, int port) {
         this.socket = socket;
         this.answer = answer;
         this.address = address;
         this.port = port;
-//        this.fileHandler=fileHandler;
-//        logger.addHandler(fileHandler);
     }
 
     @Override

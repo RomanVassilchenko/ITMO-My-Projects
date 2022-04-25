@@ -32,11 +32,10 @@ public class Interpreter extends Thread {
     private DatagramSocket socket;
     private DatagramPacket da;
 
-    public Interpreter(Sender sender,DatagramSocket socket) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, CommandAlreadyExistsException, SameIdException, RightException, IOException, SameIdException, ClassNotFoundException {
-//        this.fileTxt=fileTxt;
-//        logger.addHandler(fileTxt);
+    public Interpreter(Sender sender,DatagramSocket socket, String sqlLogin, String sqlPassword) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, CommandAlreadyExistsException, RightException, IOException, SameIdException, ClassNotFoundException {
 
-        CommandManager manager = CommandManager.getInstance(System.getenv("LOGIN"), System.getenv("PASSWORD"));
+        //CommandManager manager = CommandManager.getInstance(System.getenv("SQL_LOGIN"), System.getenv("SQL_PASSWORD"));
+        CommandManager manager = CommandManager.getInstance(sqlLogin, sqlPassword);
         manager = initCommands(manager);
 
         CommandManager.updateCollection();

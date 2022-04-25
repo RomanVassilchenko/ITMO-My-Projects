@@ -14,18 +14,22 @@ public class Server {
     public static int SERVER_PORT = 12501;
     public static final Logger logger = Logger.getLogger(Server.class.getName());
     String source;
-    private FileHandler fileTxt;
+    private final FileHandler fileTxt;
     static private SimpleFormatter formatterTxt;
 
     private static ThreadPoolExecutor executor;
-    //FIXME НЕ ЗАБЫТЬ ПРЕКРУТИТЬ ЛОГИ ОБРАТНО
+
+    private static String sqlLogin, sqlPassword;
     public static void main(String[] args) throws SameIdException, InvocationTargetException, IllegalAccessException, InstantiationException, RightException, NoSuchMethodException, CommandAlreadyExistsException, IOException, ClassNotFoundException {
         String envVariable="";
-        if (args.length==0){
+        if (args.length<3){
             throw new ArrayIndexOutOfBoundsException();
         }
         if (args!=null || args.length!=0){
             envVariable=args[0];
+            sqlLogin = args[1];
+            sqlPassword=args[2];
+
         }
         Server server = new Server(envVariable);
         server.launch();
@@ -46,7 +50,7 @@ public class Server {
 
             Scanner scanner = new Scanner(System.in);
             Sender sender = new Sender(socket,10);
-            Interpreter interpreter = new Interpreter(sender,socket);
+            Interpreter interpreter = new Interpreter(sender,socket, sqlLogin, sqlPassword);
             interpreter.start();
             Receiver receiver = new Receiver(socket, interpreter);
 
@@ -72,9 +76,6 @@ public class Server {
     }
 
     private void shutDownHook() {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            logger.info("The server is stopped");
-
-        }));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> logger.info("The server is stopped")));
     }
 }

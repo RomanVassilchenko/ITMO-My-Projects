@@ -22,9 +22,6 @@ public class ReceiverTask implements Runnable {
     public ReceiverTask(DatagramSocket socket, Interpreter interpreter) {
         this.socket = socket;
         this.interpreter = interpreter;
-
-//        this.fileTxt=filetext;
-//        logger.addHandler(fileTxt);
     }
 
     @Override
