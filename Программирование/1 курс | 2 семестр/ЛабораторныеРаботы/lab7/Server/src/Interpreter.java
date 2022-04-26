@@ -90,7 +90,6 @@ public class Interpreter extends Thread {
             }
             catch (NoSuchElementException e){
                 logger.severe("Well, why-you decided to Ctrl-D us :(");
-                System.exit(0);
             }
             catch (NotFoundCommandException | IllegalArgumentException e) {
                 logger.log(Level.SEVERE, "Error message", e);
