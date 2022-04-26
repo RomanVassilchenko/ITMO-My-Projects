@@ -20,7 +20,7 @@ public class RegisterCommand extends Command implements Fillable {
             db.insert(regUser);
             return "User " + regUser.getLogin() + " successfully registered";
         } catch (SQLException | NotDatabaseUpdateException e) {
-            return e.getMessage();
+            return "Error in database! Please try again later!";
         }
     }
 

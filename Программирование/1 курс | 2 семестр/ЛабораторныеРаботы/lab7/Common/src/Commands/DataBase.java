@@ -6,6 +6,9 @@ import Exceptions.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Stack;
+import java.util.logging.Level;
+
+import static Answers.ErrorAnswer.logger;
 
 public class DataBase {
     private Connection connection;
@@ -17,7 +20,7 @@ public class DataBase {
             connection = DriverManager.getConnection("jdbc:postgresql://pg:5432/studs", login, password);
             statement = connection.createStatement();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.severe( "Error with database. Try again later!");
         }
 
     }

@@ -10,6 +10,8 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.logging.*;
 
+import static Answers.ErrorAnswer.logger;
+
 public class Server {
     public static int SERVER_PORT = 12501;
     public static final Logger logger = Logger.getLogger(Server.class.getName());
@@ -69,7 +71,7 @@ public class Server {
         try {
             return new DatagramSocket(SERVER_PORT);
         } catch (SocketException e) {
-            e.printStackTrace();
+            logger.severe( "Error with socket. Try again later!");
 
         }
         return null;

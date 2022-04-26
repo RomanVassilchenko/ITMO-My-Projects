@@ -30,7 +30,7 @@ public class PrintDescendingCommand extends Command{
             }
             return "You are not logged in";
         } catch (Exception e){
-            return e.getMessage();
+            return "Error in printing! Please contact administrator!";
         }
     }
 }

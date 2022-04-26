@@ -22,7 +22,7 @@ public class ShuffleCommand extends Command {
             }
             return "You are not logged in";
         } catch (IllegalArgumentException e) {
-            return e.getMessage();
+            return "Error in arguments!";
         }
 
     }

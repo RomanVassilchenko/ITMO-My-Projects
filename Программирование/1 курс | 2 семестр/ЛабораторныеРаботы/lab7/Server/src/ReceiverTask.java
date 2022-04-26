@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
+import static Answers.ErrorAnswer.logger;
+
 
 public class ReceiverTask implements Runnable {
     public static final Logger logger = Logger.getLogger(Receiver.class.getName());
@@ -42,7 +44,7 @@ public class ReceiverTask implements Runnable {
                 byteArrayInputStream.close();
                 objectInputStream.close();
             } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+                logger.severe( "Couldn't receive a request!");
             }
         }
     }

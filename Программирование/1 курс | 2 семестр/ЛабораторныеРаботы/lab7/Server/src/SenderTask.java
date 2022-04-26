@@ -50,7 +50,6 @@ public class SenderTask implements Runnable {
             }
         } catch (IOException e) {
             logger.severe("Couldn't send a response");
-            e.printStackTrace();
         }
     }
 

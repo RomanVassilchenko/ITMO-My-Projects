@@ -9,13 +9,11 @@ public class Receiver extends Thread {
     private DatagramSocket socket;
     private Interpreter interpreter;
 
-    private FileHandler fileHandler;
 
     public Receiver(DatagramSocket socket, Interpreter interpreter) {
         executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
         this.socket = socket;
         this.interpreter = interpreter;
-        //this.fileHandler=filetext;
     }
 
     @Override

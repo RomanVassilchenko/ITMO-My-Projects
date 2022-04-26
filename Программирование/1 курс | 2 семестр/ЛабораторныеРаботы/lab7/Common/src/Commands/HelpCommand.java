@@ -15,7 +15,7 @@ public class HelpCommand extends Command {
             validate(args);
             return CommandManager.getCommandsInfo();
         } catch (IllegalArgumentException e) {
-            return e.getMessage();
+            return "Error in arguments!";
         }
     }
 }

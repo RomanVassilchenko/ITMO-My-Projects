@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Stream;
 
+import static Answers.ErrorAnswer.logger;
+
 public final class CommandManager {
     private static CommandManager instance;
     private static Organizations organizations;
@@ -79,7 +81,7 @@ public final class CommandManager {
             Stack<Organization> updated = database.selectAllNotes();
             organizations.update(updated);
         } catch (SQLException  | NotDatabaseUpdateException e) {
-            e.printStackTrace();
+            logger.severe( "Error with database. Try again later!");
         }
     }
 

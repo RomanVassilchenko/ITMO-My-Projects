@@ -21,9 +21,10 @@ public class AuthCommand extends Command implements Fillable {
             db.selectUserID(authUser.getLogin(), authUser.getPassword());
             CommandManager.auth(authUser);
             return "You have successfully logged in as " + authUser.getLogin();
-        } catch (SQLException | UserNotFoundException
-                e) {
-            return e.getMessage();
+        } catch (SQLException e) {
+            return "Error in database! Please try again later!";
+        } catch (UserNotFoundException e){
+            return "Error with user's data! Please auth again!";
         }
     }
 

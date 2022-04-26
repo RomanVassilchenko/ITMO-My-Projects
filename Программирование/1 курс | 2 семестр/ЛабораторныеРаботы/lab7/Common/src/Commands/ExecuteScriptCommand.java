@@ -20,7 +20,6 @@ public class ExecuteScriptCommand extends Command {
             validate(args);
 
             if (user != null) {
-                // TODO: Это тоже не до конца доделано
                 File file = new File((String) args[0]);
                 if (!file.exists()) return "The script does not exist";
                 else if (file.exists() && !file.canRead()) return "The script cannot be read, check the file rights (read rights)";
@@ -33,15 +32,10 @@ public class ExecuteScriptCommand extends Command {
                             List<String> collection = Arrays.asList(line.split(" "));
                             if (collection.get(0).equals("execute_script")) {
                                 if (!organizations.isEmpty()) {
-//							Command cmd = Command.getCommand(Command.parseName(collection.get(0)));
-//							cmd.execute(collection.get(1));
                                 } else {
                                     return "The collection is empty, the recursion has been interrupted";
                                 }
                             } else {
-//						Command cmd = Command.getCommand(Command.parseName(line));
-//						String[] arg = Command.parseArgs(line);
-//						cmd.execute(arg);
                             }
                         }
                         scanner.close();
@@ -53,35 +47,8 @@ public class ExecuteScriptCommand extends Command {
             }
             return "You are not logged in";
         } catch (IllegalArgumentException e) {
-            return e.getMessage();
+            return "Error in arguments!";
         }
-
-//		if (args.length != 1) {
-//			System.err.println("В команде " + getName() + " должен быть 1 параметр");
-//
-//		} else {
-//				File file = new File(args[0]);
-//				if (!file.exists()) System.err.println("Скрипта не существует");
-//				else if (file.exists() && !file.canRead()) System.err.println("Скрипт невозможно прочитать, проверьте права файла(права на чтение)");
-//				else if (file.exists() && !file.canExecute()) System.err.println("Скрипт невозможно выполнить, проверьте права файла (права на выполнение)");
-//				else {
-//				Scanner scanner = new Scanner(file);
-//				while (scanner.hasNextLine()) {
-//					String line = scanner.nextLine().trim();
-//					List<String> collection = Arrays.asList(line.split(" "));
-//					if (collection.get(0).equals("execute_script")) {
-//						if (!persons.isEmpty()) {
-//							Command cmd = Command.getCommand(Command.parseName(collection.get(0)));
-//							cmd.execute(collection.get(1));
-//						} else System.err.println("Коллекция пустая, рекурсия прервалась");
-//					} else {
-//						Command cmd = Command.getCommand(Command.parseName(line));
-//						String[] arg = Command.parseArgs(line);
-//						cmd.execute(arg);
-//					}
-//				}
-//				scanner.close();
-//				}
 
     }
 

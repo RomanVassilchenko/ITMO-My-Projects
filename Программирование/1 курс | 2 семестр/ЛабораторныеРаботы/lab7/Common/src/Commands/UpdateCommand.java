@@ -41,7 +41,7 @@ public class UpdateCommand extends Command implements Fillable {
             }
             return "You are not logged in";
         } catch (IllegalArgumentException e) {
-            return e.getMessage();
+            return "Error in arguments!";
         }
     }
 

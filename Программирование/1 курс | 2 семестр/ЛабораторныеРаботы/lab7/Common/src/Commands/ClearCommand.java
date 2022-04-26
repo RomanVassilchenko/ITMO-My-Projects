@@ -22,8 +22,12 @@ public class ClearCommand extends Command {
                 return "The collection has been cleared";
             }
             return "You are not logged in";
-        } catch (IllegalArgumentException | SQLException | UserNotFoundException e) {
-            return e.getMessage();
+        } catch (IllegalArgumentException e){
+            return "Error in arguments!";
+        } catch (SQLException e){
+            return "Error in database! Please try again later!";
+        } catch (UserNotFoundException e){
+            return "Error with user's data! Please auth again!";
         }
 
     }

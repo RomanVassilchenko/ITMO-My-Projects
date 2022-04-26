@@ -12,10 +12,9 @@ public class SaveCommand extends Command {
     public String execute(User user, DataBase db, Organizations organizations, Object... args) {
         try {
             validate(args);
-            //organizations.save();
             return "The collection is saved";
         } catch (IllegalArgumentException e) {
-            return e.getMessage();
+            return "Error in arguments!";
         }
     }
 }

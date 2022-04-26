@@ -31,7 +31,7 @@ public class RemoveByIdCommand extends Command {
             }
             return "You are not logged in";
         } catch (IllegalArgumentException e) {
-            return e.getMessage();
+            return "Error in arguments!";
         }
 
     }

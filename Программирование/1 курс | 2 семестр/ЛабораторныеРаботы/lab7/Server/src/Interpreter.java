@@ -21,6 +21,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static Answers.ErrorAnswer.logger;
 import static Reader.CommandInitializer.initCommands;
 
 
@@ -69,7 +70,6 @@ public class Interpreter extends Thread {
 
         } catch (NullPointerException e){
             sender.send(new ErrorAnswer("The server could not execute the command"), socket.getInetAddress(), socket.getPort());
-            e.printStackTrace();
         }
     }
 
@@ -93,7 +93,7 @@ public class Interpreter extends Thread {
                 System.exit(0);
             }
             catch (NotFoundCommandException | IllegalArgumentException e) {
-                logger.log(Level.SEVERE, "Error message", e);
+                logger.log(Level.SEVERE, "Command not found or wrong amount of arguments");
             }
         }
     }

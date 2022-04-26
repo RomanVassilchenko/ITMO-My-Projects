@@ -45,7 +45,7 @@ public class InsertAtIndexCommand extends Command {
             }
 
         } catch (IllegalArgumentException e) {
-            return e.getMessage();
+            return "Error in arguments!";
         }
     }
 

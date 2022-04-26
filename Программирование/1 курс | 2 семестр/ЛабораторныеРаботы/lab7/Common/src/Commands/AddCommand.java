@@ -26,8 +26,12 @@ public class AddCommand extends Command implements Fillable{
                 return "\nItem added to collection";
             }
             return "You are not logged in";
-        } catch (IllegalArgumentException | SQLException | UserNotFoundException | NotDatabaseUpdateException e) {
-            return e.getMessage();
+        } catch (IllegalArgumentException e){
+            return "Error in arguments!";
+        } catch (SQLException | NotDatabaseUpdateException e){
+            return "Error in database! Please try again later!";
+        } catch (UserNotFoundException e){
+            return "Error with user's data! Please auth again!";
         }
     }
 
