@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -85,8 +86,12 @@ public class Interpreter extends Thread {
 
                 CommandManager.validate(command, args);
                 logger.info(CommandManager.execute(new User("server", "server"), command, args));
-                logger.info("The team is successful failed");
-            } catch (NotFoundCommandException | IllegalArgumentException e) {
+                logger.info("The team is failed");
+            }
+            catch (NoSuchElementException e){
+                logger.log(Level.INFO,"Well, why-you decided to Ctrl-D us :(");
+            }
+            catch (NotFoundCommandException | IllegalArgumentException e) {
                 logger.log(Level.SEVERE, "Error message", e);
             }
         }
