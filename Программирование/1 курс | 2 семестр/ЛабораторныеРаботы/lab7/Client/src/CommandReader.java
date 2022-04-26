@@ -9,6 +9,7 @@ import Reader.CommandInitializer;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 
@@ -31,7 +32,11 @@ public class CommandReader {
                 if(line.equals("")) continue;
                 readCommand(line, scanner);
                 System.out.println();
-            } catch (NotFoundCommandException | IllegalArgumentException e) {
+            }catch (NoSuchElementException e){
+                PrintConsole.printerror("Well, why-you decided to Ctrl-D us :(");
+                System.exit(0);
+            }
+            catch (NotFoundCommandException | IllegalArgumentException e) {
                 PrintConsole.printerror("There is no such command");
             } catch (ArrayIndexOutOfBoundsException e) {
                 PrintConsole.printerror("You didn't specify an argument");
