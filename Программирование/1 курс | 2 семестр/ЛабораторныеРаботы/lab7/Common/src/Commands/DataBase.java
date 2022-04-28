@@ -12,13 +12,11 @@ import static Answers.ErrorAnswer.logger;
 
 public class DataBase {
     private Connection connection;
-    private Statement statement;
 
     public DataBase(String login, String password) throws ClassNotFoundException {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection("jdbc:postgresql://pg:5432/studs", login, password);
-            statement = connection.createStatement();
         } catch (SQLException e) {
             logger.severe( "Error with database. Try again later!");
         } catch (ClassNotFoundException e){

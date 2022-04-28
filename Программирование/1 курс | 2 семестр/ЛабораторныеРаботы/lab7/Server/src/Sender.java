@@ -3,7 +3,6 @@ import Answers.Answer;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.concurrent.ForkJoinPool;
-import java.util.logging.FileHandler;
 
 public class Sender  {
     private ForkJoinPool pool;

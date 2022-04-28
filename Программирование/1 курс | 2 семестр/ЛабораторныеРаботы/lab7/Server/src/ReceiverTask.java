@@ -18,7 +18,6 @@ public class ReceiverTask implements Runnable {
     public static final Logger logger = Logger.getLogger(Receiver.class.getName());
     private DatagramSocket socket;
     private Interpreter interpreter;
-    private FileHandler fileTxt;
 
 
     public ReceiverTask(DatagramSocket socket, Interpreter interpreter) {

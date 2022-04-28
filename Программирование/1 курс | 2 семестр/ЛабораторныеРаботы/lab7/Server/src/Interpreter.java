@@ -1,4 +1,3 @@
-import Answers.Answer;
 import Answers.ErrorAnswer;
 import Answers.OkAnswer;
 import Answers.Request;
@@ -17,26 +16,22 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static Answers.ErrorAnswer.logger;
 import static Reader.CommandInitializer.initCommands;
 
 
 public class Interpreter extends Thread {
     public static final Logger logger = Logger.getLogger(Receiver.class.getName());
-    private FileHandler fileTxt;
     private Request request;
     private boolean hasNewPacket=false;
     private Sender sender;
     private DatagramSocket socket;
-    private DatagramPacket da;
+    private DatagramPacket packet;
 
     public Interpreter(Sender sender,DatagramSocket socket, String sqlLogin, String sqlPassword) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, CommandAlreadyExistsException, RightException, IOException, SameIdException, ClassNotFoundException {
 
-        //CommandManager manager = CommandManager.getInstance(System.getenv("SQL_LOGIN"), System.getenv("SQL_PASSWORD"));
         CommandManager manager = CommandManager.getInstance(sqlLogin, sqlPassword);
         manager = initCommands(manager);
 
@@ -45,35 +40,35 @@ public class Interpreter extends Thread {
         this.socket=socket;
     }
 
-    public void putCommand(Request request,DatagramPacket da){
+    public void putCommand(Request request,DatagramPacket packet){
         this.request=request;
         this.hasNewPacket=true;
-        this.da=da;
+        this.packet =packet;
     }
 
     @Override
     public void run() {
         while (!isInterrupted()){
             if (hasNewPacket){
-                interpret(request,da);
+                interpret(request, packet);
             }
         }
     }
 
-    public void interpret(Request request, DatagramPacket da) {
+    public void interpret(Request request, DatagramPacket packet) {
         hasNewPacket=false;
         User user = request.getUser();
         Command cmd = request.getCommand();
         Object[] args = request.getArgs();
         try{
-            sender.send(new OkAnswer(CommandManager.execute(user,cmd, args)),da.getAddress(),da.getPort());
+            sender.send(new OkAnswer(CommandManager.execute(user,cmd, args)),packet.getAddress(),packet.getPort());
 
         } catch (NullPointerException e){
             sender.send(new ErrorAnswer("The server could not execute the command"), socket.getInetAddress(), socket.getPort());
         }
     }
 
-    public void askCommand(Scanner scanner) throws IOException {
+    public void askCommand(Scanner scanner) {
         while (true) {
             try {
                 String line = scanner.nextLine().trim();
