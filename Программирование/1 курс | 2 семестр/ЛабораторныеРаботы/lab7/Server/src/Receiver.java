@@ -11,7 +11,7 @@ public class Receiver extends Thread {
 
 
     public Receiver(DatagramSocket socket, Interpreter interpreter) {
-        executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+        executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
         this.socket = socket;
         this.interpreter = interpreter;
     }
