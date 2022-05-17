@@ -10,7 +10,6 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.logging.*;
 
-import static Answers.ErrorAnswer.logger;
 
 public class Server {
     public static int SERVER_PORT = 12501;
