@@ -1,2 +1,0 @@
-Main-Class: ru.roman.vassilchenko.Lab2
-Class-Path: Pokemon.jar
