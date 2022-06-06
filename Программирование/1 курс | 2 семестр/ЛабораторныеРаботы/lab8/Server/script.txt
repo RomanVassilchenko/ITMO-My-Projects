@@ -1,0 +1,17 @@
+show
+insert 4
+Ivan
+3
+4
+2334234
+May 23, 2001 09:21 AM
+198
+3456 242346
+HEAD_OF_DEPARTMENT
+PROBATION
+save
+Server/file.txt
+update 2 position
+HUMAN_RESOURCES
+show
+execute_script Server/script1.txt

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-06-06T11:52:51.997968Z</date>
+  <millis>1654516371997</millis>
+  <nanos>968000</nanos>
+  <sequence>0</sequence>
+  <logger>Application.Commander</logger>
+  <level>INFO</level>
+  <class>Application.Commander</class>
+  <method>start</method>
+  <thread>1</thread>
+  <message>Сервер запущен c портом:7020</message>
+</record>
+<record>
+  <date>2022-06-06T11:52:52.022562Z</date>
+  <millis>1654516372022</millis>
+  <nanos>562000</nanos>
+  <sequence>1</sequence>
+  <logger>Application.Commander</logger>
+  <level>INFO</level>
+  <class>Application.Commander</class>
+  <method>start</method>
+  <thread>1</thread>
+  <message>Кол-во объектов, которое было загружено из базы данных в коллекцию: 3!</message>
+</record>
