@@ -5,10 +5,12 @@ import Dependency.Worker;
 import NetInteraction.ClientEvents;
 import NetInteraction.ClientManager;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -79,17 +81,27 @@ public class Graphics extends JPanel implements ActionListener {
         setPreferredSize(size);
     }
 
+    private boolean rotateSide = true;
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (rotation < 360) {
-            rotation += 5;
+        if(rotateSide){
+            if(rotation >= 90) rotateSide = false;
+            else rotation += 3;
         } else {
-            rotation = 0;
+            if(rotation <= 0) rotateSide = true;
+            else rotation -= 3;
         }
+        //TODO Decide Work or circle mode?
+
+//
+//        if (rotation < 360) {
+//            rotation += 5;
+//        } else {
+//            rotation = 0;
+//        }
         repaint();
     }
-
 
     @Override
     protected void paintComponent(java.awt.Graphics g) {
@@ -104,6 +116,7 @@ public class Graphics extends JPanel implements ActionListener {
             WorkerRectangle rect = new WorkerRectangle(worker,
                     Math.abs(worker.getSalary() * worker.getCoordinates().getX())%(startX) + startX / 3,
                     Math.abs(worker.getSalary() * worker.getCoordinates().getY())%(startY) + startY / 3);
+
             transform.rotate(Math.toRadians(rotation), rect.getX()
                     + rect.getWidth()/ 2, rect.getY() + rect.getHeight() / 2);
             Shape transformed = transform.createTransformedShape(rect);

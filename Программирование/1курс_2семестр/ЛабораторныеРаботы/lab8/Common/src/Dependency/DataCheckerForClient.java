@@ -108,7 +108,7 @@ public class DataCheckerForClient implements Serializable {
     public boolean checkBirthday(String birthdayIn) {
         boolean isCorrect = false;
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d',' yyyy hh':'mm a", Locale.US);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US);
             LocalDateTime birthday = LocalDateTime.parse(birthdayIn, formatter);
             if (birthday != null){
                 isCorrect = true;

@@ -25,6 +25,16 @@
               </component>
             </children>
           </grid>
+          <component id="cce82" class="javax.swing.JLabel" binding="titleLabel">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <focusable value="true"/>
+              <font name="JetBrains Mono" size="20" style="1"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="Label"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="dfff1" layout-manager="GridBagLayout">

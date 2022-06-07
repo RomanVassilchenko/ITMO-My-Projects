@@ -25,6 +25,7 @@ public class CommanderForm {
     private JTextArea outputPanel;
     private JButton backButton;
     private JScrollPane scrollPane1;
+    private JLabel titleLabel;
     private final String language;
     final ResourceBundle bundleRu = ResourceBundle
             .getBundle("resources.resource", new Locale("ru", "RU"));
@@ -95,18 +96,22 @@ public class CommanderForm {
             case "Russian" -> {
                 backButton.setText(bundleRu.getString("back"));
                 executorButton.setText(bundleRu.getString("executeCommand"));
+                titleLabel.setText(bundleRu.getString("executeTitle"));
             }
             case "Lithuanian" -> {
                 backButton.setText(bundleLt.getString("back"));
                 executorButton.setText(bundleLt.getString("executeCommand"));
+                titleLabel.setText(bundleLt.getString("executeTitle"));
             }
             case "German" -> {
                 backButton.setText(bundleDe.getString("back"));
                 executorButton.setText(bundleDe.getString("executeCommand"));
+                titleLabel.setText(bundleDe.getString("executeTitle"));
             }
             case "Spanish (Mexico)" -> {
                 backButton.setText(bundleEs.getString("back"));
                 executorButton.setText(bundleEs.getString("executeCommand"));
+                titleLabel.setText(bundleEs.getString("executeTitle"));
             }
         }
     }

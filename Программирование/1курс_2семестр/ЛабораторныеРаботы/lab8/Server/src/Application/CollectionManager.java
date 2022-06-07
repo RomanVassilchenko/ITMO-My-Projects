@@ -176,7 +176,7 @@ public class CollectionManager {
         Integer x = null;
         Double y = null;
         Worker worker = new Worker();
-        String[] values = {"имя", "координату x", "координату y", "заработную плату", "день рождения, исапользуя формат(MMMM d, yyyy hh:mm AM/PM)", "рост", "паспортные данные", "должность", "статус"};
+        String[] values = {"имя", "координату x", "координату y", "заработную плату", "день рождения, исапользуя формат(yyyy-MM-dd HH:mm)", "рост", "паспортные данные", "должность", "статус"};
         for (int i = 0; i < values.length; i++) {
             switch (values[i]) {
                 case "имя":
@@ -253,12 +253,12 @@ public class CollectionManager {
                         list.add("Зарплата введена неверно");
                     }
                     break;
-                case "день рождения, исапользуя формат(MMMM d, yyyy hh:mm AM/PM)":
+                case "день рождения, исапользуя формат(yyyy-MM-dd HH:mm)":
                     try {
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d',' yyyy hh':'mm a", Locale.US);
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US);
                         birthday = LocalDateTime.parse(info.get(i), formatter);
                     } catch (DateTimeParseException e) {
-                        list.add("Проверьте введенную дату рождения.\nОна должна соответствовать формату: MMMM d, yyyy hh:mm AM/PM");
+                        list.add("Проверьте введенную дату рождения.\nОна должна соответствовать формату: yyyy-MM-dd HH:mm");
                     }
                     break;
                 case "рост":
@@ -611,14 +611,14 @@ public class CollectionManager {
                     switch (typeOfPerson) {
                         case "birthday":
                             try {
-                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d',' yyyy hh':'mm a"
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"
                                         , Locale.US);
                                 birthday = LocalDateTime.parse(info.get(0), formatter);
                                 if (birthday != null) {
                                     typeOfPerson = "height";
                                 }
                             } catch (DateTimeParseException e) {
-                                list.add("Проверьте введенную дату рождения.\nMMMM d, yyyy hh:mm AM/PM");
+                                list.add("Проверьте введенную дату рождения.\nyyyy-MM-dd HH:mm");
                             }
                             break;
                         case "height":

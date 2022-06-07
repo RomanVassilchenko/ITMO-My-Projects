@@ -120,5 +120,4 @@ public class VisualizationForm {
         panel1 = new Graphics(clientEvents, new Dimension(2000, 900), language);
     }
 
-    //  public void s
 }

@@ -38,6 +38,7 @@ public class MainForm {
     public MainForm(JFrame parent, ClientEvents clientEvents, Object languageIn) {
         this.clientEvents = clientEvents;
         ClientManager clientManager = clientEvents.getClientManager();
+        if(languageIn==null) languageIn = "Russian";
         this.language = languageIn.toString();
         main = new JFrame();
         main.setSize(600, 400);

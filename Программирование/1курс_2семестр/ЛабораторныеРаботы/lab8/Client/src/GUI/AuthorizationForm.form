@@ -94,7 +94,7 @@
                   <enabled value="true"/>
                   <focusCycleRoot value="false"/>
                   <focusPainted value="true"/>
-                  <text value="Регистрация"/>
+                  <text value="Зарегистрироваться"/>
                 </properties>
               </component>
             </children>

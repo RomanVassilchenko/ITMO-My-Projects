@@ -92,7 +92,7 @@ public class Command implements Serializable {
     }
 
     public void creatParametersForWorker() {
-        String[] values = {"имя", "координату x", "координату y", "заработную плату", "день рождения, исапользуя формат(MMMM d, yyyy hh:mm AM/PM)", "рост", "должность", "статус"};
+        String[] values = {"имя", "координату x", "координату y", "заработную плату", "день рождения, исапользуя формат(yyyy-MM-dd HH:mm)", "рост", "должность", "статус"};
         for (String value : values) {
             boolean isCorrect = false;
             while (!isCorrect) {
@@ -167,16 +167,16 @@ public class Command implements Serializable {
                                 isCorrect = true;
                             }
                         }
-                        case "день рождения, исапользуя формат(MMMM d, yyyy hh:mm AM/PM)" -> {
+                        case "день рождения, исапользуя формат(yyyy-MM-dd HH:mm)" -> {
                             System.out.println("Введите " + value + ":");
                             try {
-                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d',' yyyy hh':'mm a", Locale.US);
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US);
                                 birthday = LocalDateTime.parse(Utils.scanner().nextLine(), formatter);
                                 if (birthday != null) {
                                     isCorrect = true;
                                 }
                             } catch (DateTimeParseException e) {
-                                System.err.println("Проверьте введенную дату рождения.\nОна должна соответствовать формату: MMMM d, yyyy hh:mm AM/PM");
+                                System.err.println("Проверьте введенную дату рождения.\nОна должна соответствовать формату: yyyy-MM-dd HH:mm");
                             }
                         }
                         case "рост" -> {
@@ -283,15 +283,15 @@ public class Command implements Serializable {
             } else if (element.equals("person")) {
                 switch (typeOfPerson) {
                     case "birthday" -> {
-                        System.out.println("Введите дату рождения, используя формат(MMMM d, yyyy hh:mm AM/PM):");
+                        System.out.println("Введите дату рождения, используя формат(yyyy-MM-dd HH:mm):");
                         try {
-                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d',' yyyy hh':'mm a", Locale.US);
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US);
                             birthday = LocalDateTime.parse(Utils.scanner().nextLine(), formatter);
                             if (birthday != null) {
                                 typeOfPerson = "height";
                             }
                         } catch (DateTimeParseException e) {
-                            System.err.println("Проверьте введенную дату рождения.\nMMMM d, yyyy hh:mm AM/PM");
+                            System.err.println("Проверьте введенную дату рождения.\nyyyy-MM-dd HH:mm");
                         }
                     }
                     case "height" -> {

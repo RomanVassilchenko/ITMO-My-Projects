@@ -41,7 +41,7 @@ public class Insert extends JDialog {
     private final ClientManager clientManager;
     private JTextArea outPanel;
     private final Command worker;
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d',' yyyy hh':'mm a", Locale.US);
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US);
     private String message1, message2, message3, message4, message7, message8, message9, message10, message11;
     final ResourceBundle bundleRu = ResourceBundle
             .getBundle("resources.resource", new Locale("ru", "RU"));

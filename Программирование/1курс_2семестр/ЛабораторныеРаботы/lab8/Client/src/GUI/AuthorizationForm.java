@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -30,6 +31,7 @@ public class AuthorizationForm {
     private final ClientManager clientManager;
     private String message1 = "Вы не авторизованы!";
     private String message2 = "Пользаваетль с таким логином уже создан!";
+    private String message3 = "Ошибка в логине или пароле!";
     private String language;
     final ResourceBundle bundleRu = ResourceBundle
             .getBundle("resources.resource", new Locale("ru", "RU"));
@@ -87,6 +89,7 @@ public class AuthorizationForm {
                 authorizeButton.setText(bundleRu.getString("auth"));
                 message1 = bundleRu.getString("message1");
                 message2 = bundleRu.getString("message2");
+                message3 = bundleRu.getString("message3");
             }
             case "Lithuanian" -> {
                 loginLabel.setText(bundleLt.getString("login"));
@@ -95,6 +98,7 @@ public class AuthorizationForm {
                 authorizeButton.setText(bundleLt.getString("auth"));
                 message1 = bundleLt.getString("message1");
                 message2 = bundleLt.getString("message2");
+                message3 = bundleLt.getString("message3");
             }
             case "German" -> {
                 loginLabel.setText(bundleDe.getString("login"));
@@ -103,6 +107,7 @@ public class AuthorizationForm {
                 authorizeButton.setText(bundleDe.getString("auth"));
                 message1 = bundleDe.getString("message1");
                 message2 = bundleDe.getString("message2");
+                message3 = bundleDe.getString("message3");
             }
             case "Spanish (Mexico)" -> {
                 loginLabel.setText(bundleEs.getString("login"));
@@ -111,6 +116,7 @@ public class AuthorizationForm {
                 authorizeButton.setText(bundleEs.getString("auth"));
                 message1 = bundleEs.getString("message1");
                 message2 = bundleEs.getString("message2");
+                message3 = bundleEs.getString("message3");
             }
         }
     }
@@ -271,7 +277,10 @@ public class AuthorizationForm {
                 clientEvents.commandMode(command);
                 if (clientManager.getConditionOfAuthorization().equals("not reg")) {
                     conditionOfAuth.setText(message2);
-                } else {
+                } else if(loginTextField.getText().trim().equals("") || Arrays.toString(passwordPasswordField.getPassword()).trim().equals("")){
+                    conditionOfAuth.setText(message3);
+
+                }else {
                     clientEvents.commandMode(new Command("getCollectionForTable"));
                     auth.dispose();
                     auth.setVisible(false);

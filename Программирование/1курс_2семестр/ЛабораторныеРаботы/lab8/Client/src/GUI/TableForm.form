@@ -40,6 +40,7 @@
           <component id="233aa" class="javax.swing.JTable" binding="table1" custom-create="true" default-binding="true">
             <constraints/>
             <properties>
+              <autoCreateRowSorter value="true"/>
               <preferredSize width="1850" height="400"/>
             </properties>
           </component>
