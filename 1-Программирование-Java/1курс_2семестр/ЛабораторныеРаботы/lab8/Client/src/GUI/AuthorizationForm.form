@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="GUI.AuthorizationForm">
+  <grid id="27dc6" binding="authPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="96" y="30" width="339" height="336"/>
+    </constraints>
+    <properties>
+      <background color="-1"/>
+      <font swing-font="Button.font"/>
+    </properties>
+    <border type="none">
+      <font/>
+    </border>
+    <children>
+      <grid id="68b06" binding="loginPanel" layout-manager="GridBagLayout">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="9c9a2" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="1.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <background color="-855310"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="62ae5" class="javax.swing.JPasswordField" binding="passwordPasswordField" default-binding="true">
+                <constraints/>
+                <properties>
+                  <preferredSize width="90" height="30"/>
+                  <text value=""/>
+                  <toolTipText value="password"/>
+                  <verifyInputWhenFocusTarget value="true"/>
+                  <visible value="true"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="ebc13" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <background color="-855310"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="99fda" class="javax.swing.JLabel" binding="conditionOfAuth">
+                <constraints/>
+                <properties>
+                  <foreground color="-48818"/>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="13ad6" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <background color="-855310"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="85a55" class="javax.swing.JButton" binding="authorizeButton" default-binding="true">
+                <constraints/>
+                <properties>
+                  <background color="-855310"/>
+                  <text value="Авторизоваться"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="4a390" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <background color="-855310"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="f6e44" class="javax.swing.JButton" binding="regButton">
+                <constraints/>
+                <properties>
+                  <background color="-855310"/>
+                  <enabled value="true"/>
+                  <focusCycleRoot value="false"/>
+                  <focusPainted value="true"/>
+                  <text value="Зарегистрироваться"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="91df7" class="javax.swing.JLabel" binding="loginLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <background color="-855310"/>
+              <opaque value="true"/>
+              <text value="Логин:"/>
+            </properties>
+          </component>
+          <grid id="178f3" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <background color="-855310"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="9f6cb" class="javax.swing.JLabel" binding="passwordLable">
+                <constraints/>
+                <properties>
+                  <text value="Пароль:"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="bbdd5" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="1.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <background color="-855310"/>
+              <preferredSize width="100" height="40"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="332fc" class="javax.swing.JTextField" binding="loginTextField" default-binding="true">
+                <constraints/>
+                <properties>
+                  <preferredSize width="90" height="30"/>
+                  <text value=""/>
+                  <toolTipText value="login"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="3b552" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="602b8" class="javax.swing.JComboBox" binding="languages">
+            <constraints border-constraint="West"/>
+            <properties>
+              <model>
+                <item value="Russian"/>
+                <item value="Lithuanian"/>
+                <item value="German"/>
+                <item value="Spanish (Mexico)"/>
+              </model>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
