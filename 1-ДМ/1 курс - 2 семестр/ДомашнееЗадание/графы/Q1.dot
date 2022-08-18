@@ -1,0 +1,27 @@
+digraph {
+    rankdir="LR";
+"1,11,6" -> "2,12" [dir="both" label="4,1,4"];
+"1,11,6" -> 3 [dir="both" label=3];
+"1,11,6" -> 4 [dir="both" label=4];
+"1,11,6" -> 7 [dir="both" label="2,1"];
+"1,11,6" -> 8 [dir="both" label="2"];
+"1,11,6" -> 10 [dir="both" label=1];
+
+
+"2,12" -> 4 [dir="both" label=2];
+"2,12" -> 5 [dir="both" label=2];
+"2,12" -> 7 [dir="both" label=2];
+"2,12" -> 9 [dir="both" label=3];
+
+
+3 -> 10 [dir="both" label=5];
+
+5 -> 7 [dir="both" label=1];
+5 -> 8 [dir="both" label=3];
+5 -> 9 [dir="both" label=4];
+5 -> 10 [dir="both" label=4];
+
+7 -> 8 [dir="both" label=3];
+7 -> 9 [dir="both" label=1];
+7 -> 10 [dir="both" label=5];
+}
