@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Lab 1</title>
+    <style>
+        /*Todo: Add styles*/
+        button,
+		input[type="text"] {
+			padding: 3px;
+			transition: transform 100ms;
+		}
+
+		button,
+		input[type="text"],
+		#message-box {
+			border-width: 3px;
+			border-style: solid;
+			border-radius: 5px;
+		}
+
+		input,
+		button {
+			margin-top: 10px;
+			font-family: 'Comic Sans MS', sans-serif;
+		}
+
+		[type="submit"] {
+			width: 100%;
+			animation-delay: -225ms;
+			padding: 10px;
+			font-size: 20px;
+			margin-top: 20px;
+		}
+
+		.small {
+			transform: scale(0.8);
+		}
+
+        #results {
+			font-size: 25px;
+			margin: 10px;
+			color: yellow;
+			-webkit-text-stroke-color: black;
+			-webkit-text-stroke-width: 1px;
+		}
+    </style>
+</head>
+<body>
+    <div>
+        <!-- Todo: add hidden things -->
+        <canvas id="tmp" class="hidden" width="640" height="360"></canvas>
+		<canvas id="awp" class="overlay" width="640" height="360"></canvas>
+		<canvas id="blt" class="hidden"></canvas>
+		<span id="hit-or-miss">miss!</span>
+		<div id="message-box" class="hidden">
+			<form>
+				<p id="message"></p>
+				<button type="submit" style="animation-delay: -150ms;">Ok</button>
+			</form>
+		</div>
+    </div>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th width="25%">
+                    <img src="assets/itmo-logo-dark.svg">
+                </th>
+                <th width="50%">
+                    <h1>Web: Lab 1</h1>
+                    <h2>P32091 | Васильченко Роман | Вариант 1702</h2>
+                </th>
+                <th width="25%">
+                    <img src="assets/itmo-logo-dark.svg">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="col1">
+                <h1>Select a point</h1>
+                <form id="form">
+                    <label for="x">x</label>
+                    <input required="required" id="x" name="x" type="text" placeholder="(-3 ... 5)">
+                    <br/>
+                    <label>y</label>
+					<input required="required" name="y" id="y1" type="radio" value="-5" />
+                    <label for="y1">-5</label>
+                    <input required="required" name="y" id="y2" type="radio" value="-4" />
+                    <label for="y2">-4</label>
+                    <input required="required" name="y" id="y3" type="radio" value="-3" />
+                    <label for="y3">-3</label>
+                    <input required="required" name="y" id="y4" type="radio" value="-2" />
+                    <label for="y4">-2</label>
+                    <input required="required" name="y" id="y5" type="radio" value="-1" />
+                    <label for="y5">-1</label>
+                    <input required="required" name="y" id="y6" type="radio" value="0" />
+                    <label for="y6">0</label>
+                    <input required="required" name="y" id="y7" type="radio" value="1" />
+                    <label for="y7">1</label>
+                    <input required="required" name="y" id="y8" type="radio" value="2" />
+                    <label for="y8">2</label>
+                    <input required="required" name="y" id="y9" type="radio" value="3" />
+                    <label for="y9">3</label>
+                    <br/>
+                    <label>r</label>
+                    <input required="required" class="invisible" id="r" name="r" type="text" value="" />
+					<button class="r" type="button" data-r="1">1</button>
+                    <button class="r" type="button"data-r="2">2</button>
+                    <button class="r" type="button"data-r="3">3</button>
+                    <button class="r" type="button"data-r="4">4</button>
+                    <button class="r" type="button"data-r="5">5</button>
+                    <br/>
+                    <button type="submit">Click to Select</button>
+                </form>
+                </td>
+                <td id="col2">
+                    <img src="assets/graph.svg"/>
+                </td>
+                <td id="col3">
+                    <div id="col3-container">
+                        <p>Results: 0</p>
+                        <div id="results"></div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <script src="js/main.js" type="text/javascript"></script>
+</body>
+</html>
