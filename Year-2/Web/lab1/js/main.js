@@ -6,7 +6,9 @@ function resetPreviousData(){
   if (localStorage.getItem("attempts") !== null) {
     var attempts = localStorage['attempts'].split('|');
     attempts.forEach(element => {
-      $('#result-table').append(element);
+      if(element !== "") {
+        $('#result-table').append(element);
+      }
     }); 
   }
 }
