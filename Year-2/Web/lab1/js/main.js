@@ -101,7 +101,7 @@ $(function() {
               <th class="hitres-col">Hit result</th>
             </tr>`); 
 
-            localStorage['attempts'] = null;
+            localStorage['attempts'] = "";
       });
 
 }
