@@ -16,6 +16,7 @@
     --secondary-background-color: #161a23;
     --tertiary-background-color: #202330;
     --soft-borders-color: #1e232f;
+    --default-borders-radius: 10px;
 
     background-color: var(--primary-background-color);
 }
@@ -33,6 +34,7 @@
 
     #table-plate {
       width: 65%;
+      border-radius: var(--default-borders-radius);
     }
 
     #header-plate {
@@ -40,12 +42,14 @@
       font-size: 20px;
       color: var(--primary-text-color);
       background-color: var(--tertiary-background-color);
+      border-radius: var(--default-borders-radius);
     }
 
     .content-plate {
       padding: 0 0 20px;
       vertical-align: top;
       background-color: var(--secondary-background-color);
+      border-radius: var(--default-borders-radius);
     }
 
     .plate-top {
@@ -57,11 +61,13 @@
       text-align: center;
       color: var(--primary-text-color);
       background-color: var(--tertiary-background-color);
+      border-radius: var(--default-borders-radius);
     }
 
     .plate-top-title {
       font-size: 18px;
       font-weight: normal;
+      border-radius: var(--default-borders-radius);
     }
 
     .image-container {
@@ -182,6 +188,7 @@
       top: 54px;
       width: 100%;
       overflow-y: scroll;
+      border-radius: var(--default-borders-radius);
     }
 
     #result-table {
@@ -240,6 +247,8 @@
     <tr>
       <!-- Header -->
       <td id="header-plate" colspan="2">
+        <img class="left-aligned" src="assets/favicon-32.ico" width="32" height="32">
+        <span class="left-aligned">   </span>
         <span class="left-aligned">Roman Vassilchenko | P32091</span>
         <span class="right-aligned">№1702</span>
       </td>
