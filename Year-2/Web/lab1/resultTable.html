@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link rel="icon" href="assets/favicon-32.ico">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <title>Web project #1</title>
+  <title>Results</title>
   <style>
     :root {
       --primary-border-radius: 10px;
@@ -110,15 +110,6 @@
       color: var(--primary-text-color);
 
     }
-
-    #x-textinput.text-error {
-      color: var(--error-color);
-    }
-
-    #r-textinput.text-error {
-      color: var(--error-color);
-    }
-    
 
     .text-error {
       border: 1px solid --error-color;
@@ -276,7 +267,7 @@
 
     <tr>
       <!-- Graph -->
-      <td class="content-plate" id="graph-plate" rowspan="2">
+      <td class="content-plate" id="graph-plate">
         <div class="plate-top">
           <h2 class="plate-top-title">Graph</h2>
         </div>
@@ -303,102 +294,6 @@
             </tr>
           </table>
         </div>
-      </td>
-    </tr>
-
-    <tr>
-      <!-- Values -->
-      <td class="content-plate values-view" id="values-plate">
-        <div class="plate-top">
-          <h2 class="plate-top-title">Values</h2>
-        </div>
-
-        <form id="input-form" action="" method="POST">
-          <table id="input-grid">
-            <!-- X Values -->
-            <tr>
-              <td class="input-grid-label">
-                <label for="x-textinput">X:</label>
-              </td>
-
-              <td class="input-grid-value">
-                <input id="x-textinput" type="text" name="xval" maxlength="10" autocomplete="off"
-                  placeholder="Number in range (-3 ... 5)">
-              </td>
-            </tr>
-
-            <!-- Y Values -->
-            <tr>
-              <td class="input-grid-label">
-                <label>Y:</label>
-              </td>
-              <td class="input-grid-value y-radio-group">
-                <div class="center-labeled">
-                  <label class="ybox-label" for="y-radio1">-5</label>
-                  <input class="y-radio" id="y-radio1" type="radio" name="yval" value="-5">
-                </div>
-                <div class="center-labeled">
-                  <label class="ybox-label" for="y-radio2">-4</label>
-                  <input class="y-radio" id="y-radio2" type="radio" name="yval" value="-4">
-                </div>
-                <div class="center-labeled">
-                  <label class="ybox-label" for="y-radio3">-3</label>
-                  <input class="y-radio" id="y-radio3" type="radio" name="yval" value="-3">
-                </div>
-                <div class="center-labeled">
-                  <label class="ybox-label" for="y-radio4">-2</label>
-                  <input class="y-radio" id="y-radio4" type="radio" name="yval" value="-2">
-                </div>
-                <div class="center-labeled">
-                  <label class="ybox-label" for="y-radio5">-1</label>
-                  <input class="y-radio" id="y-radio5" type="radio" name="yval" value="-1">
-                </div>
-                <div class="center-labeled">
-                  <label class="ybox-label" for="y-radio6">0</label>
-                  <input class="y-radio" id="y-radio6" type="radio" name="yval" value="0">
-                </div>
-                <div class="center-labeled">
-                  <label class="ybox-label" for="y-radio7">1</label>
-                  <input class="y-radio" id="y-radio7" type="radio" name="yval" value="1">
-                </div>
-                <div class="center-labeled">
-                  <label class="ybox-label" for="y-radio8">2</label>
-                  <input class="y-radio" id="y-radio8" type="radio" name="yval" value="2">
-                </div>
-                <div class="center-labeled">
-                  <label class="ybox-label" for="y-radio9">3</label>
-                  <input class="y-radio" id="y-radio9" type="radio" name="yval" value="3">
-                </div>
-              </td>
-            </tr>
-            <!-- R Values -->
-            <tr>
-              <td class="input-grid-label">
-                <label for="r-textinput">R:</label>
-              </td>
-
-              <td class="input-grid-value">
-                <input class="hidded-input left-aligned" id="r-textinput" type="text" name="rval" value=""
-                  placeholder="-" maxlength="1" readonly>
-                <button class="r-button" type="button" onclick="onClickR('1')">1</button>
-                <button class="r-button" type="button" onclick="onClickR('2')">2</button>
-                <button class="r-button" type="button" onclick="onClickR('3')">3</button>
-                <button class="r-button" type="button" onclick="onClickR('4')">4</button>
-                <button class="r-button" type="button" onclick="onClickR('5')">5</button>
-              </td>
-            </tr>
-
-            <!-- Buttons -->
-            <tr>
-              <td colspan="2">
-                <div class="buttons">
-                  <input class="button" type="submit" value="Submit">
-                  <input class="button" type="reset" value="Reset">
-                </div>
-              </td>
-            </tr>
-          </table>
-        </form>
       </td>
     </tr>
   </table>

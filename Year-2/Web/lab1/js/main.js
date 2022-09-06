@@ -23,7 +23,9 @@ $(function() {
         const X_MIN = -3;
         const X_MAX = +5;
         let xField = $('#x-textinput');
-        let numX = xField.val().replace(',','.');
+        let numX = xField.val().trim().replace(',','.');
+
+        xField.val(numX);
         if(isNumeric(numX) && numX > X_MIN && numX < X_MAX) {
             xField.removeClass('text-error');
             return true;
@@ -46,10 +48,10 @@ $(function() {
         let rButtonLabel = $('#r-textinput');
         let numR = rButtonLabel.val().replace(',', '.');
         if(isNumeric(numR) && numR in R_VALUES){
-            rButtonLabel.removeClass('button-error');
+            rButtonLabel.removeClass('text-error');
             return true;
         } else {
-            rButtonLabel.addClass('button-error');
+            rButtonLabel.addClass('text-error');
             return false;
         }
     }
@@ -88,6 +90,14 @@ $(function() {
               } else {
                 localStorage['attempts'] = newRow;
               }
+
+              $.ajax({
+                url: 'php/transfer.php',
+                method: 'POST',
+                success: function(data){
+                  location.href = data;
+                }
+              });
             }
           }
         });
