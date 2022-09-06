@@ -99,6 +99,9 @@ $(function() {
                 }
               });
             }
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert("Error with server or with website. Please try to reload or wait and try again.")
           }
         });
       });

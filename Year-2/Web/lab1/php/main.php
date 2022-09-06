@@ -5,18 +5,25 @@
 function validateX($xVal){
     $X_MIN = -3;
     $X_MAX = +5;
-
     if(!isset($xVal)) return false;
-    $numX = str_replace(',','.',$xVal);
+    $numX = str_replace(',','.',$xVal).trim();
     return is_numeric($xVal) && $xVal > $X_MIN && $xVal < $X_MAX;
 }
 
 function validateY($yVal){
-    return isset($yVal);
+    $Y_MIN = -5;
+    $Y_MAX = +3;
+    if(!isset($yVal)) return false;
+    $numY = str_replace(',','.',$yVal).trim();
+    return is_numeric($yVal) && $yVal >= $Y_MIN && $yVal <= $Y_MAX;
 }
 
 function validateR($rVal){
-    return isset($rVal);
+    $R_MIN = 1;
+    $R_MAX = 5;
+    if(!isset($rVal)) return false;
+    $numR = str_replace(',','.',$rVal).trim();
+    return is_numeric($rVal) && $rVal >= $R_MIN && $rVal <= $R_MAX;
 }
 
 function validateForm($xVal, $yVal, $rVal){
@@ -52,6 +59,7 @@ function checkHit($xVal, $yVal, $rVal) {
   $timezoneOffset = $_POST['timezone'];
   
   $isValid = validateForm($xVal, $yVal, $rVal);
+  if(!$isValid) http_response_code(404);
   $converted_isValid = $isValid ? 'true' : 'false';
   $isHit = $isValid ? checkHit($xVal, $yVal, $rVal) : 'Easter egg!';
   $converted_isHit = $isHit ? 'true' : 'false';
