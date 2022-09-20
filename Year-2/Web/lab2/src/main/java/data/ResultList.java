@@ -22,4 +22,7 @@ public class ResultList implements Iterable<Result>{
     public Iterator<Result> iterator() {
         return results.iterator();
     }
+
+    public int getSize() {return results.size();}
+    public Result getResult(int i) {return results.get(i);}
 }

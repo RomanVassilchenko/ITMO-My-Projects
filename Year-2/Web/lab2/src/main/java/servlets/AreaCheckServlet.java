@@ -37,7 +37,7 @@ public class AreaCheckServlet extends HttpServlet {
 
             req.getSession().setAttribute("results",results);
 
-        } catch (Exception e){
+        } catch (IllegalArgumentException e){
             resp.setStatus(400);
             req.setAttribute("errorMessage", "Error: " + e.getMessage());
         } finally {
@@ -54,7 +54,7 @@ public class AreaCheckServlet extends HttpServlet {
         try {
             double x = Double.parseDouble(xVal);
             return true;
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             return false;
         }
     }
@@ -63,7 +63,7 @@ public class AreaCheckServlet extends HttpServlet {
         try {
             double y = Double.parseDouble(yVal);
             return true;
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             return false;
         }
     }
@@ -73,7 +73,7 @@ public class AreaCheckServlet extends HttpServlet {
             double r = Double.parseDouble(rVal);
             List<Double> rRange = Arrays.asList(1.0,2.0,3.0,4.0,5.0);
             return rRange.contains(r);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             return false;
         }
     }

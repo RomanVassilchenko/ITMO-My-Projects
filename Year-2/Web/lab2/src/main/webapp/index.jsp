@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="data.Result" %>
 <%@ page import="data.ResultList" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.ArrayList" %>
 
 <html lang="en">
 
@@ -104,7 +106,7 @@
 
                         <td class="input-grid-value">
                             <input id="x-textinput" type="text" name="x" maxlength="10" autocomplete="off"
-                                   placeholder="Number in range (-5 ... 5)">
+                                   placeholder="Number in range (-5 ... 5)" value="<%=(resultList.getSize() <= 0) ? "" : resultList.getResult(resultList.getSize() - 1).getX()%>">
                         </td>
                     </tr>
 
@@ -116,15 +118,18 @@
                         </td>
                         <td class="input-grid-value">
                             <select required name="y" id="y">
-                                <option value="-2">-2</option>
-                                <option value="-1.5">-1.5</option>
-                                <option value="-1">-1</option>
-                                <option value="-0.5">-0.5</option>
-                                <option value="0">0</option>
-                                <option value="0.5">-0.5</option>
-                                <option value="1">1</option>
-                                <option value="1.5">1.5</option>
-                                <option value="2">2</option>
+
+                                    <%
+                        ArrayList<Double> list = new ArrayList<>(Arrays.asList(-2.0,-1.5,-1.0,-0.5,0.0,0.5,1.0,1.5,2.0));
+
+                        for (Double value : list) {
+                    %>
+                                <option
+                                        value="<%=value%>"
+                                        <%=(resultList.getSize() > 0 && (resultList.getResult(resultList.getSize() - 1)).getY()==value) ? "selected" : ""%>>
+                                    <%=value%>
+                                </option>
+                    <% } %>
                             </select>
                         </td>
                     </tr>
@@ -135,26 +140,18 @@
                             <label>R:</label>
                         </td>
                         <td class="input-grid-value r-radio-group">
+
+                            <%
+                                ArrayList<Double> rList = new ArrayList<>(Arrays.asList(1.0,2.0,3.0,4.0,5.0));
+
+                                for (int i = 0; i < rList.size(); i++) {
+                            %>
+
                             <div class="center-labeled">
-                                <label class="rbox-label" for="r-radio1">1</label>
-                                <input class="r-radio" id="r-radio1" type="radio" name="r" value="1">
+                                <label class="rbox-label" for="r-radio<%=i+1%>"><%=rList.get(i)%></label>
+                                <input class="r-radio" id="r-radio<%=i+1%>" type="radio" name="r" value=<%=rList.get(i)%> <%=(resultList.getSize() > 0 && (resultList.getResult(resultList.getSize() - 1)).getR()==rList.get(i)) ? "checked" : ""%>>
                             </div>
-                            <div class="center-labeled">
-                                <label class="rbox-label" for="r-radio2">2</label>
-                                <input class="r-radio" id="r-radio2" type="radio" name="r" value="2">
-                            </div>
-                            <div class="center-labeled">
-                                <label class="rbox-label" for="r-radio3">3</label>
-                                <input class="r-radio" id="r-radio3" type="radio" name="r" value="3">
-                            </div>
-                            <div class="center-labeled">
-                                <label class="rbox-label" for="r-radio4">4</label>
-                                <input class="r-radio" id="r-radio4" type="radio" name="r" value="4">
-                            </div>
-                            <div class="center-labeled">
-                                <label class="rbox-label" for="r-radio5">5</label>
-                                <input class="r-radio" id="r-radio5" type="radio" name="r" value="5">
-                            </div>
+                            <% } %>
                         </td>
                     </tr>
 

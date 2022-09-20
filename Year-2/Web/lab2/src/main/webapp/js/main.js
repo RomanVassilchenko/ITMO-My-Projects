@@ -65,3 +65,4 @@ function toggleSubmitBtn() {
 document.addEventListener('DOMContentLoaded', ()=> {
     document.getElementById("plot").addEventListener('click', drawPoint);
 });
+
