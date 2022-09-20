@@ -1,0 +1,253 @@
+@charset "UTF-8";
+:root {
+  --primary-border-radius: 10px;
+  --primary-text-color: #bac3cb;
+  --secondary-text-color: #a3abb1;
+  --error-color: #f54c45;
+  --primary-background-color: #0c1116;
+  --secondary-background-color: #161a23;
+  --tertiary-background-color: #202330;
+  --soft-borders-color: #1e232f;
+  --default-borders-radius: 10px;
+
+  background-color: var(--primary-background-color);
+}
+
+body {
+  font-size: 16px;
+  font-family: "Open Sans", "Arial", "cursive";
+}
+
+#main-grid {
+  width: 95%;
+  margin: auto;
+  border-spacing: 1em;
+}
+
+#table-plate {
+  width: 65%;
+  border-radius: var(--default-borders-radius);
+}
+
+#header-plate {
+  padding: 1%;
+  font-size: 20px;
+  color: var(--primary-text-color);
+  background-color: var(--tertiary-background-color);
+  border-radius: var(--default-borders-radius);
+}
+
+.content-plate {
+  padding: 0%;
+  vertical-align: top;
+  background-color: var(--secondary-background-color);
+  border-radius: var(--default-borders-radius);
+}
+
+.plate-top {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0%;
+  text-align: center;
+  color: var(--primary-text-color);
+  background-color: var(--tertiary-background-color);
+  border-radius: var(--default-borders-radius);
+}
+
+.plate-top-title {
+  font-size: 18px;
+  font-weight: normal;
+  border-radius: var(--default-borders-radius);
+}
+
+.image-container {
+  text-align: center;
+}
+
+.table-view {
+  height: 40vh;
+}
+.values-view {
+  height: 10vh;
+}
+
+#input-grid {
+  width: 95%;
+  margin: auto;
+  text-align: center;
+}
+
+.input-grid-label {
+  width: 12%;
+  font-weight: bold;
+  color: var(--primary-text-color);
+}
+
+.rbox-label {
+  color: var(--primary-text-color);
+}
+
+#x-textinput {
+  width: 75%;
+  height: 20px;
+  margin: 2% 0;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: var(--primary-background-color);
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: var(--soft-borders-color);
+  outline: none;
+  color: var(--primary-text-color);
+
+}
+
+#x-textinput.text-error {
+  color: var(--error-color);
+}
+
+#r-textinput.text-error {
+  color: var(--error-color);
+}
+
+
+.text-error {
+  border: 1px solid --error-color;
+}
+
+.box-error {
+  color: var(--error-color);
+}
+
+.text-error::placeholder {
+  color: var(--error-color);
+}
+
+.hit-text {
+  color: #a5e075
+}
+
+.miss-text {
+  color: #ff616e
+}
+
+.table-text {
+  color: var(--primary-text-color)
+}
+
+.form-subtext {
+  padding-bottom: 2%;
+  font-size: 14px;
+}
+
+.center-labeled {
+  display: inline-block;
+  position: relative;
+  margin: 0 1% 5%;
+  font-size: 14px;
+}
+
+.center-labeled label {
+  position: absolute;
+  top: 18px;
+  left: 6px;
+}
+
+.center-labeled .float-labeled {
+  left: 0;
+}
+
+.center-labeled .add-labeled {
+  left: 7px;
+}
+
+.buttons {
+  margin-top: 3%;
+}
+
+.buttons::before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 60px;
+  margin: 0 auto 4%;
+  background-color: #6c43af;
+}
+
+.button {
+  height: 27px;
+  width: 70px;
+  font-family: "Open Sans", "Arial", "cursive";
+  color: var(--primary-text-color);
+  background-color: #6c43af;
+  border: none;
+}
+
+.button:hover {
+  background-color: #513284;
+}
+
+#table-plate {
+  position: relative;
+}
+
+.scroll-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  top: 54px;
+  width: 100%;
+  overflow-y: scroll;
+  border-radius: var(--default-borders-radius);
+}
+
+#result-table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+#result-table tr {
+  height: 2em;
+}
+
+#result-table tr:nth-child(2n-1) {
+  background-color: #2A2C3D;
+}
+
+.coords-col {
+  width: 12%;
+  font-weight: bold;
+  color: var(--primary-text-color);
+}
+
+.time-col {
+  width: 25%;
+  font-weight: bold;
+  color: var(--primary-text-color);
+}
+
+.hitres-col {
+  font-weight: bold;
+  color: var(--primary-text-color);
+}
+
+.left-aligned {
+  float: left;
+}
+
+.right-aligned {
+  float: right;
+}
+
+.hidded-input {
+  width: 7px !important;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: var(--primary-background-color);
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: var(--soft-borders-color);
+  outline: none;
+  color: var(--primary-text-color);
+}
