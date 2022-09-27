@@ -1,0 +1,14 @@
+image: generic-c
+
+stages:
+  - test
+
+test:
+  stage: test 
+  script:
+    - ./test.py
+  artifacts:
+    when: always
+    reports:
+      junit: report.xml
+
