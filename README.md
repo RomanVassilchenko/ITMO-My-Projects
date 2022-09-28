@@ -8,7 +8,7 @@
 
 * [ОПД](Year-1/Basics-of-professional-life)
 
-* [Дискретная математика](Year-1/Discrete-Math)
+* [Дискретная математика](Year-1/Discrete-math)
 
 * [История](Year-1/History)
 
@@ -22,12 +22,12 @@
 
 ### Курс 2
 
-* [Математика](Year2/Math)
+* [Математика](Year-2/Math)
 
-* [Современные инструменты анализа данных](Year2/ModernToolsofDataAnalysis)
+* [Современные инструменты анализа данных](Year-2/ModernToolsofDataAnalysis)
 
-* [Physics](Year2/Physics)
+* [Physics](Year-2/Physics)
 
-* [Языки программирования](Year2/ProgrammingLanguages)
+* [Языки программирования](Year-2/ProgrammingLanguages)
 
-* [Веб-Программирование](Year2/Web)
+* [Веб-Программирование](Year-2/Web)
