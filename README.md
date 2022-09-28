@@ -12,13 +12,13 @@
 
 * [История](Year-1/History)
 
-*[Информатика](Year-1/Informatics)
+* [Информатика](Year-1/Informatics)
 
-*[Филосифя](Year-1/Philosophy)
+* [Филосифя](Year-1/Philosophy)
 
-*[Физика](Year-1/Physics)
+* [Физика](Year-1/Physics)
 
-*[Программирование на Java](Year-1/Programming-Java)
+* [Программирование на Java](Year-1/Programming-Java)
 
 ### Курс 2
 
