@@ -1,0 +1,6 @@
+$ grep '^.$' test 
+$ grep '^[0-9]*&'
+$ grep '\s[a-z]\{3\}\s'
+$ grep '^$'
+
+grep -v
