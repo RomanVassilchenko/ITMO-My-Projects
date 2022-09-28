@@ -1479,16 +1479,6 @@ TSWLatexianTemp*
 # glossaries
 *.glstex
 
-### Text ###
-*.doc
-*.docx
-*.msg
-*.pages
-*.rtf
-*.txt
-*.wpd
-*.wps
-
 ### VisualStudioCode ###
 !.vscode/*.code-snippets
 
