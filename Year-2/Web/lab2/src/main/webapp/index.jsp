@@ -14,7 +14,7 @@
     <title>Web Lab #2</title>
 </head>
 
-<body onload="onLoad()">
+<body>
 <table id="main-grid">
     <tr>
         <!-- Header -->
@@ -44,9 +44,9 @@
             <div class="plate-top">
                 <%=(request.getAttribute("errorMessage") != null)
                         ?
-                        ("<h2 class=\"miss-text plate-top\">Table -> "+request.getAttribute("errorMessage")+"</h2>")
+                        ("<h2 id =\"error-Table\" class=\"miss-text plate-top\">Table -> "+request.getAttribute("errorMessage")+"</h2>")
                         :
-                        "<h2 class=\"plate-top-title\">Table</h2>"
+                        "<h2 id =\"error-Table\" class=\"plate-top-title\">Table</h2>"
                 %>
                 <h2 class="plate-top-title">Table</h2>
             </div>

@@ -45,7 +45,16 @@ const drawGraph=function() {
 
 };
 
-function onLoad(){
+document.addEventListener('DOMContentLoaded', function () {
+
+    var errorMessageText = document.getElementById("error-Table");
+    var url = window.location.pathname;
+    if(url !== '/lab2/')
+    {
+        window.history.replaceState({errorMessage:errorMessageText.innerText}, document.title, window.location.host + "/lab2/");
+    }
+
+    errorMessageText.innerText = history.state.errorMessage;
 
     const table = document.getElementById('result-table');
     var row = table.rows[ table.rows.length - 1 ];
@@ -68,10 +77,7 @@ function onLoad(){
     plot_context.closePath();
     console.log("plot finished");
 
-    var url = window.location.pathname;
-    if(url !== '/lab2/')
-        window.location.replace("/lab2/");
-}
+});
 
 function drawPoint(e) {
     const r = $('input[name="r"]:checked').val();
