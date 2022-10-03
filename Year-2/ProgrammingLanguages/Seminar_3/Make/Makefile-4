@@ -1,0 +1,6 @@
+ASM=nasm
+ASMFLAGS=-f elf64
+LD=ld
+
+%.o: %.asm
+	$(ASM) $(ASMFLAGS) -o $@ $<

@@ -1,0 +1,3 @@
+%line 2+1 d.asm
+
+mov rax, (rcx * 3 + 23) ; // d.asm:3: error: invalid operand type

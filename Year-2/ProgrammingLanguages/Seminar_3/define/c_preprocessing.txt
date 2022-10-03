@@ -1,0 +1,9 @@
+%line 2+1 c.asm
+
+
+
+mov rax, 1 * 3
+
+
+
+mov rax, 1 * 3

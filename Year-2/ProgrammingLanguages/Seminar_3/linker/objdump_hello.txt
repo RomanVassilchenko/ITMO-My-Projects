@@ -1,0 +1,9 @@
+
+hello.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+   0:	48 be 00 00 00 00 00 	movabs rsi,0x0
+   7:	00 00 00 

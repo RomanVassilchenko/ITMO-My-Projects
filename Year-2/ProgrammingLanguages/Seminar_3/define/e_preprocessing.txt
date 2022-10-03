@@ -1,0 +1,6 @@
+%line 6+1 e.asm
+
+db "hello"
+%line 7+0 e.asm
+db ","
+db " world"
