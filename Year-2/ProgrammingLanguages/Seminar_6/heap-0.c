@@ -32,19 +32,24 @@ bool block_id_is_valid(struct block_id bid) {
 /* find block */
 
 bool block_is_free(struct block_id bid) {
-  // ???
-  return false;
+    return bid.heap->is_occupied[bid.value];
 }
 
 /* allocate */
 /* find a free block, reserve it and return its id */
 struct block_id block_allocate(struct heap* heap) {
-  //???
+    for (size_t i = 0; i < heap_blocks; i++) {
+        if (!heap->is_occupied[i]) {
+            heap->is_occupied[i] = true;
+            return block_id_new(i, heap);
+        }
+    }
+    return block_id_invalid();
 }
 
 /* mark block as 'free' */
 void block_free(struct block_id b) {
-  //???
+    b.heap->is_occupied[b.value] = false;
 }
 
 /* printer */

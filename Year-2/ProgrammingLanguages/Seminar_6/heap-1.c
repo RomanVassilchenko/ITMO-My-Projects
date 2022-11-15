@@ -18,6 +18,7 @@ struct heap {
 } global_heap = {0};
 
 struct block_id {
+    size_t ind;
   size_t       value;
   bool         valid;
   struct heap* heap;
@@ -45,11 +46,52 @@ bool block_is_free(struct block_id bid) {
 /* Allocate */
 //? ? ?
 struct block_id block_allocate(struct heap* heap, size_t size) {
-  //???
+  if(size == 1){
+      for (size_t i = 0; i < HEAP_BLOCKS; i++) {
+          if (heap->status[i] == BLK_FREE) {
+              heap->status[i] = BLK_ONE;
+              struct block_id result = block_id_new(size, heap);
+              result.ind = i;
+              return result;
+          }
+      }
+  }
+  else{
+      size_t startInd = 0;
+      size_t currSize = 0;
+      for(size_t i = 0; i < HEAP_BLOCKS; i++){
+          if (heap->status[i] == BLK_FREE && currSize == 0){
+              startInd = i;
+              currSize = 1;
+          } else if(heap->status[i] == BLK_FREE){
+              currSize ++;
+              if(currSize == size){
+                  heap->status[startInd] = BLK_FIRST;
+                  heap->status[startInd + currSize - 1] = BLK_LAST;
+                  for(size_t j = startInd + 1; j < startInd + currSize - 1; j++){
+                      heap->status[j] = BLK_CONT;
+                  }
+                  struct block_id result = block_id_new(size, heap);
+                  result.ind = startInd;
+                  return result;
+              }
+          } else {
+              currSize = 0;
+          }
+      }
+  }
   return block_id_invalid();
 }
 /* Free */
-// ? ? ?
+
+void block_free(struct block_id b) {
+    b.heap->status[b.ind] = BLK_FREE;
+    if(b.value != 1){
+        for(size_t i = b.ind; i < b.ind + b.value; i++){
+            b.heap->status[i] = BLK_FREE;
+        }
+    }
+}
 
 /* Printer */
 const char* block_repr(struct block_id b) {
@@ -82,5 +124,11 @@ void heap_debug_info(struct heap* h, FILE* f) {
 
 int main() {
   heap_debug_info(&global_heap, stdout);
+    block_allocate(&global_heap,1);
+    block_allocate(&global_heap,4);
+    struct block_id bid = block_allocate(&global_heap,2);
+    heap_debug_info(&global_heap, stdout);
+    block_free(bid);
+    heap_debug_info(&global_heap, stdout);
   return 0;
 }

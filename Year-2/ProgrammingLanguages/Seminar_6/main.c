@@ -1,58 +1,97 @@
-/* main.c */
+//
+// Created by rossilman on 15.11.22.
+//
 
-#include <string.h>
+#include "vector.h"
 
-#include "ast.h"
-#include "ring.h"
-#include "tokenizer.h"
+/*
+ *
+ * $ gcc -Wall -Wextra -std=c17 -c vector.c
+ * $ gcc -Wall -Wextra -std=c17 -c main.c
+ * $ gcc vector.o main.o
+ * $ ./a.out
+ *
+ * Описание vector.h
+ * struct vector arr1 = vector_create(5);
+    struct vector* array = &(arr1);
+    Описываем таким образом, чтобы всегда иметь доступ к объекту, а не его ссылке
+ * */
 
-void ast_print(struct AST ast) { print_ast(stdout, &ast); }
-void token_print(struct token token) { printf("%s(%" PRId64 ")", TOKENS_STR[token.type], token.value); }
+int main() {
+    // Создание нового вектора размера 5
+    struct vector arr1 = vector_create(5);
+    struct vector* array = &(arr1);
 
-DECLARE_RING(ast, struct AST)
-DEFINE_RING(ast, struct AST)
-DEFINE_RING_PRINT(ast, ast_print)
-DEFINE_RING(token, struct token)
-DEFINE_RING_PRINT(token, token_print)
+    // Вывод Count & Capacity
+    vector_print_capacity(array);
+    vector_print_count(array);
 
-#define RETURN_ERROR(code, msg) return printf(msg), code
+    // Добавление 15 элементов в вектор
+    // Вектор несколько раз увеличит свой изначальный размер (2 раза)
+    for(size_t i = 0; i < 15; i++){
+        vector_setter(array, i, i * i);
+    }
 
-struct AST *build_ast(char *str)
-{
-  struct ring_token *tokens = NULL;
-  if ((tokens = tokenize(str)) == NULL)
-    RETURN_ERROR(NULL, "Tokenization error.\n");
+    // Вывод Count & Capacity
+    vector_print_capacity(array);
+    vector_print_count(array);
 
-  ring_token_print(tokens);
+    // Добавление в конец вектора новый элемент (Пункт 3)
+    vector_add_to_end(array,-5);
 
-  ring_token_free(&tokens);
+    // Вывод всех элементов массива
+    vector_print_all(array);
 
-  return NULL;
-}
+    // Вывод Count & Capacity
+    vector_print_capacity(array);
+    vector_print_count(array);
 
 
-int main()
-{
-  /* char *str = "1 + 2 * (2 - -3) + 8"; */
-  const int MAX_LEN = 1024;
-  char str[MAX_LEN];
-  if (fgets(str, MAX_LEN, stdin) == NULL)
-    RETURN_ERROR(0, "Input is empty.");
+    struct vector arr2 = vector_create(100);
+    struct vector* array2 = &arr2;
+    for(size_t i = 0; i < 10; i++){
+        vector_setter(array2, i, i - i*i);
+    }
 
-  if (str[strlen(str) - 1] == '\n')
-    str[strlen(str) - 1] = '\0';
+    // Вывод всех элементов массива
+    vector_print_all(array2);
 
-  struct AST *ast = build_ast(str);
+    // Добавление элементов массива 2 к массиву 1
+    vector_add_vector_to_end(array, array2);
 
-  if (ast == NULL)
-    printf("AST build error.\n");
-  else
-  {
-    print_ast(stdout, ast);
-    printf("\n\n%s = %" PRId64 "\n", str, calc_ast(ast));
-    p_print_ast(stdout, ast);
-    printf(" = %" PRId64 "\n", calc_ast(ast));    
-  }
+    // Вывод всех элементов массива
+    vector_print_all(array);
 
-  return 0;
+    // Вывод всех элементов массива
+    vector_print_all(array2);
+
+    // Вывод Count & Capacity
+    vector_print_capacity(array2);
+    vector_print_count(array2);
+
+    // Изменение capacity
+    vector_set_capacity(array2, 14);
+    vector_print_all(array2);
+
+    // Вывод Count & Capacity
+    vector_print_capacity(array2);
+    vector_print_count(array2);
+
+    // Изменение capacity
+    vector_set_capacity(array2, 3);
+    vector_print_all(array2);
+
+    // Вывод Count & Capacity
+    vector_print_capacity(array2);
+    vector_print_count(array2);
+
+    // Запись в файл 123.txt
+    FILE *fptr;
+    fptr = fopen("123.txt","w");
+    vector_print_to_file_array(array,fptr);
+
+    //Очистка значений
+    vector_free(array2);
+    vector_free(array);
+    return 0;
 }
