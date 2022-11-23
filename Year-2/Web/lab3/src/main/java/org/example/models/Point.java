@@ -34,7 +34,6 @@ public class Point implements Serializable {
     public void calc() {
         long now = System.nanoTime();
 
-        //TODO FIX VALIDATOR!!!
         if(x <= 0 && y >= 0 && x >= -r && y <= (x+r)/2.0) insideArea = true;
         else if (x >= 0 && y >= 0 && x <= r && y <= r/2.0) insideArea = true;
         else insideArea = x >= 0 && y <= 0 && y <= Math.sqrt(r * r - x * x);

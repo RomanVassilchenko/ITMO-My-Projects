@@ -1,7 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&family=Source+Sans+Pro:wght@600&display=swap');
+@font-face{
+    font-family: 'JetBrainsMono';
+    src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/ttf/JetBrainsMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --bg: #282828;
+    --fg: #ebdbb2;
+    --red: #cc241d;
+    --green: #98971a;
+    --red-light: #fb4934;
+    --green-light: #b8bb26;
+    --bg-0-h: #32302f;
+    --fg-3:#bdae93;
+}
+
 html {
-    color: #AEC1BB;
-    background: #3A213F;
+    color: var(--fg);
+    background: var(--bg);
     font-family: 'Jost', sans-serif;
     font-weight: normal;
     font-size: 20px;
@@ -10,8 +30,8 @@ html {
     text-align: center;
 }
 .invert-colors {
-    background: #AEC1BB;
-    color: #3A213F;
+    background: var(--fg) !important;
+    color: var(--bg) !important;
 }
 .box-visual, .indent-box {
     padding: 43px;
@@ -19,7 +39,7 @@ html {
 }
 .indent-box {
     margin: 43px;
-    background-color: #241228;
+    background-color: var(--bg-0-h);
 }
 .box-visual, .main-structure-table {
     width: 100%;
@@ -27,6 +47,7 @@ html {
 .text-input {
     width: 80%;
 }
+
 .main-structure-table {
     display: block;
 }
@@ -59,12 +80,17 @@ select {
     appearance: none;
 }
 .text-input:hover, .text-input:focus, button:hover, .btn:hover {
-    background-color: white;
+    background-color: var(--fg-3);
     box-shadow: 10px 10px 5px 5px rgba(34, 16, 38, 0.25);
 }
 .reset-colors:hover {
-    background-color: #e8b3b3;
+    background-color: var(--red-light);
 }
+
+.confirm-colors:hover {
+    background-color: var(--green-light);
+}
+
 .text-input, .logo, .box-visual, button, hr, .btn {
     box-shadow: 5px 5px 5px 5px rgba(34, 16, 38, 0.25);
 }
@@ -79,12 +105,12 @@ select {
     margin: 25px;
 }
 .confirm-colors {
-    color: #3A213F;
-    background-color: mediumspringgreen;
+    color: var(--bg);
+    background-color: var(--green);
 }
 .reset-colors {
-    color: #3A213F;
-    background-color: palevioletred;
+    color: var(--bg);
+    background-color: var(--red);
 }
 .content {
     max-width: 1200px;
@@ -101,11 +127,11 @@ button, .btn {
     width: 100%;
     text-align: center;
     border-radius: 20px;
-    background-color: #3A213F;
+    background-color: var(--bg);
     padding: 10px;
 }
 .incorrect-input-notif {
-    color: palevioletred;
+    color: var(--red);
 }
 
 .clock, .clock-date {
@@ -126,30 +152,30 @@ button, .btn {
 }
 
 body .ui-radiobutton .ui-radiobutton-box.ui-state-active {
-    border-color: mediumspringgreen;
-    background: mediumspringgreen;
+    border-color: var(--green);
+    background: var(--green);
 }
 
 body .ui-radiobutton .ui-radiobutton-box.ui-state-focus {
-    box-shadow: 0 0 0 0.2em mediumspringgreen;
+    box-shadow: 0 0 0 0.2em var(--green);
 }
 
 body .ui-radiobutton .ui-radiobutton-box.ui-state-hover {
-    border-color: mediumspringgreen;
-    background: mediumspringgreen;
+    border-color: var(--green);
+    background: var(--green);
 }
 
 body .ui-radiobutton .ui-radiobutton-box {
-    border: 3px solid #3a213f;
-    background: #aec1bb;
+    border: 3px solid var(--bg);
+    background: var(--fg);
 }
 
 body .ui-radiobutton .ui-radiobutton-box.ui-state-active .ui-icon-bullet {
-    background: #3a213f;
+    background: var(--bg);
 }
 
 body .ui-radiobutton .ui-radiobutton-box.ui-state-active.ui-state-hover {
-    background: #3a213f;
+    background: var(--bg);
 }
 
 .cmdlink {
@@ -157,9 +183,9 @@ body .ui-radiobutton .ui-radiobutton-box.ui-state-active.ui-state-hover {
 }
 
 .cmdlink:link, .cmdlink:visited, .cmdlink:hover {
-    color: #3a213f;
+    color: var(--bg);
 }
 
 .cmdlink:active {
-    color: palevioletred;
+    color: var(--red);
 }

@@ -15,7 +15,7 @@
 
         <link rel="stylesheet" href="style/style.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-        <script src="script/jquery-3.6.0.min.js" type="application/javascript"></script>
+        <script src="script/jquery-3.6.0.min.js" type="application/javascript"/>
     </h:head>
     <h:body>
         <div class="content">
@@ -31,7 +31,7 @@
                             <div class="X_select">
                                 <p class="prompt-text">Введите X (-5 ... 5):</p>
                                 <div>
-                                        <p:spinner id="spn_x" min="-5" max="5" value="#{calculatorBean.x}" stepFactor="1">
+                                        <p:spinner id="spn_x" min="-5" max="5" styleClass="text-input invert-colors" value="#{calculatorBean.x}" stepFactor="1">
                                             <f:validateRequired/>
                                             <f:validateDoubleRange minimum="-5" maximum="5"/>
                                         </p:spinner>
@@ -52,12 +52,13 @@
                             </div>
                             <div class="R_select" id="click_catcher2">
                                 <p class="prompt-text">Введите R:</p>
-                                <h:selectOneMenu id="options" value="#{calculatorBean.r}" layout="grid" columns="3" style="
+                                <h:selectOneMenu id="options" value="#{calculatorBean.r}" class="text-input invert-colors" style="
                                     font-family: 'Jost', sans-serif;
                                     font-weight: normal;
                                     font-size: 20px;
                                     text-align: center;
-                                    width: 180px;
+                                    width: 240px;
+                                    height: 50px;
                                 ">
                                     <f:selectItem itemValue = "1.0" itemLabel = "1" />
                                     <f:selectItem itemValue = "2.0" itemLabel = "2" />
@@ -115,7 +116,7 @@
                 </tbody>
             </table>
         </div>
-        <script type="text/javascript" src="script/script.js"></script>
+        <script type="text/javascript" src="script/script.js"/>
         <script type="text/javascript"> redrawFigure(#{calculatorBean.r}); </script>
         <ui:repeat value="#{calculatorBean.bigList}" var="i">
             <script type="text/javascript"> drawDot("#{i.x}", "#{i.y}", #{i.insideArea}); </script>
