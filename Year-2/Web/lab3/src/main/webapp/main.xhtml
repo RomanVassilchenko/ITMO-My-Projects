@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
+    <h:head>
+        <title>Лаба3</title>
+
+        <meta name="msapplication-TileColor" content="#da532c"/>
+        <meta name="theme-color" content="#ffffff"/>
+
+        <link rel="stylesheet" href="style/style.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <script src="script/jquery-3.6.0.min.js" type="application/javascript"></script>
+    </h:head>
+    <h:body>
+        <div class="content">
+            <table class="main-structure-table">
+                <tbody>
+                <tr>
+                    <td class="control-panel">
+                        <h:button type="button" class="btn confirm-colors material-icons" outcome="toIndex" value="arrow_back_ios_new"/>
+                        <div id="click_catcher">
+                            <ui:include src="assets/graph.svg"/>
+                        </div>
+                        <h:form>
+                            <div class="X_select">
+                                <p class="prompt-text">Введите X (-5 ... 5):</p>
+                                <div>
+                                        <p:spinner id="spn_x" min="-5" max="5" value="#{calculatorBean.x}" stepFactor="1">
+                                            <f:validateRequired/>
+                                            <f:validateDoubleRange minimum="-5" maximum="5"/>
+                                        </p:spinner>
+                                </div>
+                            </div>
+                            <div class="Y_select">
+                                <p class="prompt-text">Введите Y (-5 ... 5):</p>
+                                <div>
+                                    <h:inputText id="tbx_y" class="text-input invert-colors" value="#{calculatorBean.y}">
+                                        <f:validateRequired/>
+                                        <f:validateDoubleRange minimum="-5" maximum="5"/>
+                                    </h:inputText>
+                                </div>
+                                <br/>
+                                (точность ограничена до
+                                <br/>
+                                +- 0.001)
+                            </div>
+                            <div class="R_select" id="click_catcher2">
+                                <p class="prompt-text">Введите R:</p>
+                                <h:selectOneMenu id="options" value="#{calculatorBean.r}" layout="grid" columns="3" style="
+                                    font-family: 'Jost', sans-serif;
+                                    font-weight: normal;
+                                    font-size: 20px;
+                                    text-align: center;
+                                    width: 180px;
+                                ">
+                                    <f:selectItem itemValue = "1.0" itemLabel = "1" />
+                                    <f:selectItem itemValue = "2.0" itemLabel = "2" />
+                                    <f:selectItem itemValue = "3.0" itemLabel = "3" />
+                                    <f:selectItem itemValue = "4.0" itemLabel = "4" />
+                                    <f:selectItem itemValue = "5.0" itemLabel = "5" />
+                                    <f:validateRequired/>
+                                    <f:validateDoubleRange minimum="1" maximum="5"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <br/> <br/>
+                            <h:commandButton class="btn confirm-colors material-icons"
+                                             id="btn_cfrm" value="send" action="#{calculatorBean.calc()}"
+                            />
+                            <h:commandButton class="btn reset-colors material-icons"
+                                             id="btn_rst" value="backspace" action="#{calculatorBean.reset()}"
+                            />
+                        </h:form>
+                        <h:form id="hidden-form">
+                            <h:inputHidden value="#{calculatorBean.x}" id = "graph-x"/>
+                            <h:inputHidden value="#{calculatorBean.y}" id = "graph-y"/>
+                            <h:inputHidden value="#{calculatorBean.r}" id = "graph-r"/>
+                            <h:commandButton id="graph-send" action="#{calculatorBean.calc()}" style="opacity: 0"/>
+                        </h:form>
+                    </td>
+                    <td class="indent-box">
+                        <h:dataTable class="result-table" id="result" var="res" value="#{calculatorBean.bigList}">
+                            <h:column>
+                                <f:facet name="header">X</f:facet>
+                                #{res.x}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Y</f:facet>
+                                #{res.y}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">R</f:facet>
+                                #{res.r}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Входит?</f:facet>
+                                #{res.insideArea? "Да" : "Нет"}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Время</f:facet>
+                                #{res.timestamp}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Выполнение</f:facet>
+                                #{res.executionTime} нс
+                            </h:column>
+                        </h:dataTable>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <script type="text/javascript" src="script/script.js"></script>
+        <script type="text/javascript"> redrawFigure(#{calculatorBean.r}); </script>
+        <ui:repeat value="#{calculatorBean.bigList}" var="i">
+            <script type="text/javascript"> drawDot("#{i.x}", "#{i.y}", #{i.insideArea}); </script>
+        </ui:repeat>
+    </h:body>
+</f:view>
+</html>

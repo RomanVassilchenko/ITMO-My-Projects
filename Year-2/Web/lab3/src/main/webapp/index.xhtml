@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+    <title>Лаба3</title>
+
+    <meta name="msapplication-TileColor" content="#da532c"/>
+    <meta name="theme-color" content="#ffffff"/>
+
+    <link rel="stylesheet" href="style/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+</head>
+<body>
+<div class="content">
+    <table class="main-structure-table">
+        <tbody>
+        <tr>
+            <td colspan="2">
+                <h1 class="clock" id="clock-time"> </h1>
+                <h3 class="clock-date" id="clock-date"> </h3>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="assets/axo.gif" width="300" class="logo shadow" alt="logo"/>
+            </td>
+            <td style="width: 100%">
+                <div class="invert-colors box-visual shadow">
+                    <h1 class="main-title">Web Programming Sem 3: Lab №3</h1>
+                    <h3>Васильченко Роман, P32081, вариант 5932</h3>
+                </div>
+                <br />
+                <h:button type="button" id="start-button" class="btn confirm-colors material-icons"
+                        outcome="toMain" value="play_arrow"/>
+                <button type="button" class="invert-colors material-icons"
+                        onclick="updateClock()">update</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript" src="script/clock.js"></script>
+</body>
+</html>
