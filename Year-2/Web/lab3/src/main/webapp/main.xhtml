@@ -31,7 +31,7 @@
                             <div class="X_select">
                                 <p class="prompt-text">Введите X (-5 ... 5):</p>
                                 <div>
-                                        <p:spinner id="spn_x" min="-5" max="5" styleClass="text-input invert-colors" value="#{calculatorBean.x}" stepFactor="1">
+                                        <p:spinner id="spn_x" min="-5" max="5" styleClass="spinner text-input invert-colors" value="#{calculatorBean.x}" stepFactor="1">
                                             <f:validateRequired/>
                                             <f:validateDoubleRange minimum="-5" maximum="5"/>
                                         </p:spinner>
