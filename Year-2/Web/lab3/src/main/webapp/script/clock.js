@@ -11,7 +11,7 @@ function updateClock() {
 
     document.getElementById("clock-time").innerText = time;
     document.getElementById("clock-date").innerText = date;
-    setTimeout(updateClock, 13000);
+    setTimeout(updateClock, 7000);
 }
 
 
