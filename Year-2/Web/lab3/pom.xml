@@ -11,22 +11,21 @@
         javaee 6, in that order.</description>
     <url>http://jsf-spec.java.net/</url>
     <build>
-        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+            </plugin>
+            <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                  <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
     <properties>
@@ -69,7 +68,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.3.1</version>
+            <version>42.5.0</version>
         </dependency>
         <dependency>
             <groupId>javax.annotation</groupId>
