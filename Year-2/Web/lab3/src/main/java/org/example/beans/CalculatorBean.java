@@ -25,7 +25,7 @@ public class CalculatorBean implements Serializable {
         x = 0;
         y = 0;
         r = 3;
-        dbCommunicator = new DBCommunicator();
+        dbCommunicator = DBCommunicator.getInstance();
         bigList = dbCommunicator.getAll();
         if (bigList == null) {
             bigList = new ArrayList<>();

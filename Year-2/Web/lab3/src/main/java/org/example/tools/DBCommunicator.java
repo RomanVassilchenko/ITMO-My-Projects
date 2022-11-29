@@ -8,6 +8,23 @@ import java.util.ArrayList;
 
 public class DBCommunicator implements Serializable {
 
+    private static volatile DBCommunicator instance;
+
+    public static DBCommunicator getInstance() {
+        DBCommunicator localInstance = instance;
+        if (localInstance == null) {
+            synchronized (DBCommunicator.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new DBCommunicator();
+                }
+            }
+        }
+        return localInstance;
+    }
+
+
+
     private EntityManagerFactory managerFactory;
     @PersistenceContext
     private EntityManager manager;
