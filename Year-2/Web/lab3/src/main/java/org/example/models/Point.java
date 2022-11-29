@@ -33,10 +33,9 @@ public class Point implements Serializable {
 
     public void calc() {
         long now = System.nanoTime();
-
-        if(x <= 0 && y >= 0 && x >= -r && y <= (x+r)/2.0) insideArea = true;
-        else if (x >= 0 && y >= 0 && x <= r && y <= r/2.0) insideArea = true;
-        else insideArea = x >= 0 && y <= 0 && y <= Math.sqrt(r * r - x * x);
+        insideArea = (x <= 0 && y >= 0 && x >= -r && y <= (x+r)/2.0) ||
+                     (x >= 0 && y >= 0 && x <= r && y <= r/2.0) ||
+                     (x >= 0 && y <= 0 && (Math.pow(x,2) + Math.pow(y,2) <= Math.pow(r/2,2)));
 
         timestamp = new Date(System.currentTimeMillis());
         executionTime = System.nanoTime() - now;
