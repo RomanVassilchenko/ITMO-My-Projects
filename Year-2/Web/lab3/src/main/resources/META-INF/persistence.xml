@@ -8,9 +8,20 @@
         <class>org.example.models.Point</class>
         <properties>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="hibernate.show_sql" value="true"/> <!-- Show SQL in console -->
+            <property name="hibernate.format_sql" value="true"/> <!-- Show SQL formatted -->
+
+<!--            local-->
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/postgres"/>
-            <property name="hibernate.connection.password" value="postgrespw"/>
-            <property name="hibernate.connection.username" value="postgres"/>
+            <property name="hibernate.connection.password" value=""/> <!--TODO Add password-->
+            <property name="hibernate.connection.username" value=""/><!--TODO Add username-->
+
+            <!-- helios -->
+<!--                        <property name="javax.persistence.jdbc.user" value=""/>--> <!--TODO Add username-->
+<!--                        <property name="javax.persistence.jdbc.password" value=""/>--> <!--TODO Add password-->
+<!--                        <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://pg:5432/studs"/>-->
+
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/>
             <property name="show_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="create"/>
