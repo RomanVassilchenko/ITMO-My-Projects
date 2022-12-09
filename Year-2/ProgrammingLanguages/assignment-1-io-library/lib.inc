@@ -1,9 +1,14 @@
 section .text
- 
+
+%define EXIT_SYSCALL 60
+%define SPACE_SYMBOL 0x20
+%define TAB_SYMBOL 0x9
+%define NEWLINE_SYMBOL 0xA 
+%define NULL_TERMINATOR_SYMBOL 0x0
  
 ; Принимает код возврата и завершает текущий процесс
 exit:
-    mov rax, 60
+    mov rax, EXIT_SYSCALL
     syscall
     ret 
 
@@ -11,22 +16,28 @@ exit:
 string_length:
     xor rax, rax
     .loop:
-        cmp byte [rdi + rax], 0 ; Сравниваем элемент [rdi + rax] с 0x0
-        je .return              ; Если равна нуль-терминатору, то выход
-        inc rax                 ; Иначе увеличиваем rax (количество символов)
+        cmp byte [rdi + rax], NULL_TERMINATOR_SYMBOL ; Сравниваем элемент [rdi + rax] с NULL_TERMINATOR_SYMBOL
+        je .return                                   ; Если равна нуль-терминатору, то выход
+        inc rax                                      ; Иначе увеличиваем rax (количество символов)
         jmp .loop
     .return:
         ret
 
 ; Принимает указатель на нуль-терминированную строку, выводит её в stdout
 print_string:
+    push rdi
     call string_length      ; Получаем длину переданной строки -> rax
     mov rdx, rax            ; Переносим длину строки из rax в rdx
     mov rsi, rdi            ; Переносим строку в rsi
     mov rdi, 1
     mov rax, 1
-    syscall 
+    syscall
+    pop rdi 
     ret
+
+; Переводит строку (выводит символ с NEWLINE_SYMBOL)
+print_newline:
+    mov rdi, NEWLINE_SYMBOL
 
 ; Принимает код символа и выводит его в stdout
 print_char:
@@ -39,18 +50,23 @@ print_char:
     pop rdi             ; Сдвигаем стек обратно
     ret
 
-; Переводит строку (выводит символ с кодом 0xA)
-print_newline:
-    mov rdi, 10
-    ret
+; Выводит знаковое 8-байтовое число в десятичном формате 
+print_int:
+    cmp rdi, NULL_TERMINATOR_SYMBOL          ; Сравниваем число с 0
+	jnl print_uint                           ; Если число >= 0, то print_uint
+	push rdi                                 ; Сохраняем rdi в стек
+	mov rdi, '-'                             ; Закидываем в стек символ минуса
+	call print_char                          ; Выводим его через print_char
+	pop rdi                                  ; Возвращаем обратно прошлое значение rdi
+	neg rdi                                  ; rdi = rdi * (-1)
 
 ; Выводит беззнаковое 8-байтовое число в десятичном формате 
 ; Совет: выделите место в стеке и храните там результаты деления
 ; Не забудьте перевести цифры в их ASCII коды.
 print_uint:
-    mov rdx, rdi        ; Перенос строки -> rdx
-	xor rcx, rcx		; Счетчик числа / Длина строка
-    push 0         		; 0-терминатор для будущего числа
+    mov rdx, rdi                                ; Перенос строки -> rdx
+	xor rcx, rcx		                        ; Счетчик числа / Длина строка
+    push NULL_TERMINATOR_SYMBOL         		; 0-терминатор для будущего числа
     .loop:	       
         dec rsp		    ; Уменьшаем стек на 1
 	    inc rcx         ; Увеличиваем rcx на 1
@@ -74,34 +90,25 @@ print_uint:
 	ret	      
 
 
-; Выводит знаковое 8-байтовое число в десятичном формате 
-print_int:
-    cmp rdi, 0          ; Сравниваем число с 0
-	jnl print_uint      ; Если число >= 0, то print_uint
-	push rdi            ; Сохраняем rdi в стек
-	mov rdi, '-'        ; Закидываем в стек символ минуса
-	call print_char     ; Выводим его через print_char
-	pop rdi             ; Возвращаем обратно прошлое значение rdi
-	neg rdi             ; rdi = rdi * (-1)
-	jmp print_uint      ; Выводим число, как uint
-
-
 ; Принимает два указателя на нуль-терминированные строки, возвращает 1 если они равны, 0 иначе
 string_equals:
-	xor rax, rax                    ; Обнуляем счетчик по строке 
-	.loop:				;сравниваю поэлементно строки, конец - совпадение терминаторов
-	    mov dl, byte [rsi+rax]      ; Закидываем в dl [rsi+rax]
-	    cmp byte [rdi+rax], dl      ; Сравниваем dl с второй строкой [dri + rax]
-	    jne .false                  ; Если они не равны, то 0
-        cmp byte [rdi+rax], 0       ; Если равны и равны нуль-терминатору, то выход с 1
+    push rbx
+	xor rax, rax                                         ; Обнуляем счетчик по строке 
+	.loop:				                                 ;сравниваю поэлементно строки, конец - совпадение терминаторов
+	    mov dl, byte [rsi+rax]                           ; Закидываем в dl [rsi+rax]
+	    cmp byte [rdi+rax], dl                           ; Сравниваем dl с второй строкой [dri + rax]
+	    jne .false                                       ; Если они не равны, то 0
+        cmp byte [rdi+rax], NULL_TERMINATOR_SYMBOL       ; Если равны и равны нуль-терминатору, то выход с 1
 	    je .true
-	    inc rax                     ; Если равны, но не нуль-терминатор, то увеличиваем счетчик rax на 1
-	    jmp .loop                   ; И повторяем снова
+	    inc rax                                          ; Если равны, но не нуль-терминатор, то увеличиваем счетчик rax на 1
+	    jmp .loop                                        ; И повторяем снова
 	.false:
         xor rax, rax
+        pop rbx
 	    ret
     .true:
 	    mov rax, 1
+        pop rbx
 	    ret	
 
 
@@ -111,8 +118,8 @@ read_char:
     push rax
     mov rsi, rsp
     mov rdx, 1
-    mov rdi, 0
-    mov rax, 0
+    xor rdi, rdi
+    xor rax, rax
     syscall
     pop rax
     ret 
@@ -126,51 +133,51 @@ read_char:
 ; Эта функция должна дописывать к слову нуль-терминатор
 
 read_word:
-    push rdi                        ; Сохранение rdi
-    push r12                        ; Сохранение r12
-    mov r12, rdi                    ; Перенос адрес начала буфера -> r12
-    push r13                        ; Сохранение r13
-    mov r13, rsi                    ; Перенос размера буфера -> r13
+    push rdi                            ; Сохранение rdi
+    push r12                            ; Сохранение r12
+    mov r12, rdi                        ; Перенос адрес начала буфера -> r12
+    push r13                            ; Сохранение r13
+    mov r13, rsi                        ; Перенос размера буфера -> r13
     .loop_white_spaces:
-        call read_char              ; Прочитать символ -> rax
-        cmp rax, 0x20               ; Проверка на пробел (0x20)
-        je .loop_white_spaces       ;
-        cmp rax, 0x09               ; Проверка на таб (0x9)
-        je .loop_white_spaces       ;
-        cmp rax, 0xA                ; Проверка на перенос строки (0xA)
-        je .loop_white_spaces       ;
+        call read_char                  ; Прочитать символ -> rax
+        cmp rax, SPACE_SYMBOL           ; Проверка на пробел
+        je .loop_white_spaces           ;
+        cmp rax, TAB_SYMBOL             ; Проверка на таб
+        je .loop_white_spaces           ;
+        cmp rax, NEWLINE_SYMBOL         ; Проверка на перенос строки
+        je .loop_white_spaces           ;
     .loop:
-        cmp rax, 0x0                ; Если нуль-терминатор -> success
+        cmp rax, NULL_TERMINATOR_SYMBOL ; Если нуль-терминатор -> success
         je .success
-        cmp rax, 0x20               ; Если пробел -> success
+        cmp rax, SPACE_SYMBOL           ; Если пробел -> success
         je .success
-        cmp rax, 0x9                ; Если таб -> success
+        cmp rax, TAB_SYMBOL             ; Если таб -> success
         je .success
-        cmp rax, 0xA                ; Если перенос строки -> success
+        cmp rax, NEWLINE_SYMBOL         ; Если перенос строки -> success
         je .success
-        dec r13                     ; Уменьшаем размер
-        cmp r13, 0                  ; Сравниваем с нулем
-        jbe .overflow               ; Если <= (вышли за размер) -> overflow
-        mov byte [r12], al          ; Закидываем в [r12] -> al
-        inc r12                     ; Увеличение r12 на 1
-        call read_char              ; Чтение символа
+        dec r13                         ; Уменьшаем размер
+        cmp r13, 0                      ; Сравниваем с нулем
+        jbe .overflow                   ; Если <= (вышли за размер) -> overflow
+        mov byte [r12], al              ; Закидываем в [r12] -> al
+        inc r12                         ; Увеличение r12 на 1
+        call read_char                  ; Чтение символа
         jmp .loop
         
     .success:
-        mov byte [r12], 0           ; Закидываем в [r12] нуль-терминатор
-        pop r12                     ; Возврат сохраненного r12
-        pop r13                     ; Возврат сохраненного r13
-        mov rdi, [rsp]              ; Закидываем в rdi значение из rsp
-        call string_length          ; Длина строки -> rax
-        mov rdx, rax                ; Перенос длины строки -> rdx
-        pop rax                     ; Перенос сохраненного rdi -> rax
+        mov byte [r12], NULL_TERMINATOR_SYMBOL           ; Закидываем в [r12] нуль-терминатор
+        pop r12                                          ; Возврат сохраненного r12
+        pop r13                                          ; Возврат сохраненного r13
+        mov rdi, [rsp]                                   ; Закидываем в rdi значение из rsp
+        call string_length                               ; Длина строки -> rax
+        mov rdx, rax                                     ; Перенос длины строки -> rdx
+        pop rax                                          ; Перенос сохраненного rdi -> rax
         ret
 
     .overflow:
         pop r12                     ; Возврат сохраненного r12
         pop r13                     ; Возврат сохраненного r13
         pop rdi                     ; Возврат сохраненного rdi
-        mov rax, 0                  ; При overflow в rax закидывают 0
+        xor rax, rax                ; При overflow в rax закидывают 0
         ret
  
 
