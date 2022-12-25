@@ -3,6 +3,8 @@
 
 #include "../include/image.h"
 
-struct image image_rotate_90deg_left(const struct image input);
+typedef struct image(image_transformer)(struct image input);
+
+image_transformer image_rotate_90deg_left;
 
 #endif
