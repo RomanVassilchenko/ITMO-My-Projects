@@ -1,0 +1,38 @@
+.form {
+    grid-template-columns: 20px 1fr;
+}
+
+.main__table-block {
+    width: 100%;
+    padding: 20px 0;
+}
+
+table.main__table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+table.main__table tr {
+    box-shadow: 0 0 1px 0 #bbb;
+}
+
+table.main__table th {
+    padding: 0.6rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+table.main__table td {
+    padding: 5px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.hit {
+    color: var(--mygreen)
+}
+
+.miss {
+    color: var(--myred)
+}

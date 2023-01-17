@@ -1,0 +1,20 @@
+.footer {
+    background: var(--myblack);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__text {
+    text-align: center;
+}
+
+.footer__text a {
+    color: #fff;
+}
+
+.footer__title {
+    text-transform: uppercase;
+    font-family: "RussoOne", sans-serif;
+    font-size: 1.25rem;
+}
