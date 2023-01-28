@@ -57,8 +57,6 @@ public class TokenFilter implements ContainerRequestFilter {
 
     private Optional<String> getTokenFromContext(@NotNull ContainerRequestContext containerRequestContext) {
         String authHeaderString = containerRequestContext.getHeaderString(AUTHORIZATION);
-//        return authHeaderString == null ?
-//                Optional.empty() : Optional.of(authHeaderString.substring(AUTHENTICATION_SCHEME.length()).trim());
         return authHeaderString == null ?
                 Optional.empty() : Optional.of(authHeaderString.trim());
     }

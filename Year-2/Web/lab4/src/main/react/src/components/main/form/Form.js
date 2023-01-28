@@ -12,16 +12,9 @@ function Form() {
     const dispatch = useDispatch();
     const {x, y, r} = useSelector(state => state.xyrValues);
     const TOKEN = useSelector(state => state.token);
+    const [yVal, setYVal] = useState(0);
 
     const isSubmitAvailable = () => (x.validity && y.validity && r.validity);
-
-    function validateInput(inputField) {
-        const validityResult = validateTextInput(inputField);
-
-        dispatch(updateValues({
-            [inputField.name]: {value: parseFloat(inputField.value), validity: validityResult}
-        }));
-    }
 
     function validateListBoxItem(listBox) {
         dispatch(updateValues({
@@ -30,9 +23,12 @@ function Form() {
     }
 
     function validateSliderItem(slider) {
-        setValue(slider.valueAsNumber);
+        let valAsNumber = slider.valueAsNumber.toFixed(3);
+        let val = parseFloat(slider.value).toFixed(3);
+        setValue(valAsNumber);
+        setYVal(valAsNumber);
         dispatch(updateValues({
-            [slider.name]: {value: parseFloat(slider.value), validity: true}
+            [slider.name]: {value: val, validity: true}
         }))
     }
 
@@ -91,7 +87,7 @@ function Form() {
                          onInput={event => validateListBoxItem(event.target)}/>
             </div>
 
-            <label className="form__label">Y</label>
+            <label className="form__label">Y: </label>
             <div className="form__row">
                 <input name="y"
                        required className="form__number-input"
@@ -99,6 +95,7 @@ function Form() {
                        placeholder="Введите значение [-5 ... 5]"
                        value={value}
                        onInput={event => validateSliderItem(event.target)}/>
+                <h4>{yVal}</h4>
             </div>
 
             <label className="form__label">R</label>
