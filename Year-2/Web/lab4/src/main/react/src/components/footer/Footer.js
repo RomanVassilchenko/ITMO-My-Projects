@@ -8,7 +8,7 @@ function Footer() {
         <footer className="footer">
             <div className="container">
                 <div className="footer__text">
-                    <a className="footer__title" href="#">© 2023 / ИТМО ВТ</a>
+                    <a className="footer__title" href="#">© 2023 / RomanVassilchenko | ITMOProjects</a>
                 </div>
             </div>
         </footer>
