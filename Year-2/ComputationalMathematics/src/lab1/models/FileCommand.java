@@ -1,6 +1,6 @@
 package lab1.models;
 
-import lab1.MathModuleLab1;
+import lab1.SimpleIterationMethod;
 import models.ICommand;
 
 import java.io.BufferedReader;
@@ -32,7 +32,7 @@ public class FileCommand implements ICommand {
             }
             catch (Exception ignored){ }
         }
-        MathModuleLab1.execute(matrix, eps);
+        SimpleIterationMethod.execute(matrix, eps);
     }
 
     public Matrix readMatrixFromFile(String fileName) {

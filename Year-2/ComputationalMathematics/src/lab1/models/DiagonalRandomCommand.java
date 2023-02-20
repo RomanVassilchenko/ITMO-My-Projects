@@ -1,7 +1,7 @@
 package lab1.models;
 import models.ICommand;
 import java.util.Scanner;
-import lab1.MathModuleLab1;
+import lab1.SimpleIterationMethod;
 
 public class DiagonalRandomCommand implements ICommand {
     private final Scanner scanner = new Scanner(System.in);
@@ -29,8 +29,8 @@ public class DiagonalRandomCommand implements ICommand {
         Matrix matrix;
         do {
             matrix = createRandomMatrix(size);
-        } while (!MathModuleLab1.checkDiagonal(matrix.getMatrix(), size));
-        MathModuleLab1.execute(matrix, eps);
+        } while (!SimpleIterationMethod.checkDiagonal(matrix.getMatrix(), size));
+        SimpleIterationMethod.execute(matrix, eps);
     }
 
     public Matrix createRandomMatrix(int size) {

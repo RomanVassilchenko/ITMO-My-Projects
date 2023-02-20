@@ -1,7 +1,7 @@
 package lab1.models;
 import models.ICommand;
 import java.util.Scanner;
-import lab1.MathModuleLab1;
+import lab1.SimpleIterationMethod;
 
 public class ConsoleCommand implements ICommand {
     private final Scanner scanner = new Scanner(System.in);
@@ -24,7 +24,7 @@ public class ConsoleCommand implements ICommand {
             }
             catch (Exception ignored){ }
         }
-        MathModuleLab1.execute(matrix, eps);
+        SimpleIterationMethod.execute(matrix, eps);
     }
 
     public Matrix createMatrixFromKeyBoard(){

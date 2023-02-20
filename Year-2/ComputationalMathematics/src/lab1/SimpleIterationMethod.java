@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import static java.lang.Math.abs;
 
-public class MathModuleLab1 {
+public class SimpleIterationMethod {
     private static final PrintUtil pr = new PrintUtil();
     private static double[][] val;
     public static void execute(Matrix matrix, double eps){
