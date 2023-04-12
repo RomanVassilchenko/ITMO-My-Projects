@@ -40,3 +40,11 @@
 * [Языки программирования](Year-2/ProgrammingLanguages)
 
 * [Веб-Программирование](Year-2/Web)
+
+* [Вычислительная математика](Year-2/ComputationalMathematics)
+
+* [Встроенные системы](Year-2/EmbeddedSystems)
+
+* [БЖД](Year-2/LifeSafety)
+
+* [МиСПИ](Year-2/MethodsAndMeansOfSoftwareEngineering)
