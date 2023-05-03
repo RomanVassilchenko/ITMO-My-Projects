@@ -1,0 +1,19 @@
+#graph-svg {
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.paint {
+    fill: #8e7062;
+}
+
+.paint:hover {
+    fill-opacity: 0.5;
+}
+
+.graph-base {
+    stroke: #5b504f;
+    fill: #5b504f;
+}

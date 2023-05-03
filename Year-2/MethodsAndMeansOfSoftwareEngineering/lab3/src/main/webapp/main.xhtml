@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<ui:composition template="templates/page.xhtml">
+    <ui:define name="header">
+        <h:outputScript library="js" name="main.js"/>
+        <h:outputStylesheet library="css" name="main.css" target="head"/>
+        <h:outputStylesheet library="css" name="graph.css" target="head"/>
+        <h:outputScript library="js" name="moment.js"/>
+    </ui:define>
+    <ui:define name="link">
+        <h:link value="Go to the index page" outcome="moveBack"></h:link>
+    </ui:define>
+    <ui:define name="tabled-content">
+        <script type="text/javascript">
+            function validateDate() {
+                let valid = moment($("#input-form\\:date").val(), 'DD/MM/YYYY', true).isValid();
+                if (valid)
+                    return true;
+                else {
+                    $("#error-info").text("Date format must be DD/MM/YYYY!");
+                    return false;
+                }
+            }
+        </script>
+        <tr class="main-content">
+            <td width="50%" id="graph-cell" class="graph">
+                <ui:include src="templates/graph.html"/>
+            </td>
+            <td width="40%" id="choice-cell" class="choice">
+                <!--                <h:panelGroup id="errors">-->
+                <!--                    <p:messages for="date" style="color:red" showDetail="true" autoUpdate="true" closable="true"/>-->
+                <!--                </h:panelGroup>-->
+                <h:form id="input-form">
+                    <table>
+                        <tr>
+                            <td>
+                                <fieldset>
+                                    <p id="error-info">Enter your values or click on the graph</p>
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-y">
+                                <fieldset id="date-field">
+                                    <h:outputLabel for="date" value="Input date"/>
+                                    <h:inputText maxlength="10" size="27" type="text" id="date" name="date"
+                                                 class="date-field"
+                                                 a:placeholder="Date must be in format DD/MM/YYYY"
+                                                 value="#{resultBean.newResult.dateTime}">
+                                        <f:converter converterId="OffsetDateConverter"/>
+                                    </h:inputText>
+                                    <br/>
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-y">
+                                <fieldset id="y-field">
+                                    <h:outputLabel for="y" value="Input Y value"/>
+                                    <h:inputText maxlength="10" size="22" type="text" id="y" name="y" class="y-field"
+                                                 a:placeholder="Y must be in the range of (-3;3)"
+                                                 value="#{resultBean.newResult.y}">
+                                        <f:validateRequired/>
+                                        <f:validateDoubleRange minimum="-3" maximum="3"/>
+                                    </h:inputText>
+                                    <br/>
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-x">
+                                <fieldset id="x-field">
+                                    <h:outputLabel for="X_field" value="Input X value"/>
+                                    <p:spinner id="X_field" name="x" required="true" type="number"
+                                               value="#{resultBean.newResult.x}" stepFactor="-1">
+                                        <f:validateRequired/>
+                                        <f:validateDoubleRange minimum="-3" maximum="3"/>
+                                    </p:spinner>
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-r">
+                                <fieldset id="r-field">
+                                    <label>Select R value</label>
+                                    <p:commandLink type="button" value="1" name="r-default" class="r-button"/>
+                                    <p:commandLink type="button" value="2" class="r-button"/>
+                                    <p:commandLink type="button" value="3" class="r-button"/>
+                                    <p:commandLink type="button" value="4" class="r-button"/>
+                                    <p:commandLink type="button" value="5" class="r-button"/>
+                                    <h:inputHidden value="#{resultBean.newResult.r}" id="true-r">
+                                        <f:validateRequired/>
+                                        <f:validateLongRange minimum="1" maximum="5"/>
+                                    </h:inputHidden>
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <fieldset>
+                                    <table class="comm-button-table">
+                                        <tr>
+                                            <td colspan="1">
+                                                <p:commandButton onclick="return validateDate()" type="submit" id="send"
+                                                                 class="input-button"
+                                                                 value="Submit" action="#{resultBean.addResult}"
+                                                                 update=":wrapper"/>
+                                                <input type="hidden" value="" name="canvas-x" id="x-hid"/>
+                                                <input type="hidden" value="" name="canvas-y" id="y-hid"/>
+                                                <!--                                                <p:commandButton id="log" style="display: none" update=":errors"/>-->
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </fieldset>
+                            </td>
+                        </tr>
+                    </table>
+                </h:form>
+            </td>
+            <td width="10%" id="request-cell" class="request-button-table">
+                <h:form id="cleaning">
+                    <p:commandButton value="Clean table" class="input-button" action="#{resultBean.eraseResults()}"
+                                     update=":wrapper" id="clean"/>
+                    <!--                    <input type="hidden" value="" name="clean-indicator" id="c-id"/>-->
+                </h:form>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <h:panelGroup id="wrapper" layout="block">
+                    <h:dataTable id="result-table" class="result-table" value="#{resultBean.results}" var="result"
+                                 width="100%">
+                        <h:column>
+                            <f:facet name="header">X</f:facet>
+                            <h:outputText value="#{result.x}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Y</f:facet>
+                            <h:outputText value="#{result.y}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">R</f:facet>
+                            <h:outputText value="#{result.r}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Time at execution</f:facet>
+                            <h:outputText value="#{result.currTime}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Execution time</f:facet>
+                            <h:outputText value="#{result.executionTime}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Hit result</f:facet>
+                            <h:outputText value="#{result.hit}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Custom date</f:facet>
+                            <h:outputText value="#{result.dateTime}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </td>
+        </tr>
+    </ui:define>
+</ui:composition>
+</html>

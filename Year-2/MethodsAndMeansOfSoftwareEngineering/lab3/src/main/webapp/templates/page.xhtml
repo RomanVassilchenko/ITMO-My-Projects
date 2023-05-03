@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>Web Lab #3</title>
+    <h:outputStylesheet library="css" name="jquery.svg.css" target="head"/>
+    <h:outputScript library="js" name="jquery.svg.js"/>
+    <h:outputScript library="js" name="jquery-3.6.0.min.js"/>
+    <ui:insert name="header">
+    </ui:insert>
+</h:head>
+<h:body>
+    <table id="grid" width="100%">
+        <tr class="header">
+            <th class="header-cell" width="30%">
+                Roman Vassilchenko
+            </th>
+            <th class="header-cell">
+                Group: P32081
+            </th>
+            <th class="header-cell">
+                Variant: 33123<br/>
+                <ui:insert name="link">
+                </ui:insert>
+            </th>
+        </tr>
+        <ui:insert name="tabled-content">
+        </ui:insert>
+    </table>
+    <ui:insert name="div-content"></ui:insert>
+</h:body>
+</html>

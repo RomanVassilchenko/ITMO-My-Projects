@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&family=Source+Sans+Pro:wght@600&display=swap');
+@font-face{
+    font-family: 'JetBrainsMono';
+    src: url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/ttf/JetBrainsMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --bg: #282828;
+    --fg: #ebdbb2;
+    --red: #cc241d;
+    --green: #98971a;
+    --red-light: #fb4934;
+    --green-light: #b8bb26;
+    --bg-0-h: #32302f;
+    --fg-3:#bdae93;
+}
+
+html {
+    color: var(--fg);
+    background: var(--bg);
+    font-family: 'Jost', sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+}
+.footer {
+    text-align: center;
+}
+.invert-colors {
+    background: var(--fg) !important;
+    color: var(--bg) !important;
+}
+.box-visual, .indent-box {
+    padding: 43px;
+    border-radius: 20px;
+}
+.indent-box {
+    margin: 43px;
+    background-color: var(--bg-0-h);
+}
+.box-visual, .main-structure-table {
+    width: 100%;
+}
+.text-input {
+    width: 80%;
+}
+
+.main-structure-table {
+    display: block;
+}
+td {
+    vertical-align: top;
+}
+.mew {
+    font-style: italic;
+}
+.main-title {
+    font-size: 3rem;
+    font-family: 'Jost', sans-serif;
+}
+.prompt-text {
+    font-size: 1.2rem;
+}
+.control-panel {
+    padding: 20px;
+}
+.text-input, button, .btn {
+    border-radius: 50rem;
+    padding: 10px 20px;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    border: none;
+}
+select {
+    -webkit-appearance: none;
+    appearance: none;
+}
+.text-input:hover, .text-input:focus, button:hover, .btn:hover {
+    background-color: var(--fg-3);
+    box-shadow: 10px 10px 5px 5px rgba(34, 16, 38, 0.25);
+}
+.reset-colors:hover {
+    background-color: var(--red-light);
+}
+
+.confirm-colors:hover {
+    background-color: var(--green-light);
+}
+
+.text-input, .logo, .box-visual, button, hr, .btn {
+    box-shadow: 5px 5px 5px 5px rgba(34, 16, 38, 0.25);
+}
+.shadow-graph{
+    filter: drop-shadow(5px 5px 5px rgba(34, 16, 38, 0.25));
+}
+.result-table {
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+.logo {
+    border-radius: 50rem;
+    margin: 25px;
+}
+.confirm-colors {
+    color: var(--bg);
+    background-color: var(--green);
+}
+.reset-colors {
+    color: var(--bg);
+    background-color: var(--red);
+}
+.content {
+    max-width: 1200px;
+    margin: 80px auto;
+}
+button, .btn {
+    margin: 5px;
+}
+.indent-box {
+    box-shadow: inset 5px 5px 5px 5px rgba(0, 0, 0, 0.25);
+    width:100%;
+}
+.result-table {
+    width: 100%;
+    text-align: center;
+    border-radius: 20px;
+    background-color: var(--bg);
+    padding: 10px;
+}
+.incorrect-input-notif {
+    color: var(--red);
+}
+
+.clock, .clock-date {
+    font-family: 'Jost', sans-serif;
+    text-align: center;
+}
+.clock {
+    font-size: 6rem;
+    margin: 10px;
+}
+
+.clock-date {
+    font-size: 2rem;
+}
+
+.grid-radio td {
+    padding: .5rem;
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active {
+    border-color: var(--green);
+    background: var(--green);
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-focus {
+    box-shadow: 0 0 0 0.2em var(--green);
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-hover {
+    border-color: var(--green);
+    background: var(--green);
+}
+
+body .ui-radiobutton .ui-radiobutton-box {
+    border: 3px solid var(--bg);
+    background: var(--fg);
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active .ui-icon-bullet {
+    background: var(--bg);
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active.ui-state-hover {
+    background: var(--bg);
+}
+
+.cmdlink {
+    margin-right:20px;
+}
+
+.cmdlink:link, .cmdlink:visited, .cmdlink:hover {
+    color: var(--bg);
+}
+
+.cmdlink:active {
+    color: var(--red);
+}
+
+.spinner input {
+    background: none;
+    border: none;
+}
+
+.spinner input:focus, .spinner input:hover {
+    outline: none;
+}
+
+.spinner .ui-spinner-button {
+    background-color: #98971a;
+    border-color: #98971a;
+}

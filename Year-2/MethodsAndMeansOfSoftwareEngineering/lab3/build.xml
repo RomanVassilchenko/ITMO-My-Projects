@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Web3" default="build">
+	<property file="build.properties"/>
+
+	<path id="classpath">
+        <fileset dir="${lib.dir}" includes="*.jar"/>
+        <fileset dir="${main.dir}" includes="*.java"/>
+    </path>
+
+	<path id="classpath.test">
+        <pathelement location="${junit}"/>
+		<pathelement location="${hamcrest}"/>
+        <pathelement location="${classes.dir}"/>
+    </path>
+
+    <target name="compile" depends="clean">
+        <echo message="***** COMPILING STARTED *****"/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${test.classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+        <echo message="***** COMPILING COMPLETED *****"/>
+    </target>
+
+	<target name="build" depends="compile">
+        <echo message="***** BUILDING STARTED *****"/>
+		<copy todir="${build.dir}" >
+            <fileset dir="${web.dir}"/>
+        </copy>
+        <copy todir="${build.dir.lib}">
+            <fileset dir="${lib.dir}"/>
+        </copy>
+        <jar destfile="${build.dir}/${ant.project.name}.jar">
+            <fileset dir="${classes.dir}"/>
+            <manifest>
+                <attribute name="Created-By" value="Voldemort" />
+                <attribute name="Manifest-Version" value="1.0"/>
+                <attribute name="Main-Class" value="Main"/>
+            </manifest>
+        </jar>
+        <war destfile="${build.dir}/${ant.project.name}.war" webxml="${build.webxml}">
+            <fileset dir="${build.dir}"/>
+            <manifest>
+                <attribute name="Created-By" value="Voldemort" />
+                <attribute name="Manifest-Version" value="1.0" />
+                <attribute name="Main-Class" value="NoClass" />
+            </manifest>
+        </war>
+        <echo message="***** BUILDING COMPLETED *****"/>
+    </target>
+
+    <target name="clean">
+        <echo message="***** CLEANING STARTED *****"/>
+        <delete dir="${build.dir}"/>
+        <delete dir="${junit.report.dir}"/>
+        <delete dir="${doc.dir}"/>
+        <echo message="***** CLEANING COMPLETED *****"/>
+    </target>
+
+	<target name="test" depends="build">
+        <echo message="***** TESTING STARTED *****"/>
+        <mkdir dir="${test.classes.dir}"/>
+		<mkdir dir="${junit.report.dir}"/>
+        <javac destdir="${test.classes.dir}" srcdir="${test.dir}" includeantruntime="false" encoding="utf-8">
+			<classpath refid="classpath.test"/>
+		</javac>
+        <junit printsummary="on" haltonfailure="true" haltonerror="true">
+            <classpath>
+                <path refid="classpath.test"/>
+                <pathelement location="${test.classes.dir}"/>
+            </classpath>
+            <batchtest fork="yes" todir="${junit.report.dir}">
+                <formatter type="xml"/>
+                <fileset dir="${test.dir}" includes="*Test.java"/>
+            </batchtest>
+        </junit>
+        <echo message="***** TESTING COMPLETED *****"/>
+    </target>
+
+
+    <target name="scp" depends="build">
+        <echo message="***** SCP STARTED *****"/>
+        <exec executable="scp" failonerror="true">
+            <arg value="-P"/>
+            <arg value="${scp.port}"/>
+            <arg value="${build.dir}/${ant.project.name}.war"/>
+            <arg value="${scp.user}@${scp.host}:${scp.dir}"/>
+        </exec>
+        <echo message="***** SCP COMPLETED *****"/>
+    </target>
+
+
+
+
+    <!--	<target name="scp" depends="build">-->
+
+<!--        <taskdef name="scp" classname="com.jcraft.ant.Scp">-->
+<!--            <classpath>-->
+<!--                <pathelement location="lib/jsch-0.1.55.jar"/>-->
+<!--            </classpath>-->
+<!--        </taskdef>-->
+
+<!--        <input message="Введите пароль: " addproperty="scp.password">-->
+<!--            <handler type="secure"/>-->
+<!--        </input>-->
+
+<!--        <echo>Соединение и отправка war-архива на сервер...</echo>-->
+
+<!--        <scp file="${build.dir}/${ant.project.name}.war"-->
+<!--             todir="${scp.user}@${scp.host}:${scp.dir}"-->
+<!--             password="${scp.password}"-->
+<!--             port="${scp.port}"-->
+<!--             trust="true"/>-->
+<!--    </target>-->
+<!---->
+    <target name="env">
+		<mkdir dir="${classes.dir}"/>
+        <javac srcdir="${main.dir}" destdir="${classes.dir}" classpathref="classpath" source="${compile.version}"
+               includeantruntime="false">
+            <compilerarg line="${vm.args}"/>
+        </javac>
+        <copy todir="${classes.dir}">
+            <fileset dir="${resources.dir}"/>
+        </copy>
+        <antcall target="build"/>
+        <exec executable="scp" failonerror="true">
+            <arg value="-P"/>
+            <arg value="${scp.port}"/>
+            <arg value="${build.dir}/${ant.project.name}.war"/>
+            <arg value="${scp.user}@${scp.host}:${scp.dir}"/>
+        </exec>
+    </target>
+</project>

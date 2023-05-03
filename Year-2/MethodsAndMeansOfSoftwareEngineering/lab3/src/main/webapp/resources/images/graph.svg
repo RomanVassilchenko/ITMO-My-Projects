@@ -1,0 +1,28 @@
+<svg id="graph-svg" width="360" height="360" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <line class="graph-base" stroke="white" x1="180" x2="180" y1="0" y2="360" stroke-width="3"/>
+                <line class="graph-base" stroke="white" x1="0" x2="360" y1="180" y2="180" stroke-width="3"/>
+                <rect class="paint" x="28" y="182" width="150" height="150" fill-opacity="0.8"/>
+                <polygon class="paint" points="178 178, 178 30, 30 178" fill-opacity="0.8"/>
+                <path class="paint" d="M182,178 L330,178   A200,200 0 0,0    182,30  z" fill-opacity="0.8"/>
+                <polygon class="graph-base" points="180 0, 185 25, 175 25" stroke="white" stroke-width="1"/>
+                <polygon class="graph-base" points="360 180, 340 185, 340 175" stroke="white" stroke-width="1"/>
+                <line class="graph-base" stroke="white" stroke-width="2" x1="173" x2="187" y1="30" y2="30"/>
+                <line class="graph-base" stroke="white" stroke-width="2" x1="173" x2="187" y1="105" y2="105"/>
+                <line class="graph-base" stroke="white" stroke-width="2" x1="173" x2="187" y1="255" y2="255"/>
+                <line class="graph-base" stroke="white" stroke-width="2" x1="173" x2="187" y1="331" y2="331"/>
+                <line class="graph-base" stroke="white" stroke-width="2" x1="30" x2="30" y1="173" y2="187"/>
+                <line class="graph-base" stroke="white" stroke-width="2" x1="105" x2="105" y1="173" y2="187"/>
+                <line class="graph-base" stroke="white" stroke-width="2" x1="255" x2="255" y1="173" y2="187"/>
+                <line class="graph-base" stroke="white" stroke-width="2" x1="330" x2="330" y1="173" y2="187"/>
+                <text class="graph-base" fill="white" x="350" y="170">X</text>
+                <text class="graph-base" fill="white" x="160" y="20">Y</text>
+                <text class="graph-base" fill="white" x="193" y="35">R</text>
+                <text class="graph-base" fill="white" x="193" y="110">R/2</text>
+                <text class="graph-base" fill="white" x="193" y="260">-R</text>
+                <text class="graph-base" fill="white" x="193" y="335">-R/2</text>
+                <text class="graph-base" fill="white" x="325" y="167">R</text>
+                <text class="graph-base" fill="white" x="245" y="167">R/2</text>
+                <text class="graph-base" fill="white" x="100" y="167">-R</text>
+                <text class="graph-base" fill="white" x="20" y="167">-R/2</text>
+                <circle cx="180" cy="180" r="5" id="pointer"></circle>
+            </svg>
