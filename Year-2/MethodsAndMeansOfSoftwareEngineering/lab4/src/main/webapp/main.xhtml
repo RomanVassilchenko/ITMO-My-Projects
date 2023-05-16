@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="resources/templates/template.xhtml">
+    <ui:define name="head">
+        <h:outputStylesheet library="css" name="main_styles.css"/>
+    </ui:define>
+    <ui:define name="content">
+        <div class="plot">
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <polygon class="plot-part" points="250,150 150,150 150,100"/>
+                <rect class="plot-part" x="50" y="150" height="100" width="100"/>
+                <path class="plot-part" d="M 150 200 A 50 50, 100, 0, 0, 200 150 L 150 150 Z"/>
+
+                <g id="dots"/>
+
+                <line x1="0" x2="300" y1="150" y2="150"/>
+                <line x1="150" x2="150" y1="0" y2="300"/>
+                <polygon points="150,0 144,15 155,15"/>
+                <polygon points="300,150 285,156 285,144"/>
+
+                <line x1="200" x2="200" y1="155" y2="145"/>
+                <line x1="250" x2="250" y1="155" y2="145"/>
+
+                <line x1="50" x2="50" y1="155" y2="145"/>
+                <line x1="100" x2="100" y1="155" y2="145"/>
+
+                <line x1="145" x2="155" y1="100" y2="100"/>
+                <line x1="145" x2="155" y1="50" y2="50"/>
+
+                <line x1="145" x2="155" y1="200" y2="200"/>
+                <line x1="145" x2="155" y1="250" y2="250"/>
+
+                <text x="190" y="140">½R</text>
+                <text x="245" y="140">R</text>
+
+                <text x="40" y="140">-R</text>
+                <text x="85" y="140">-½R</text>
+
+                <text x="160" y="105">½R</text>
+                <text x="160" y="55">R</text>
+
+                <text x="160" y="205">-½R</text>
+                <text x="160" y="255">-R</text>
+
+                <text x="160" y="15">Y</text>
+                <text x="285" y="140">X</text>
+            </svg>
+        </div>
+        <div class="fields">
+            <h:form id="main-form">
+                <div class="input">
+                    Введите значение X
+                    <br/>
+                    <h:inputText id="x"
+                                 required="true"
+                                 maxlength="5"
+                                 requiredMessage="Введите значение X"
+                                 converterMessage="Введите число в диапазоне [-3;5]"
+                                 validatorMessage="Введите число в диапазоне [-3;5]"
+                                 value="#{resultBean.current.x}">
+                        <f:validateDoubleRange minimum="-3" maximum="5"/>
+                    </h:inputText>
+                    <br/>
+                    <h:message class="message" for="x" id="x-msg"/>
+                    <br/>
+                </div>
+                <div class="input">
+                    Введите значение Y
+                    <br/>
+                    <h:inputText id="y"
+                                 required="true"
+                                 maxlength="5"
+                                 requiredMessage="Введите значение Y"
+                                 converterMessage="Введите число в диапазоне [-3;5]"
+                                 validatorMessage="Введите число в диапазоне [-3;5]"
+                                 value="#{resultBean.current.y}">
+                        <f:validateDoubleRange minimum="-3" maximum="5"/>
+                    </h:inputText>
+                    <br/>
+                    <h:message class="message" for="y" id="y-msg"/>
+                    <br/>
+                </div>
+                <div class="input">
+                    Введите значение R
+                    <br/>
+                    <h:selectOneMenu id="r" value="#{resultBean.current.r}">
+                        <f:selectItems value="#{[1, 2, 3, 4]}" var="i"
+                                       itemLabel="#{i}"
+                                       itemValue="#{i}"/>
+                        <f:ajax render="plot-script"/>
+                    </h:selectOneMenu>
+                    <br/>
+                    <h:message class="message" for="r" id="r-msg"/>
+                    <br/>
+                </div>
+                <div class="form-buttons">
+                    <h:commandButton id="submit-button" value="Отправить" action="#{resultBean.addResult}">
+                        <f:ajax execute="@form"
+                                render="x-msg y-msg r-msg result-table plot-script"/>
+                    </h:commandButton>
+                </div>
+            </h:form>
+        </div>
+        <h:panelGroup id="result-table" class="result-table">
+            <h:dataTable id="main-table"
+                         rendered="#{not empty resultBean.results}"
+                         value="#{resultBean.results}" var="result">
+                <h:column>
+                    <f:facet name="header">Номер</f:facet>
+                    #{result.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Значение X</f:facet>
+                    #{result.coordinates.x}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Значение Y</f:facet>
+                    #{result.coordinates.y}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Значение R</f:facet>
+                    #{result.coordinates.r}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Попадание</f:facet>
+                    #{result.successString}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Время нажатия</f:facet>
+                    #{result.formattedTime}
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+        <div class="switch-page-button">
+            <h:button value="Назад" outcome="index"/>
+        </div>
+        <h:outputScript library="js" name="plot.js"/>
+        <h:panelGroup id="plot-script">
+            <h:outputScript>
+                renderPlot(JSON.parse(JSON.stringify(#{resultBean.parseResultsToJson()})))
+            </h:outputScript>
+        </h:panelGroup>
+    </ui:define>
+</ui:composition>
+</html>

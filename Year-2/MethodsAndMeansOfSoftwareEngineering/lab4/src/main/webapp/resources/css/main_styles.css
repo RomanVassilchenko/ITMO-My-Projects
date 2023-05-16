@@ -1,0 +1,83 @@
+.plot svg {
+  height: 300px;
+  width: 300px;
+  margin: 30px 0 30px 0;
+  background-color: #ddd;
+  box-shadow: 5px 20px 50px #000;
+  cursor: crosshair;
+}
+
+.plot .plot-part {
+  fill: #6c5b7b;
+  stroke: #355c7d;
+  fill-opacity: 0.35;
+}
+
+.plot polygon, text {
+  fill: black;
+}
+
+.plot line {
+  stroke: black;
+}
+
+.fields .input {
+  margin-top: 15px;
+}
+
+.fields .input input[type=text], select {
+  width: 250px;
+  height: 40px;
+  border: 3px solid #6c5b7b;
+  font-size: 12px;
+  outline: none;
+  opacity: 0.8;
+}
+
+.form-buttons input[type=submit] {
+  font-size: 15px;
+  margin: 25px 5px;
+  height: 40px;
+  width: 115px;
+  border-color: #eee;
+  color: #ddd;
+  background-color: #6c5b7b;
+  cursor: pointer;
+}
+
+.form-buttons .clear-button button {
+  height: 50px;
+  width: 165px;
+}
+
+.form-buttons button:hover {
+  background: #836f94;
+}
+
+.result-table table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #ddd;
+}
+
+.result-table table tr:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.result-table table th, td {
+  padding: 15px;
+}
+
+.result-table table thead th {
+  background-color: #6c5b7b;
+  color: #ddd;
+}
+
+.result-table table td {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: black;
+}
+
+.message {
+  color: #eee;
+}

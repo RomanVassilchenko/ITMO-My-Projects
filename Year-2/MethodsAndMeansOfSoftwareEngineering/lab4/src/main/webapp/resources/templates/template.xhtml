@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <meta name="charset" content="UTF-8"/>
+        <title>Web | Lab #3</title>
+        <link rel="icon" href="#{resource['images/favicon.ico']}"/>
+        <h:outputStylesheet library="css" name="template_styles.css"/>
+        <ui:insert name="head"/>
+    </h:head>
+    <h:body>
+        <div class="header">
+            <h2>
+                Васильченко Роман
+                <br/>
+                Группа: P32081
+                <br/>
+                Вариант: 1682
+            </h2>
+        </div>
+
+        <div id="content">
+            <ui:insert name="content">
+            </ui:insert>
+        </div>
+
+        <div class="footer">
+            <div class="social">
+                <h:outputLink value="https://github.com/RomanVassilchenko/ITMOProjects" target="_blank">
+                    <h:graphicImage library="images" name="github.jpg"/>
+                </h:outputLink>
+                <h:outputLink value="https://t.me/Roman_Vassilchenko" target="_blank">
+                    <h:graphicImage library="images" name="telegram.png"/>
+                </h:outputLink>
+            </div>
+            <br/>
+            © Vassilchenko Roman ITMOProjects. 2022-2023
+        </div>
+    </h:body>
+</f:view>
+</html>

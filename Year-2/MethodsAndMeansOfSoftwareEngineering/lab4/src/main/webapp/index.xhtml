@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="resources/templates/template.xhtml">
+    <ui:define name="head">
+        <h:outputStylesheet library="css" name="clock_styles.css"/>
+        <h:outputScript library="js" name="libs/moment.min.js"/>
+    </ui:define>
+    <ui:define name="content">
+        <div id="clock">
+            <div id="date">
+            </div>
+            <div id="time">
+            </div>
+        </div>
+        <div class="switch-page-button">
+            <h:button value="Вперед" outcome="main"/>
+        </div>
+        <h:outputScript library="js" name="clock.js"/>
+    </ui:define>
+</ui:composition>
+</html>
