@@ -32,15 +32,17 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ResultBean extends NotificationBroadcasterSupport implements ResultMXBean, Serializable {
 
-    @Inject
-    ResultStorage storage;
+    // Deprecated because of the profiler
+//    @Inject
+//    ResultStorage storage;
     final List<Result> results = new CopyOnWriteArrayList<>();
     Coordinates current = new Coordinates();
     int sequenceNumber = 1;
     int unsuccessfulStreak = 0;
 
     public void init(@Observes @Initialized(ApplicationScoped.class) Object unused) {
-        results.addAll(storage.getAllResults());
+        // Deprecated because of the profiler
+//        results.addAll(storage.getAllResults());
         MBeanRegistryUtil.registerBean(this, "main");
     }
 
@@ -80,7 +82,8 @@ public class ResultBean extends NotificationBroadcasterSupport implements Result
         );
 
         results.add(result);
-        storage.addResult(result);
+        // Deprecated because of the profiler
+//        storage.addResult(result);
 
         if (!successful) {
             unsuccessfulStreak++;
@@ -97,36 +100,6 @@ public class ResultBean extends NotificationBroadcasterSupport implements Result
         } else {
             unsuccessfulStreak = 0;  // Reset the streak
         }
-    }
-
-    @Override
-    public double getArea() {
-
-        if (results.size() < 3) {
-            return 0;
-        }
-
-        Coordinates r1 = results.get(results.size() - 1).getCoordinates();
-        Coordinates r2 = results.get(results.size() - 2).getCoordinates();
-        Coordinates r3 = results.get(results.size() - 3).getCoordinates();
-
-        double x1 = r1.getX(), y1 = r1.getY();
-        double x2 = r2.getX(), y2 = r2.getY();
-        double x3 = r3.getX(), y3 = r3.getY();
-
-        // compute the sides of the triangle
-        double a = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        double b = Math.sqrt(Math.pow(x3 - x2, 2) + Math.pow(y3 - y2, 2));
-        double c = Math.sqrt(Math.pow(x1 - x3, 2) + Math.pow(y1 - y3, 2));
-
-        // compute the semi-perimeter
-        double s = (a + b + c) / 2;
-
-        // compute the area using Heron's formula
-
-        System.out.println(x1 + " " + x2 + " " + x3);
-
-        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
     }
 
     public String parseResultsToJson() {

@@ -102,6 +102,7 @@
                     <h:commandButton id="submit-button" value="Отправить" action="#{resultBean.addResult}">
                         <f:ajax execute="@form"
                                 render="x-msg y-msg r-msg result-table plot-script"/>
+                        <f:actionListener binding="#{resultAreaBean.computeArea(resultBean)}"/>
                     </h:commandButton>
                 </div>
             </h:form>

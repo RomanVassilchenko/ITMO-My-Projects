@@ -36,10 +36,11 @@ public class ResultAreaBean extends NotificationBroadcasterSupport implements Re
     ResultStorage storage;
     final List<Result> results = new CopyOnWriteArrayList<>();
     Coordinates current = new Coordinates();
+    double area = 0.0;
 
     public void init(@Observes @Initialized(ApplicationScoped.class) Object unused) {
         results.addAll(storage.getAllResults());
-        System.out.println(results);
+        area = -1;
         MBeanRegistryUtil.registerBean(this, "area");
     }
 
@@ -47,24 +48,24 @@ public class ResultAreaBean extends NotificationBroadcasterSupport implements Re
         MBeanRegistryUtil.unregisterBean(this);
     }
 
-    @Override
-    public MBeanNotificationInfo[] getNotificationInfo() {
-        String[] types = new String[] { AttributeChangeNotification.ATTRIBUTE_CHANGE };
-        String name = AttributeChangeNotification.class.getName();
-        String description = "The point is outside of area.";
-        MBeanNotificationInfo info = new MBeanNotificationInfo(types, name, description);
-        return new MBeanNotificationInfo[] { info };
-    }
 
-    public String parseResultsToJson() {
-        return new GsonBuilder().create().toJson(results);
+    public void computeArea(ResultBean resultBean){
+        current = resultBean.getCurrent();
+        boolean successful = PlotUtil.isOnPlot(current.getX(), current.getY(), current.getR());
+        Result result = new Result(
+                current.getX(),
+                current.getY(),
+                current.getR(),
+                successful,
+                System.currentTimeMillis()
+        );
+        results.add(result);
+        storage.addResult(result);
     }
-
     @Override
     public double getArea() {
-
         if (results.size() < 3) {
-            return 0;
+            return area;
         }
 
         Coordinates r1 = results.get(results.size() - 1).getCoordinates();
@@ -75,19 +76,14 @@ public class ResultAreaBean extends NotificationBroadcasterSupport implements Re
         double x2 = r2.getX(), y2 = r2.getY();
         double x3 = r3.getX(), y3 = r3.getY();
 
-        // compute the sides of the triangle
         double a = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
         double b = Math.sqrt(Math.pow(x3 - x2, 2) + Math.pow(y3 - y2, 2));
         double c = Math.sqrt(Math.pow(x1 - x3, 2) + Math.pow(y1 - y3, 2));
 
-        // compute the semi-perimeter
         double s = (a + b + c) / 2;
 
-        // compute the area using Heron's formula
-
-        System.out.println(x1 + " " + x2 + " " + x3);
-
-        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+        area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+        return area;
     }
 }
 
