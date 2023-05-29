@@ -41,10 +41,14 @@
 
 * [Веб-Программирование](Year-2/Web)
 
+* [Алгоритмы и структуры данных](Year-2/AlgorithmsAndDataStructures)
+
 * [Вычислительная математика](Year-2/ComputationalMathematics)
 
 * [Встроенные системы](Year-2/EmbeddedSystems)
 
 * [БЖД](Year-2/LifeSafety)
+
+* [МиСПИ](Year-2/MethodsAndMeansOfSoftwareEngineering)
 
 * [МиСПИ](Year-2/MethodsAndMeansOfSoftwareEngineering)
