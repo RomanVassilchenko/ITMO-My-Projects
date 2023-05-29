@@ -50,5 +50,3 @@
 * [БЖД](Year-2/LifeSafety)
 
 * [МиСПИ](Year-2/MethodsAndMeansOfSoftwareEngineering)
-
-* [МиСПИ](Year-2/MethodsAndMeansOfSoftwareEngineering)
