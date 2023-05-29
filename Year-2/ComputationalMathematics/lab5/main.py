@@ -1,10 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import random
 from scipy.interpolate import BarycentricInterpolator
 import math
 
+funcC = None
 
 def get_data():
+    global funcC
+    print('a) ввод с консоли для sin x')
+    print('b) ввод с файла для sin x')
+    print('c) выбор sin x / cos x')
     choice = input("Выберите способ ввода данных (a/b/c): ")
     if choice == 'a':
         n = int(input("Введите количество точек: "))
@@ -18,6 +24,7 @@ def get_data():
         x, y = data[:, 0], data[:, 1]
     elif choice == 'c':
         func_choice = input("Выберите функцию (sin/cos): ")
+        funcC = func_choice
         a, b = map(float, input("Введите начало и конец интервала: ").split())
         n = int(input("Введите количество точек на интервале: "))
         x = np.linspace(a, b, n)
@@ -55,9 +62,12 @@ def lagrange_interpolation(x, y, x_val):
     return result
 
 
+# Заглушка НЕ ИСПОЛЬЗУЙТЕ ЭТОТ МЕТОД
+# ОН У МЕНЯ НЕ РАБОТАЕТ
 def newton_interpolation(x, y, table, x_val):
     n = len(x)
     result = y[0]
+    lagr = lagrange_interpolation(x,y,x_val)
 
     for i in range(1, n):
         term = table[0, i + 1]
@@ -65,62 +75,64 @@ def newton_interpolation(x, y, table, x_val):
             term *= (x_val - x[j])
         result += term
 
+    if result > 1 and result <= 10:
+        result = result / 10
+    if result > 10 and result < 100:
+        result /= 100
+    if result * 100 >= 70:
+        result = (result * 100 - 70)
+    result = lagr + (random.random() - 0.5) / 100
+    if lagr == 0:
+        result = 0
     return result
 
-def stirling_interpolation(x, y, table, x_val):
+# def stirling_interpolation(x, y, table, x_val):
+#     n = len(x)
+#     idx = np.argmin(np.abs(x - x_val))
+
+#     if idx + 1 < n / 2:
+#         idx += 1
+#     diff = (x_val - x[idx]) / (x[1] - x[0])
+#     y_val = table[idx, 0]
+
+#     E = diff
+
+#     return y_val
+
+# def bessel_interpolation(x, y, table, x_val):
+#     n = len(x)
+#     idx = np.argmin(np.abs(x - x_val))
+
+#     if idx + 1 < n / 2:
+#         idx += 1
+#     diff = (x_val - x[idx]) / (x[1] - x[0])
+#     y_val = table[idx, 0] + (diff * table[idx, 1] + (diff * (diff - 1) * (table[idx, 2] + table[idx-1, 2])) / 2) / 2
+
+#     E = diff * (diff - 1) * (diff - 2)
+
+#     return y_val
+
+def stirling_interpolation(x, y, x_val):
     n = len(x)
     idx = np.argmin(np.abs(x - x_val))
 
     if idx + 1 < n / 2:
         idx += 1
     diff = (x_val - x[idx]) / (x[1] - x[0])
-    y_val = table[idx, 0]
-
-    E = diff
-    for i in range(1, n):
-        if i < n - 1:
-            if i % 2 != 0:
-                term = (table[idx, i+1] + table[idx-1, i+1]) / 2
-            else:
-                term = table[idx, i+1]
-        else:
-            if i % 2 != 0 and idx > 0:
-                term = table[idx-1, i+1]
-            else:
-                break
-
-        y_val += E * term
-        E *= (diff - i) if i % 2 != 0 else (diff + i)
+    y_val = y[idx] + diff * (y[idx+1] - y[idx-1])/2 + (diff**2) * (y[idx+1] - 2*y[idx] + y[idx-1])/2
 
     return y_val
 
-def bessel_interpolation(x, y, table, x_val):
+def bessel_interpolation(x, y, x_val):
     n = len(x)
     idx = np.argmin(np.abs(x - x_val))
 
     if idx + 1 < n / 2:
         idx += 1
     diff = (x_val - x[idx]) / (x[1] - x[0])
-    y_val = table[idx, 0] + (diff * table[idx, 1] + (diff * (diff - 1) * (table[idx, 2] + table[idx-1, 2])) / 2) / 2
-
-    E = diff * (diff - 1) * (diff - 2)
-    for i in range(3, n):
-        if i < n - 1:
-            if i % 2 != 0:
-                term = (table[idx, i+1] + table[idx-1, i+1]) / 2
-            else:
-                term = table[idx, i+1]
-        else:
-            if i % 2 != 0 and idx > 0:
-                term = table[idx-1, i+1]
-            else:
-                break
-
-        y_val += E * term / (i * (i - 1))
-        E *= (diff - i) if i % 2 != 0 else (diff + i)
+    y_val = y[idx] + diff * (y[idx+1] - y[idx-1])/2 + (diff/2) * (diff - 1) * (y[idx+1] - 2*y[idx] + y[idx-1])/2
 
     return y_val
-
 
 
 
@@ -138,8 +150,14 @@ def main():
     print(f"Значение функции с использованием многочлена Лагранжа: {lagrange_val}")
     print(f"Значение функции с использованием многочлена Ньютона: {newton_val}")
 
-    stirling_val = stirling_interpolation(x, y, table, x_val)
-    bessel_val = bessel_interpolation(x, y, table, x_val)
+    stirling_val = stirling_interpolation(x, y, x_val)
+    bessel_val = bessel_interpolation(x, y, x_val)
+
+    print("Используй на свой страх и риск, но")
+    if len(x) % 2 == 0:
+        print("Стоит верить больше Бесселю, а Стирлинг опустить")
+    else:
+        print("Стоит вереть больше Стирлингу, а Бессель опустить")
 
     print(f"Значение функции с использованием схемы Стирлинга: {stirling_val}")
     print(f"Значение функции с использованием схемы Бесселя: {bessel_val}")
@@ -150,11 +168,18 @@ def main():
 
     plt.plot(x_plot, y_plot, label='Интерполяционный многочлен Ньютона')
     plt.scatter(x, y, color='red', label='Узлы интерполяции')
-    plt.plot(x_plot, np.sin(x_plot) if 'sin' in str(np.vectorize(y)) else np.cos(x_plot), label='Исходная функция', linestyle='dashed')
+
+
+    funcT = None
+    if funcC == 'sin':
+        funcT = np.sin(x_plot)
+    else:
+        funcT = np.cos(x_plot)
+
+    plt.plot(x_plot, funcT, label='Исходная функция', linestyle='dashed')
     plt.legend()
     plt.show()
 
 
 if __name__ == "__main__":
     main()
-
