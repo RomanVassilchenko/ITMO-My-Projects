@@ -17,36 +17,36 @@
 
 ### Курс 1
 
-* [ОПД](Year-1/Basics-of-professional-life)
+* [ОПД](Year-1/Basics%20of%20professional%20activity%2C%20ОПД%2C%20Основы%20профессиональной%20деятельности)
 
-* [Дискретная математика](Year-1/Discrete-math)
+* [Дискретная математика](Year-1/Discrete%20math%2C%20Дискретная%20математика)
 
-* [История](Year-1/History)
+* [История](Year-1/History%2C%20История%20(Реформы%20и%20реформаторы%20в%20истории%20России))
 
-* [Информатика](Year-1/Informatics)
+* [Информатика](Year-1/Informatics%2C%20Информатика)
 
-* [Филосифя](Year-1/Philosophy)
+* [Филосифя](Year-1/Philosophy%2C%20Философия)
 
-* [Физика](Year-1/Physics)
+* [Физика](Year-1/Physics%2C%20Физика)
 
-* [Программирование на Java](Year-1/Programming-Java)
+* [Программирование на Java](Year-1/Programming-Java%2C%20Программирование%20(Java))
 
 ### Курс 2
 
-* [Современные инструменты анализа данных](Year-2/ModernToolsofDataAnalysis)
+* [Алгоритмы и структуры данных](Year-2/AlgorithmsAndDataStructures%2C%20Алгоритмы%20и%20структуры%20данных)
 
-* [Физика](Year-2/Physics)
+* [Вычислительная математика](Year-2/ComputationalMathematics%2C%20ВычМат%2C%20Вычислительная%20математика)
 
-* [Языки программирования](Year-2/ProgrammingLanguages)
+* [Встроенные системы](Year-2/EmbeddedSystems%2C%20Встроенные%20системы)
 
-* [Веб-Программирование](Year-2/Web)
+* [БЖД](Year-2/LifeSafety%2C%20БЖД)
 
-* [Алгоритмы и структуры данных](Year-2/AlgorithmsAndDataStructures)
+* [МиСПИ](Year-2/MethodsAndMeansOfSoftwareEngineering%2C%20МиСПИ%2C%20Методы%20и%20средства%20программной%20инженерии)
 
-* [Вычислительная математика](Year-2/ComputationalMathematics)
+* [Современные инструменты анализа данных](Year-2/ModernToolsofDataAnalysis%2C%20Современные%20инструменты%20анализа%20данных)
 
-* [Встроенные системы](Year-2/EmbeddedSystems)
+* [Физика](Year-2/Physics%2C%20Физика)
 
-* [БЖД](Year-2/LifeSafety)
+* [Языки программирования](Year-2/ProgrammingLanguages%2C%20Языки%20программирования%20(Жирков))
 
-* [МиСПИ](Year-2/MethodsAndMeansOfSoftwareEngineering)
+* [Веб-Программирование](Year-2/Web%2C%20Веб%20программирование%20(Java))
